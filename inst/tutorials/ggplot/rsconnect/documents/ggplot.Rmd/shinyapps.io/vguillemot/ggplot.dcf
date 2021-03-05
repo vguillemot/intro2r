@@ -1,0 +1,12 @@
+name: ggplot
+title: ggplot
+username:
+account: vguillemot
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3736245
+bundleId: 4301323
+url: https://vguillemot.shinyapps.io/ggplot/
+when: 1614882131.92621
+asMultiple: FALSE
+asStatic: FALSE
