@@ -1,0 +1,76 @@
+---
+title: "Avant de commencer"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Entraînement clavier
+
+En R, nous avons souvent besoin de caractères spéciaux dont l'utilisation n'est pas courante. Ce quiz vous permet de vous entraîner. Entrez la chaîne de caractères demandée et cliquez sur le bouton "Submit".
+
+```{r quiz}
+quiz(
+  question_text("{}",
+    answer("{}", correct = TRUE),
+  allow_retry = TRUE,
+  trim = TRUE
+  ),
+  question_text("()",
+    answer("()", correct = TRUE),
+  allow_retry = TRUE,
+  trim = TRUE
+  ),
+  question_text("[]",
+  answer("[]", correct = TRUE),
+  allow_retry = TRUE,
+  trim = TRUE
+  ),
+  question_text('x|y',
+  answer('x|y', correct = TRUE),
+  allow_retry = TRUE,
+  trim = TRUE
+  ),
+  question_text("dat$variable",
+  answer("dat$variable", correct = TRUE),
+  allow_retry = TRUE,
+  trim = TRUE
+  ),
+  question_text("my_tab[,3:6]",
+  answer("my_tab[,3:6]", correct = TRUE),
+  allow_retry = TRUE,
+  trim = TRUE
+  ),
+  question_text(htmltools::HTML("x > 1"),
+  answer(htmltools::HTML("x > 1"), correct = TRUE),
+  answer(htmltools::HTML("x>1"), correct = TRUE),
+  allow_retry = TRUE,
+  trim = TRUE
+  ),
+  question_text(htmltools::HTML("x & 1"),
+  answer(htmltools::HTML("x & 1"), correct = TRUE),
+  answer(htmltools::HTML("x&1"), correct = TRUE),
+  allow_retry = TRUE,
+  trim = TRUE
+  ),
+  question_text(htmltools::HTML("x < 1"),
+  answer(htmltools::HTML("x < 1"), correct = TRUE),
+  answer(htmltools::HTML("x<1"), correct = TRUE),
+  allow_retry = TRUE,
+  trim = TRUE
+  ),
+  question_text(htmltools::HTML("lm(y~x)"),
+  answer(htmltools::HTML("lm(y~x)"), correct = TRUE),
+  answer(htmltools::HTML("lm(y ~ x)"), correct = TRUE),
+  allow_retry = TRUE,
+  trim = TRUE
+  )
+)
+```
+
+
+
