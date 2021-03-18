@@ -1,5 +1,5 @@
 ---
-title: "Avant de commencer"
+title: "Apprendre à utiliser un tutoriel simple"
 output: learnr::tutorial
 runtime: shiny_prerendered
 ---
@@ -8,6 +8,46 @@ runtime: shiny_prerendered
 library(learnr)
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
+Dans ce cours d'introduction à la programmation en R, nous utiliserons de temps en temps des tutoriels qui porteront sur des thèmes abordés en cours. Ces tutoriels interactifs vous permettront de vous entraîner avec des exercices très simples.
+
+## Exemple
+
+Par exemple, utilisez la fenêtre interactive suivante pour exécuter la commande `2 + 2`, puis cliquez sur le bouton "Run Code".
+
+```{r two-plus-two, exercise=TRUE}
+
+```
+
+Pour certains exercices, je vous donnerai des indices, et la solution, auxquels vous pourvez accéder en cliques sur le bouton "Hints" et "Solution". Par exemple: ci-dessous, déclarez un vecteur `x` contenant la entiers de 1 à 10. Cliquez sur le bouton "Solution" pour voir la solution
+
+```{r vec110, exercise=TRUE}
+
+```
+
+```{r vec110-solution}
+x <- 1:10
+```
+
+Ci-dessous, déclarez un vecteur `x` contenant les entiers de 1 à 10 **au carré**. Cliquez sur les indicides successifs : le dernier indice sera la solution !
+
+```{r vec110bis, exercise=TRUE}
+
+```
+
+```{r vec110bis-hint-1}
+1:2^2
+```
+
+```{r vec110bis-hint-2}
+(1:2)^2
+```
+
+```{r vec110bis-solution}
+x <- (1:10)^2
+```
+
+
 
 ## Entraînement clavier
 
