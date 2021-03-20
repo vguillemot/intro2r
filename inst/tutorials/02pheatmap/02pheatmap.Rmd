@@ -8,27 +8,11 @@ runtime: shiny_prerendered
 library(learnr)
 knitr::opts_chunk$set(echo = FALSE)
 library(pheatmap)
+data("fruits", package = "intro2r")
+vitafruits <- fruits[, grep("Vitamine", colnames(fruits))]
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Ce tutoriel vous permettra de vous entraîner à réaliser des cartes de chaleur.
 
 ## Carte des Vitamines
 
@@ -40,8 +24,55 @@ J'ai créé pour vous une table vitafruits à l'aide de la commande suivante. Pr
 vitafruits <- fruits[, grep("Vitamine", colnames(fruits))]
 ```
 
-Maintenant utilisez la fonction pheatmap du package pheatmap pour faire une carte de chaleur de la table vitafruits.
+Maintenant, utilisez la fonction `pheatmap` du package `pheatmap` pour faire une carte de chaleur de la table `vitafruits`.
+
+
+```{r pheatmap, exercise = TRUE}
+
+```
+
+```{r pheatmap-solution}
+library(pheatmap)
+pheatmap(vitafruits)
+```
 
 ## Dendrogrammes
 
-La carte de chaleur en elle-même consiste en une image rectangulaire composée de cellules colorées en fonction d'une échelle de couleur représentée sur la gauche. Cette échelle est très souvent une échelle allant du bleu ou du blanc pour les petites valeurs à du rouge pour les grandes valeurs. la carte est agrémentée sur le côté et en haut de deux figures en forme d'arbre appelées dendrogrammes. Elles sont le résultat d'une méthode dite de classification hiérarchique qui regroupe les lignes ou les clients en fonction de leur similarité. Nous en verrons plus sur la CAH dans la suite du cours. cela explique pourquoi les valeurs 
+La carte de chaleur en elle-même consiste en une image rectangulaire composée de cellules colorées en fonction d'une échelle de couleur représentée sur la droite. Cette échelle est très souvent une échelle allant du bleu ou du blanc pour les petites valeurs à du rouge pour les grandes valeurs. La carte est agrémentée sur le côté et en haut de deux figures en forme d'arbre appelées dendrogrammes. Elles sont le résultat d'une méthode dite de classification ascendante hiérarchique (CAH) qui regroupe les lignes et/ou les colonnes en fonction de leur similarité. Nous en verrons plus sur la CAH dans la suite du cours.
+
+Enlevez les dendrogrammes avec les arguments `cluster_rows` et `cluster_rows`.
+
+```{r pheatmapClust, exercise = TRUE}
+
+```
+
+```{r pheatmapClust-solution}
+pheatmap(vitafruits, cluster_rows = FALSE, cluster_cols = FALSE)
+```
+
+## Standardisation
+
+Pour représenter des variables ou des individus très différents, il est important de pouvoir transformer les données pour les placer dans un référentiel similaire. C'est tout l'intérêt de l'argument `scale`, dont la valeur est `none` par défaut, c'est-à-dire qu'aucune transformation n'est appliquée. 
+
+Modifiez l'argument `scale` de la commande suivante et observez le résultat. N'oubliez pas que vous pouvez soit regarder l'aide de la fonction pour avoir plus de détails sur cet argument (`?scale`), soit vous servir de la complétion automatique !
+
+
+```{r pheatmapScale, exercise = TRUE}
+pheatmap(t(vitafruits), cluster_rows = FALSE, cluster_cols = FALSE, show_colnames = FALSE, border_color = NA, cellheight = 15, scale = "row")
+```
+
+## Couleurs
+
+Comme R est très utilisé pour réaliser des représentations graphiques, il existe énormément de façon de travailler les couleurs des graphes. Nous allons voir **une** façon de modifier les couleurs d'un carte de chaleur, en travaillant sur sa palette, avec l'excellent package `RColorBrewer`. 
+
+> Attention, le package `RColorBrewer` est adapté à des palettes pour lesquels on sera capable de très bien distinguer deux couleurs différentes, c'est pour cela qu'on doit combiner ses fonctions avec la fonction d'interpolation `colorRampPalette`.
+
+```{r pheatmapPalette, exercise = TRUE}
+mycolz <- RColorBrewer::brewer.pal(9, "YlOrRd")
+colzRamp <- colorRampPalette(mycolz)(50)
+
+pheatmap(t(vitafruits), cluster_rows = FALSE, cluster_cols = FALSE, show_colnames = FALSE, border_color = "black", cellheight = 15, scale = "column", color = colzRamp)
+```
+
+
+
