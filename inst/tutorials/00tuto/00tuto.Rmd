@@ -1,5 +1,5 @@
 ---
-title: "Apprendre à utiliser un tutoriel simple"
+title: "Apprendre à utiliser un tutoriel"
 output: learnr::tutorial
 runtime: shiny_prerendered
 ---
@@ -46,6 +46,12 @@ Ci-dessous, déclarez un vecteur `x` contenant les entiers de 1 à 10 **au carr�
 ```{r vec110bis-solution}
 x <- (1:10)^2
 ```
+
+Les sections suivantes contiennent des exercices sur les structures de données en R, la lecture de données, ainsi que l'entraînement au clavier que vous avez déjà suivi ! 
+
+
+## Vecteurs et matrices
+
 
 
 

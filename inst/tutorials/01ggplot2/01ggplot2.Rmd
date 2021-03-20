@@ -1,5 +1,5 @@
 ---
-title: "Tutorial"
+title: "Graphiques avec `ggplot2`"
 output: learnr::tutorial
 runtime: shiny_prerendered
 ---
@@ -73,4 +73,110 @@ quiz(
   )
 )
 ```
+
+Le package ggplot2 permet de realiser facilement des graphiques avec une syntaxe unifiee. Dans ce tutoriel, nous allons nous entrainer avec les donnees "fruits".
+
+La commande de base aura l'allure suivante
+
+ggplot(data, aes(x, y)) + geom_****()
+
+Où
+
+* ggplot dessine le canvas de base
+* data est une data-frame contenant toutes les knformations necessaires au dessin du graphe
+* aes() est une fonction qui permet de declarer les parametres esthetiques du graphe (les coordonnées des points, des lignes ou des barres, la facon de les colorer, les etiquettes etc...)
+* geom_**** est une fonction qui specifie une couche de dessin
+
+Dans ce tuto, nous verrons les fonctions suivantes
+
+geom_bar, geom_col diagrammes en batons
+geom_point, geom_jitter dessins de points
+geom_line dessins de lignes
+geom_histogram histogrammes
+geom_boxplot boites à moustaches
+geom_density Densité
+geom_violin Diagramme en violon
+
+Tout en faisant les exercices, familiarisez vous avec la documentation de ggplot2 : ?????
+
+## Les données fruits
+
+Les données contenues dans la table fruits contiennent les données nutritionnelle de ??? fruits. La table est reportée ci-après.
+
+Avec : 
+
+
+Pour plus d'informations, rendez vous sur le site du Ciqual ??? ou sur sur le site des données du gouvernement ???. ??????
+
+## Representer une variable discrete
+
+Completez la commande suivante pour obtenir un diagramme en batons des groupes de fruits.
+
+ggplot( ) + geom_
+
+Changez les couleurs et le thème du graphe en complétant la prochaine commande.
+
+ggplot( , aes(fill = )) + 
+   geom_ + 
+   theme_
+
+Utilisez la fonction `cut` de la facon suivante pour transformer la variable Fer (continue) en une variable qualitative.
+
+cut(Fruits$Fer, c(0, 5, 10))
+
+Remarquez comme on peut utiliser cette astuce dans un graphe !
+
+ggplot(fruits, aes(cut(Fer, c(0, 5, 10))) + geom_bar()
+
+Ce n'est pas tres joli comme commande et un peu difficile a lire. Parfois, plutot que d'imbriquer les commandes, il vaut mieux créer une nouvelle variable et utiliser cette nouvelle variable dans la commande graphique.
+
+## Representer une variable continue
+
+Completez la fonction suivante pour realiser un boxplot de la variable Energie.
+
+ggplot(fruits) + geom
+
+Sur le meme modele, faites un diagramme en violon.
+
+ggplot(fruits) + geom
+
+Superposez les deux et ajustez les parametres de largeur et de couleur pour avoir un joli graphe.
+
+
+
+Faites maintenant un histogramme de la composition en Vitamine C.
+
+## Representer sur le meme graphe une variable qualitative et une variable quantitative
+
+Executez la commande suivante puis modifiez la pour faire en sorte que chaque boite soit d'une couleur differente.
+
+ggplot(fruits, aes(groupe, Sucres)) + geom_boxplot()
+
+J'ai sélectionné des couleurs pour vous, la commande suivante permet de les stocker dans un vecteur qui est utilisé juste en dessous. Executez des deux lignes et observez le résultat.
+
+Essayez de reproduire ce résultat avec d'autres couleurs de votre choix : utilisez des noms de couleur (voir le résultat de la fonction colors()) ou des codes hexadécimaux.
+
+## Representer un nuage de points
+
+Completez la commande suivante pour representer l'énergie en fonction de la teneur en Vitamine C des fruits.
+
+ggplot() + geom
+
+Coloriez les points, d'abord avec la variable Sucres puis avec la variable Groupes. Que Remarquez vous ?
+
+ggplot() + geom
+
+Vous pouvez changer des couleurs définies sur une variable quantitative avec la fonction scale_color_continuous, ou des couleurs définies sur une variable discrète avec la fonction scale_color_discrete. Testez ces fonctions sur l'exemple précédent.
+
+## Combiner des graphes
+
+Les fonctionnalités du package ggpubr permettent, entre autres, de Combiner des graphes à partir d'objets ggplot. D'autres package existent pour faire cela ce qui temoigne du succès de ggplot2.
+
+Exécutez les commandes suivantes et observez comment elles permettent la création d'un graphe complexe en plusieurs panneaux.
+
+Voici les arguments clefs de la fonction ggarrange. N'oubliez pas qu vous pouvez accéder à ces informations et bien plus en appelant le fichier d'aide de la fonction grâce àla commande ?ggarrange.
+
+Argument | Utilité 
+----------|--------
+
 
