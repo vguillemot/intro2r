@@ -2,6 +2,8 @@
 title: "Apprendre à utiliser un tutoriel"
 output: learnr::tutorial
 runtime: shiny_prerendered
+description: >
+  Tout en revoyant quelques concepts de base en R (vecteurs, matrices et data-frames).
 ---
 
 ```{r setup, include=FALSE}
@@ -19,7 +21,7 @@ Par exemple, utilisez la fenêtre interactive suivante pour exécuter la command
 
 ```
 
-Pour certains exercices, je vous donnerai des indices, et la solution, auxquels vous pourvez accéder en cliques sur le bouton "Hints" et "Solution". Par exemple: ci-dessous, déclarez un vecteur `x` contenant la entiers de 1 à 10. Cliquez sur le bouton "Solution" pour voir la solution
+Pour certains exercices, je vous donnerai des indices, et la solution, auxquels vous pourrez accéder en cliquant sur le bouton "Hints" et "Solution". Par exemple: ci-dessous, déclarez un vecteur `x` contenant les entiers de 1 à 10. Cliquez sur le bouton "Solution" pour voir la solution
 
 ```{r vec110, exercise=TRUE}
 
@@ -29,7 +31,7 @@ Pour certains exercices, je vous donnerai des indices, et la solution, auxquels 
 x <- 1:10
 ```
 
-Ci-dessous, déclarez un vecteur `x` contenant les entiers de 1 à 10 **au carré**. Cliquez sur les indicides successifs : le dernier indice sera la solution !
+Ci-dessous, déclarez un vecteur `x` contenant les entiers de 1 à 10 **au carré**. Cliquez sur les indices successifs : le dernier indice sera la solution !
 
 ```{r vec110bis, exercise=TRUE}
 
@@ -50,14 +52,11 @@ x <- (1:10)^2
 Les sections suivantes contiennent des exercices sur les structures de données en R, la lecture de données, ainsi que l'entraînement au clavier que vous avez déjà suivi ! 
 
 
-## Vecteurs et matrices
-
-
-
-
 ## Entraînement clavier
 
-En R, nous avons souvent besoin de caractères spéciaux dont l'utilisation n'est pas courante. Ce quiz vous permet de vous entraîner. Entrez la chaîne de caractères demandée et cliquez sur le bouton "Submit".
+Commençons par l'entraînement au clavier !
+
+En effet, en R, nous avons souvent besoin de caractères spéciaux dont l'utilisation n'est pas courante. Ce quiz vous permet de vous entraîner. Entrez la chaîne de caractères demandée et cliquez sur le bouton "Submit".
 
 ```{r quiz}
 quiz(
@@ -118,5 +117,76 @@ quiz(
 )
 ```
 
+## Vecteurs et matrices
+
+J'ai créé pour vous un vecteur `vec` et une matrice `Mat`.
+ 
+```{r vecmat-setup}
+vec <- structure(c(2L, 1L, 2L, 1L, 1L, 2L), .Label = c("val1", "val2"), class = "factor")
+Mat <- structure(c(1.4758050122662, 0.460757577634441, 1.09787881859777, 
+-0.576514555287794, 1.7806944930363, -1.34819815347259, -0.474234033382841, 
+-0.277249593892861, 0.259424211813034, 0.802903573707708, -1.17702274849553, 
+0.532834331766421, 0.680394042312619, 0.281655088161887, -1.17112056849342, 
+-0.671549850839443, 0.873054071274946, 0.893642462873987), .Dim = c(6L, 
+3L))
+```
+
+Explorez les objets `vec` et `Mat` : 
+
+ * quelles sont leurs dimensions ?
+ * quelle est leur classe ?
+ * quel est le type d'éléments qu'ils contiennent ?
+ 
+
+```{r vecmat, exercise=TRUE}
+
+```
+
+```{r vecmat-solution}
+str(vec)
+str(Mat)
+class(vec)
+class(Mat)
+summary(vec)
+summary(Mat)
+```
+
+## Data-frame
+
+J'ai combiné `vec` et `Mat` dans une même data-frame `df` avec la commande suivante : 
+
+```
+df <- data.frame(vec, Mat)
+```
+
+Explorez le résultat et utilisez trois méthodes différentes pour extraire la colonne qui correspond à `vec`.
+
+
+```{r df-setup}
+vec <- structure(c(2L, 1L, 2L, 1L, 1L, 2L), .Label = c("val1", "val2"), class = "factor")
+Mat <- structure(c(1.4758050122662, 0.460757577634441, 1.09787881859777, 
+-0.576514555287794, 1.7806944930363, -1.34819815347259, -0.474234033382841, 
+-0.277249593892861, 0.259424211813034, 0.802903573707708, -1.17702274849553, 
+0.532834331766421, 0.680394042312619, 0.281655088161887, -1.17112056849342, 
+-0.671549850839443, 0.873054071274946, 0.893642462873987), .Dim = c(6L, 
+3L))
+df <- data.frame(vec, Mat)
+
+```
+
+```{r df, exercise=TRUE}
+
+```
+
+```{r df-solution}
+str(df)
+summary(df)
+df$vec
+df[,"vec"]
+df[,1]
+# Bonus
+df["vec"]
+df[["vec"]]
+```
 
 
