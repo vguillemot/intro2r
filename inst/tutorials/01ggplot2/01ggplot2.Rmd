@@ -10,6 +10,7 @@ knitr::opts_chunk$set(echo = FALSE)
 library(ggplot2)
 library(ggpubr)
 data("fruits", package = "intro2r")
+couleurs <- c("steelblue", "limegreen", "darkolivegreen", "darkorchid")
 ```
 
 Le package ggplot2 permet de réaliser facilement des graphiques avec une syntaxe unifiée. Dans ce tutoriel, nous allons nous entraîner avec les données "fruits".
@@ -181,16 +182,17 @@ ggplot(fruits, aes(groupe, Sucres, color = groupe)) +
 
 J'ai sélectionné 4 couleurs pour vous, et utilisé la commande suivante pour les stocker dans un vecteur s'appelant `couleurs`.
 
-```{r, eval=FALSE, echo = TRUE}
+```{r, eval = FALSE, echo = TRUE}
 couleurs <- c("steelblue", "limegreen", "darkolivegreen", "darkorchid")
 ```
 
 Ce vecteur est utilisé ci-dessous. Exécutez ce code et observez le résultat. Essayez ensuite d'autres couleurs de votre choix : utilisez des noms de couleur (voir le résultat de la fonction `colors()`) ou des codes hexadécimaux.
 
 ```{r fibres, exercise = TRUE}
+couleurs <- c("steelblue", "limegreen", "darkolivegreen", "darkorchid")
 ggplot(fruits, aes(Fibres, groupe, fill = groupe)) + 
   geom_violin() + 
-  scale_color_manual(values = couleurs)
+  scale_fill_manual(values = couleurs)
 ```
 
 ## Representer un nuage de points
