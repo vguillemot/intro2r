@@ -229,7 +229,7 @@ ggplot(fruits, aes(VitamineC, Energie1, color = groupe)) +
   labs(x = "Energie (kJ / 100g)", y = "Vitamine C Vitamine C (mg/100 g)")
 ```
 
-Vous pouvez changer des couleurs définies sur une variable quantitative avec la fonction `scale_color_continuous`, ou des couleurs définies sur une variable discrète avec la fonction `scale_color_discrete`. Testez ces fonctions sur l'exemple précédent.
+Vous pouvez changer des couleurs définies sur une variable quantitative avec la fonction `scale_color_continuous`, ou `scale_color_gradient`, ou `scale_color_gradientn`, ou des couleurs définies sur une variable discrète avec la fonction `scale_color_manual` ou `scale_colour_brewer`. Testez ces fonctions sur l'exemple précédent.
 
 
 
