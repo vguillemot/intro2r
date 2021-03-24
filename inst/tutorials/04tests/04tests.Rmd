@@ -2,29 +2,102 @@
 title: "Tests d'hypothèses avec R"
 output: learnr::tutorial
 runtime: shiny_prerendered
+description: >
+  Ainsi que des modèles linéaires
 ---
 
 ```{r setup, include=FALSE}
 library(learnr)
 knitr::opts_chunk$set(echo = FALSE)
+data("fruits", package = "intro2r")
 ```
 
-## R Markdown
+Nous allons enore une fois utiliser les données `fruits` pour nous entraîner à réaliser des tests d'hypothèses classiques. Comme d'habitude, le jeu de données a été chargé pour vous dans l'environnement et est prêt à être utilisé.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+## Tests 
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+### Test de Student
 
-```{r cars}
-summary(cars)
+La fonction à utiliser est `t.test`.
+
+### Test du $\chi^2$
+
+
+## Modèles linéaires 
+
+La fonction à utiliser est `lm`.
+
+### Modèle linéaire simple
+
+Imaginons que nous voulions créer le modèle linéaire avec `x` comme variable explicative et `y` comme variable à expliquer, les deux variables étant deux colonnes de la data-frame `dat`.
+
+La commande que vous utiliserez ser
+
+```
+lm(y ~ x, data = dat)
 ```
 
-## Including Plots
+Complétez la commande suivante pour expliquer la variable `Energie1` en fonction de la variable `Glucides`.
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r lmsimple, exercise = TRUE}
+lm(~)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r lmsimple-solution}
+lm(Energie1 ~ Glucides, data = fruits)
+
+# Avec un graphe : 
+
+ggplot(fruits, aes(Glucides, Energie1)) + 
+  geom_point() + 
+  stat_smooth(method = "lm") + 
+  theme_minimal()
+```
+
+
+On peut ensuite réaliser des tests d'hypothèses sur les coefficients estimés à l'aide de la fonction `summary`. Sur notre exemple simple, cela donne : 
+
+```
+res.lm <- lm(y ~ x, data = dat)
+summary(res.lm)
+```
+
+Vous pouvez bien sûr sauter une étape en utilisant directement la commande `summary(lm(y ~ x, data = dat))`. Le résultat ressemblera à ceci : 
+
+```{r simul_lm}
+set.seed(734)
+x <- rnorm(20)
+y <- 2 * x - 5 + 1.5 * rnorm(20)
+summary(lm(y ~ x))
+```
+
+Utilisez `summary` pour faire des tests d'hypothèses sur les coefficients du modèle linéaire prédisant `Energie1` à partie de `Glucides`.
+
+```{r summarySimple, exercise = TRUE}
+lm(~)
+```
+
+```{r summarySimple-solution}
+res.lm <- lm(Energie1 ~ Glucides, data = fruits)
+summary(res.lm)
+```
+
+
+### Modèle linéaire multiple
+
+
+
+
+
+## Modèles linéaires généralisés
+
+La fonction est `glm`.
+
+
+## Modèles linéaires à effets mixtes
+
+La fonction est `lmer` des packages `lme4` et `lmerTest`.
+
+
+
+

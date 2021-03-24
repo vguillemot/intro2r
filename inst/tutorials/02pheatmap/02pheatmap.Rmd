@@ -2,6 +2,8 @@
 title: "Cartes de chaleur avec `pheatmap`"
 output: learnr::tutorial
 runtime: shiny_prerendered
+description: >
+  Avec en bonus à la fin un corrélogramme
 ---
 
 ```{r setup, include=FALSE}
