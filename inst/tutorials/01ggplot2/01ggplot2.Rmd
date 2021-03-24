@@ -1,9 +1,7 @@
 ---
-title: "Graphiques avec `ggplot2`"
+title: "Graphiques avec ggplot2"
 output: learnr::tutorial
 runtime: shiny_prerendered
-description: >
-  N'oubliez pas de consulter la documentation https://ggplot2.tidyverse.org/
 ---
 
 ```{r setup, include=FALSE}
