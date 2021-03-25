@@ -31,7 +31,7 @@ La fonction à utiliser est `lm`.
 
 Imaginons que nous voulions créer le modèle linéaire avec `x` comme variable explicative et `y` comme variable à expliquer, les deux variables étant deux colonnes de la data-frame `dat`.
 
-La commande que vous utiliserez ser
+La commande que vous utiliserez sera
 
 ```
 lm(y ~ x, data = dat)
@@ -71,7 +71,7 @@ y <- 2 * x - 5 + 1.5 * rnorm(20)
 summary(lm(y ~ x))
 ```
 
-Utilisez `summary` pour faire des tests d'hypothèses sur les coefficients du modèle linéaire prédisant `Energie1` à partie de `Glucides`.
+Utilisez `summary` pour faire des tests d'hypothèses sur les coefficients du modèle linéaire prédisant `Energie1` à partir de `Glucides`.
 
 ```{r summarySimple, exercise = TRUE}
 lm(~)
@@ -85,19 +85,26 @@ summary(res.lm)
 
 ### Modèle linéaire multiple
 
+Le principe est le même, sauf qu'il y a plusieurs variables explicatives ! Ces variables peuvent être des variables qualitatives ou quantitatives suivant votre plan d'expérience.
 
+Si vous souhaitez estimer le modèle $y = x_1 + x_2$, alors la commande que vous utiliserez sera
 
+```
+lm(y ~ x1 + x2, data = dat)
+```
 
+Vous devrez également utiliser la fonction `summary` pour réaliser des tests sur la valeur des coefficients estimés.
 
-## Modèles linéaires généralisés
+Modifiez la commande suivante pour faire un modèle linéaire (et des tests d'hypothèse sur ses coefficients) de la variable  `Energie1` en fonction des `Proteines1`, `Glucides`, `Lipides` et `Sucres`.
 
-La fonction est `glm`.
+```{r summaryMult, exercise = TRUE}
+lm(~)
+```
 
-
-## Modèles linéaires à effets mixtes
-
-La fonction est `lmer` des packages `lme4` et `lmerTest`.
-
+```{r summarySimple-solution}
+res.lm <- lm(Energie1 ~ Proteines1 + Glucides + Lipides + Sucres, data = fruits)
+summary(res.lm)
+```
 
 
 

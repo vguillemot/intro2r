@@ -2,6 +2,8 @@
 title: "Graphiques avec ggplot2"
 output: learnr::tutorial
 runtime: shiny_prerendered
+description: >
+  Quelques géométries classiques, puis la fonction ggpubr::ggarrange
 ---
 
 ```{r setup, include=FALSE}

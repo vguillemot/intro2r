@@ -149,6 +149,34 @@ pheatmap(vitafruits, cluster_rows = TRUE,
          annotation_row = annotFruit)
 ```
 
+## Classification ascendante hiérarchique
+
+Changez la méthode réalisant la classification ascendante hiérarchique (des lignes) en modifiant la valeur des arguments : 
+
+  * `clustering_distance_rows` : à choisir parmi `"euclidean"`, `"correlation"`, `"maximum"`, `"manhattan"`, `"canberra`", `"binary"` ou `"minkowski"`.
+  * `clustering_method` : à choisir parmi `"ward.D"`, `"ward.D2"`, `"single"`, `"complete"`, `"average"`, `"mcquitty"`, `"median"` ou `"centroid"`.
+
+```{r vitafruitsClassif, exercise = TRUE}
+pheatmap(vitafruits, 
+         cluster_rows = TRUE, 
+         cluster_cols = FALSE, 
+         show_rownames = FALSE,
+         cellwidth = 10, 
+         border_color = "black",
+         scale = "row")
+```
+
+```{r vitafruitsClassif-solution}
+pheatmap(vitafruits, cluster_rows = TRUE, 
+         cluster_cols = FALSE, show_rownames = FALSE,
+         cellwidth = 10, border_color = "black",
+         scale = "row", 
+         clustering_distance_rows = "correlation",
+         clustering_method = "ward.D2")
+```
+
+
+
 ## Bonus : `corrplot`
 
 La librairie `pheatmap` n'est pas la seule à pouvoir produire de jolies cartes de chaleur. La fonction `corrplot` du package éponyme (pour utiliser cette fonction il faudra donc installer préalablement le package `corrplot`).
@@ -159,4 +187,7 @@ Voici un exemple dans lequel j'ai changé quelques paramètres pour rendre le gr
 cormat <- cor(fruits[, -1], use = "pairwise.complete.obs")
 corrplot(corr = cormat, method = "square", type = "upper", diag = FALSE, , order = "hclust", tl.col = "black")
 ```
+
+
+
 
