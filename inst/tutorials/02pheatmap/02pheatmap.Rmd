@@ -1,5 +1,5 @@
 ---
-title: "Cartes de chaleur avec `pheatmap`"
+title: "Cartes de chaleur avec pheatmap"
 output: learnr::tutorial
 runtime: shiny_prerendered
 description: >
