@@ -2,20 +2,23 @@
 % Please edit documentation in R/bonjour.R
 \name{bonjour}
 \alias{bonjour}
-\title{"Bonjour !" : Cette fonction est un exemple de fonction graphique avec deux paramètres simples : la couleur du texte et la couleur du fond.}
+\title{La fonction qui dit bonjour}
 \usage{
 bonjour(couleur = "pink", fond = "limegreen")
 }
 \arguments{
-\item{couleur, }{couleur du texte ("pink" par défaut)}
+\item{couleur}{la couleur du texte}
 
-\item{fond, }{couleur du fond ("limegreen" par défaut)}
+\item{fond}{la couleur du fond}
 }
 \value{
 Un graphe simple
 }
 \description{
 "Bonjour !" : Cette fonction est un exemple de fonction graphique avec deux paramètres simples : la couleur du texte et la couleur du fond.
+}
+\details{
+PS : cette fonction ne servira jamais pour le cours, elle sert juste à dire bonjour !
 }
 \examples{
 bonjour()

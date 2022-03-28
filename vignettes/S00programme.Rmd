@@ -1,0 +1,132 @@
+---
+title: "Le programme du cours"
+author: "Vincent Guillemot"
+date: "Mercredi 30/03/2022"
+output: 
+    ioslides_presentation:
+        css: styles.css
+vignette: >
+  %\VignetteIndexEntry{00programme}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+<style>
+.forceBreak { -webkit-column-break-after: always; break-after: column; }
+</style>
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  echo = TRUE
+)
+```
+
+## Je me présente {.columns-2}
+
+![Vincent Guillemot](img/S00programme/vincent.jpeg){width=75%}
+
+<p class="forceBreak"></p>
+
+ * [Hub de Bioinformatique et de Biostatistiques](https://research.pasteur.fr/fr/team/bioinformatics-and-biostatistics-hub/) 
+ * Biostatisticien
+ * Intégration de données
+
+
+## Quiz de bienvenue
+
+![Allez sur www.kahoot.it ou sur l'application Kahoot!](img/S00programme/Kahoot_Logo.svg){width=100%}
+
+
+## Au programme {.bigger}
+
+ * Mercredi matin : révision, représentations graphiques (un peu)
+ * Mercredi après-midi : représentations graphiques
+ * Jeudi matin : tests statistiques (et représentations graphiques)
+ * Jeudi après-midi : fin des tests
+ * Vendredi : Analyse de vos propres données
+
+
+## Au programme... bis {.bigger}
+
+Plutôt le matin
+
+ * Quiz du matin
+ * Explications avec exemples
+ * Exercices
+
+<p class="forceBreak"></p>
+
+Plutôt l'après-midi
+
+ * Quiz de l'après-midi
+ * Explications avec exemples 
+ * Exercices
+ * Discussion de fin de journée
+
+## Déroulement du cours
+
+Pour favoriser l'interactivité de ce cours, voici ce que je vous propose : 
+
+ * Des quiz (Kahoot, cf. programme)
+ * Des exercices réguliers
+ * Les étudiant·e·s sont sollicités régulièrement
+ * Tutoriels interactifs pour s'entraîner "à la maison"
+
+
+## Des données simples... pour moi
+
+![Composition de produits alimentaires (https://ciqual.anses.fr/)](img/S00programme/ciqual.jpg){width=100%}
+
+
+## Des données simples... pour moi
+
+![Nutriwi (https://www.nutriwi.com/)](img/S00programme/nutriwi.png){width=40%}
+
+## Mais aussi...
+
+ * La page du cours : https://moodle01.hosting.pasteur.fr/course/view.php?id=77
+ * Les présentations au format PDF (et HTML)
+ * Les exercices et leur solution
+ * Des tutoriels interactifs
+
+## Ressources
+
+
+  * Les [feuilles de triche de Rstudio](https://www.rstudio.com/resources/cheatsheets/) (EN) de
+    - [dplyr](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf) (EN)
+    - [ggplot2](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf) (EN)
+  * La page STDHA sur [les couleurs](http://www.sthda.com/french/wiki/couleurs-dans-r) (FR)
+  * [R pour les débutants d'Emmanuel Paradis](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_fr.pdf) (FR)
+  * L'[aide-mémoire de Julien Chiquet](https://vguillemot.github.io/debuter/inst/extdata/CommandesUsuelles.pdf)
+  
+
+## moRe ! {.columns-2 .smaller}
+
+  * Livre *R for Data Science* : https://r4ds.had.co.nz/
+  * Livre *R Cookbook* : https://rc2e.com/
+  * Livre *Modern Data Science with R* : https://mdsr-book.github.io/mdsr2e/
+  * Livre *Computational Genomics with R* : https://compgenomr.github.io/book/
+  * Livre *ggplot2: elegant graphics for data analysis* : https://ggplot2-book.org/index.html
+  * Site de référence ggplot2 : https://ggplot2.tidyverse.org/reference/
+  * Extensions ggplot2 : https://exts.ggplot2.tidyverse.org/gallery/
+
+<p class="forceBreak"></p>
+
+
+  * *A ggplot2 Tutorial for Beautiful Plotting in R* : https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/
+  * Package R patchwork : https://github.com/thomasp85/patchwork
+  * Livre *Circular Visualization in R* : https://jokergoo.github.io/circlize_book/book/
+  * Livre ComplexHeatmap : https://jokergoo.github.io/ComplexHeatmap-reference/book/
+  * Palettes de couleurs : https://github.com/EmilHvitfeldt/r-color-palettes
+  
+## RNA-Seq {.columns-2 .bigger}
+
+  * Chaine YouTube [StatQuest](https://www.youtube.com/c/joshstarmer/videos)
+  * Site DoItYourself Transcriptomics : https://diytranscriptomics.com/
+  * Site RNA-Seqlopedia : https://rnaseq.uoregon.edu/
+
+<p class="forceBreak"></p>
+
+  * [*Selecting between-sample RNA-Seq normalization methods from the perspective of their assumptions*](https://academic.oup.com/bib/article/19/5/776/3056951) (Evans 2017) : 

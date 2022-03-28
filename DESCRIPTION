@@ -1,11 +1,11 @@
 Package: intro2r
 Type: Package
-Title: Package compagnon du cours "Introduction à R"
-Version: 0.1.0
+Title: Package compagnon du cours "Introduction au Logiciel R"
+Version: 0.2.0
 Author: Vincent Guillemot
 Maintainer: Vincent Guillemot <vguillem@pasteur.fr>
-Description: Ce package contient principalement des tutoriels, ainsi qu'un exemple de données.
+Description: Ce package contient des tutoriels, ainsi qu'un exemple de données.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
