@@ -14,7 +14,7 @@ library(pheatmap)
 library(RColorBrewer)
 data("fruits", package = "intro2r")
 vitafruits <- fruits[, grep("Vitamine", colnames(fruits))]
-cru <- ifelse(grepl("cru", rownames(vitafruits)), "oui", "non")
+cru <- ifelse(grepl("cru", fruits$groupe), "oui", "non")
 annotFruit <- data.frame(
   cru = cru,
   row.names = rownames(vitafruits))
@@ -69,7 +69,7 @@ Modifiez l'argument `scale` de la commande suivante et observez le résultat. N'
 pheatmap(vitafruits, cluster_rows = FALSE,
          cluster_cols = FALSE, show_rownames = FALSE,
          border_color = "black", cellwidth = 15,
-         scale = "row")
+         scale = "column")
 ```
 
 ## Couleurs
@@ -114,7 +114,7 @@ pheatmap(vitafruits)
 pheatmap(vitafruits, cluster_rows = FALSE,
          cluster_cols = FALSE, show_rownames = FALSE,
          border_color = "black", cellwidth = 15,
-         scale = "row", color = colzRamp)
+         scale = "column", color = colzRamp)
 ```
 
 ## Ajouter des informations
@@ -126,7 +126,7 @@ Nous allons nous entraîner sur un cas très simple : représenter si l'aliment 
 Pour cela, j'ai créé une table annexe qui a les mêmes noms de lignes que la table `vitafruits` et qui contient une colonne `crue` qui contient les valeurs `oui` ou `non`. Prenez quelques minutes pour lire et comprendre ce code.
 
 ```{r cruoupas, echo = TRUE}
-cru <- ifelse(grepl("cru", rownames(vitafruits)), "oui", "non")
+cru <- ifelse(grepl("cru", fruits$groupe), "oui", "non")
 annotFruit <- data.frame(
   cru = cru,
   row.names = rownames(vitafruits))
@@ -145,7 +145,7 @@ colzRamp <- colorRampPalette(mycolz)(50)
 pheatmap(vitafruits, cluster_rows = TRUE, 
          cluster_cols = FALSE, show_rownames = FALSE,
          cellwidth = 10, border_color = "black",
-         scale = "row", color = colzRamp,
+         scale = "column", color = colzRamp,
          annotation_row = annotFruit)
 ```
 
@@ -163,14 +163,14 @@ pheatmap(vitafruits,
          show_rownames = FALSE,
          cellwidth = 10, 
          border_color = "black",
-         scale = "row")
+         scale = "column")
 ```
 
 ```{r vitafruitsClassif-solution}
 pheatmap(vitafruits, cluster_rows = TRUE, 
          cluster_cols = FALSE, show_rownames = FALSE,
          cellwidth = 10, border_color = "black",
-         scale = "row", 
+         scale = "column", 
          clustering_distance_rows = "correlation",
          clustering_method = "ward.D2")
 ```
@@ -184,7 +184,7 @@ La librairie `pheatmap` n'est pas la seule à pouvoir produire de jolies cartes 
 Voici un exemple dans lequel j'ai changé quelques paramètres pour rendre le graphe joli. Modifiez ces paramètres, tout en prenant bien soin d'aller consulter l'aide de la fonction `?corrplot` pour comprendre leur signification.
 
 ```{r corrplot, exercise = TRUE}
-cormat <- cor(fruits[, -1], use = "pairwise.complete.obs")
+cormat <- cor(fruits[, -(1:2)], use = "pairwise.complete.obs")
 corrplot(corr = cormat, method = "square", type = "upper", diag = FALSE, , order = "hclust", tl.col = "black")
 ```
 

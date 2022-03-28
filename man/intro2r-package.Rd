@@ -7,6 +7,6 @@
 \title{Package pour la formation "Introduction au Logiciel R"
 Contient les vignettes (les slides de cours), le jeu de données "fruits", le jeu de données "nutrimenu"  et les tutoriels.}
 \description{
-Ce package contient des tutoriels, ainsi qu'un exemple de données.
+Ce package contient des tutoriels, les présentations sous forme de vignettes, ainsi qu'un exemple de données.
 }
 \keyword{internal}

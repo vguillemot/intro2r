@@ -18,7 +18,7 @@ Nous allons enore une fois utiliser les données `fruits` pour nous entraîner �
 
 ### Test de Student
 
-Modifiez la commande suivante pour tester si la teneur en Phosphore est différente en moyenne pour les fruits crus ou pour les fruits en teneur à Vitamine D supérieure à 0.05 µg / 100g versus ceux qui ont une teneur en Vitamine D inférieur à 0.05 µg / 100g.
+Modifiez la commande suivante pour tester si la teneur en Phosphore est différente en moyenne pour les fruits crus ou pour les fruits en teneur à Vitamine C supérieure à 10 mg / 100g versus ceux qui ont une teneur en Vitamine C inférieure à 10 mg / 100g.
 
 ```{r ttest, exercise = TRUE}
 t.test()
@@ -27,24 +27,24 @@ t.test()
 ```{r ttest-solution}
 dat.test <- data.frame(
   phosphore = fruits$Phosphore,
-  vitDbin = fruits$VitamineD >= 0.05
+  vitCbin = fruits$VitamineC >= 10
 )
-t.test(phosphore ~ vitDbin, data = dat.test)
+t.test(phosphore ~ vitCbin, data = dat.test)
 ```
 
 ### Test du $\chi^2$ et test de Fisher
 
-Modifiez la commande suivante pour tester à l'aide d'un test du $\chi^2$ et d'un test de Fisher si la variable groupe est indépendante de la variable "teneur en Vitamine D supérieure ou inférieure à 0.05 µg / 100g".
+Modifiez la commande suivante pour tester à l'aide d'un test du $\chi^2$ et d'un test de Fisher si la variable "groupe" est indépendante de la variable "teneur en Vitamine C supérieure ou inférieure à 10 mg / 100g".
 
 ```{r chisqtest, exercise = TRUE}
 chisq.test()
 ```
 
 ```{r chisqtest-solution}
-vitDbin <- fruits$VitamineD >= 0.05
-table(vitDbin, fruits$groupe)
-chisq.test(vitDbin , fruits$groupe)
-fisher.test(vitDbin , fruits$groupe)
+vitCbin <- fruits$VitamineC >= 10
+table(vitCbin, fruits$groupe)
+chisq.test(vitCbin , fruits$groupe)
+fisher.test(vitCbin , fruits$groupe)
 ```
 
 ## Modèles linéaires 
@@ -61,18 +61,18 @@ La commande que vous utiliserez sera
 lm(y ~ x, data = dat)
 ```
 
-Complétez la commande suivante pour expliquer la variable `Energie1` en fonction de la variable `Glucides`.
+Complétez la commande suivante pour expliquer la variable `Energie` en fonction de la variable `Glucides`.
 
 ```{r lmsimple, exercise = TRUE}
 lm(~)
 ```
 
 ```{r lmsimple-solution}
-lm(Energie1 ~ Glucides, data = fruits)
+lm(Energie ~ Glucides, data = fruits)
 
 # Avec un graphe : 
 
-ggplot(fruits, aes(Glucides, Energie1)) + 
+ggplot(fruits, aes(Glucides, Energie)) + 
   geom_point() + 
   stat_smooth(method = "lm") + 
   theme_minimal()
@@ -95,14 +95,14 @@ y <- 2 * x - 5 + 1.5 * rnorm(20)
 summary(lm(y ~ x))
 ```
 
-Utilisez `summary` pour faire des tests d'hypothèses sur les coefficients du modèle linéaire prédisant `Energie1` à partir de `Glucides`.
+Utilisez `summary` pour faire des tests d'hypothèses sur les coefficients du modèle linéaire prédisant `Energie` à partir de `Glucides`.
 
 ```{r summarySimple, exercise = TRUE}
 lm(~)
 ```
 
 ```{r summarySimple-solution}
-res.lm <- lm(Energie1 ~ Glucides, data = fruits)
+res.lm <- lm(Energie ~ Glucides, data = fruits)
 summary(res.lm)
 ```
 
@@ -119,14 +119,14 @@ lm(y ~ x1 + x2, data = dat)
 
 Vous devrez également utiliser la fonction `summary` pour réaliser des tests sur la valeur des coefficients estimés.
 
-Modifiez la commande suivante pour faire un modèle linéaire (et des tests d'hypothèse sur ses coefficients) de la variable  `Energie1` en fonction des `Proteines1`, `Glucides`, `Lipides` et `Sucres`.
+Modifiez la commande suivante pour faire un modèle linéaire (et des tests d'hypothèse sur ses coefficients) de la variable  `Energie` en fonction des `Proteines`, `Glucides`, `Lipides` et `Sucres`.
 
 ```{r summaryMult, exercise = TRUE}
 lm(~)
 ```
 
 ```{r summaryMult-solution}
-res.lm <- lm(Energie1 ~ Proteines1 + Glucides + Lipides + Sucres, data = fruits)
+res.lm <- lm(Energie ~ Proteines + Glucides + Lipides + Sucres, data = fruits)
 summary(res.lm)
 ```
 

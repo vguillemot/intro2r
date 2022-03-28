@@ -85,23 +85,23 @@ ggplot(fruits , aes(groupe, fill = groupe)) +
    theme_bw()
 ```
 
-Utilisez la fonction `cut` de la façon suivante pour transformer la variable Fer (continue) en une variable qualitative.
+Utilisez la fonction `cut` de la façon suivante pour transformer la variable Potassium (continue) en une variable qualitative.
 
-```{r cutfer, exercise = TRUE}
-cut(fruits$Fer, c(0, 0.2, 2))
+```{r cutPotassium, exercise = TRUE}
+cut(fruits$Potassium, c(0, 200, 1400))
 ```
 
-```{r cutfer-solution}
+```{r cutPotassium-solution}
 # Il n'y a rien de plus à faire : exécutez juste la commande et observez son résultat
-cut(fruits$Fer, c(0, 0.2, 2))
+cut(fruits$Potassium, c(0, 200, 1400))
 # Si vous le souhaitez, vous pouvez utiliser la fonction table sur ce résultat
-table(cut(fruits$Fer, c(0, 0.2, 2)))
+table(cut(fruits$Potassium, c(0, 200, 1400)))
 ```
 
 Remarquez comme on peut utiliser cette astuce dans un graphe !
 
-```{r cutferplot, exercise = TRUE}
-ggplot(fruits, aes(cut(Fer, c(0, 0.2, 10)))) +
+```{r cutPotassiumplot, exercise = TRUE}
+ggplot(fruits, aes(cut(Potassium, c(0, 200, 1400)))) +
   geom_bar() + 
   theme_bw()
 ```
@@ -110,14 +110,14 @@ Ce n'est pas très joli comme commande et un peu difficile a lire. Parfois, plut
 
 ## Representer une variable continue
 
-Complétez la fonction suivante pour réaliser un boxplot de la variable `Energie1.`
+Complétez la fonction suivante pour réaliser un boxplot de la variable `Energie.`
 
 ```{r energiebox, exercise = TRUE}
 ggplot(fruits) + geom
 ```
 
 ```{r energiebox-solution}
-ggplot(fruits, aes(Energie1)) + 
+ggplot(fruits, aes(Energie)) + 
   geom_boxplot() + 
   theme_bw()
 ```
@@ -129,7 +129,7 @@ ggplot(fruits) + geom
 ```
 
 ```{r energieviolon-solution}
-ggplot(fruits, aes(x = Energie1, y = 0)) + 
+ggplot(fruits, aes(x = Energie, y = 0)) + 
   geom_violin() + 
   theme_bw()
 ```
@@ -143,7 +143,7 @@ ggplot(fruits) +
 ```
 
 ```{r energieboxviolon-solution}
-ggplot(fruits, aes(x = Energie1, y = 0)) + 
+ggplot(fruits, aes(x = Energie, y = 0)) + 
   geom_violin(color = NA, fill = "limegreen") + 
   geom_boxplot(width = 0.1, color = "steelblue", fill = "lightgreen", size = 1) + 
   theme_bw() + 
@@ -206,7 +206,7 @@ ggplot() + geom
 ```
 
 ```{r energieVitC-solution}
-ggplot(fruits, aes(VitamineC, Energie1)) +
+ggplot(fruits, aes(VitamineC, Energie)) +
   geom_point() + 
   theme_bw() + 
   labs(x = "Energie (kJ / 100g)", y = "Vitamine C Vitamine C (mg/100 g)")
@@ -220,12 +220,12 @@ ggplot() + geom
 
 
 ```{r energieVitCcolor-solution}
-ggplot(fruits, aes(VitamineC, Energie1, color = Sucres)) +
+ggplot(fruits, aes(VitamineC, Energie, color = Sucres)) +
   geom_point() + 
   theme_bw() + 
   labs(x = "Energie (kJ / 100g)", y = "Vitamine C Vitamine C (mg/100 g)")
 
-ggplot(fruits, aes(VitamineC, Energie1, color = groupe)) +
+ggplot(fruits, aes(VitamineC, Energie, color = groupe)) +
   geom_point() + 
   theme_bw() + 
   labs(x = "Energie (kJ / 100g)", y = "Vitamine C Vitamine C (mg/100 g)")
