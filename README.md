@@ -9,6 +9,7 @@
 
 |  Date  | Thématique | Lien vers la présentation |
 |--------|------------|---------------------------|
+| Lundi et Mardi | Cours de YM | [[cours et exercices](inst/extdata/jours1et2.zip)] |
 | Mercredi | Programme | [[HTML](vignettes/S00programme.html) [PDF](vignettes/S00programme.pdf)] |
 | Mercredi | R & Rstudio  | [[HTML](vignettes/S01rstudio.html) [PDF](vignettes/S01rstudio.pdf)] |
 | Mercredi | Packages  | [[HTML](vignettes/S02packages.html) [PDF](vignettes/S02packages.pdf)] |

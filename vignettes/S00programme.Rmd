@@ -25,18 +25,30 @@ knitr::opts_chunk$set(
 
 ## Je me présente {.columns-2}
 
-![Vincent Guillemot](img/S00programme/vincent.jpeg){width=75%}
+```{r moi, out.width="75%", echo = FALSE}
+# ![Vincent Guillemot](img/S00programme/vincent.jpeg){width=75%}
+knitr::include_graphics("img/S00programme/vincent.jpeg")
+```
 
 <p class="forceBreak"></p>
 
  * [Hub de Bioinformatique et de Biostatistiques](https://research.pasteur.fr/fr/team/bioinformatics-and-biostatistics-hub/) 
  * Biostatisticien
  * Intégration de données
+ * Programmation en R
+ * Analyse de données "omiques"
+
 
 
 ## Quiz de bienvenue
 
-![Allez sur www.kahoot.it ou sur l'application Kahoot!](img/S00programme/Kahoot_Logo.svg){width=100%}
+Allez sur [kahoot.it](https://kahoot.it/) ou utilisez l'application Kahoot !
+
+```{r kahoot, out.width="100%", echo = FALSE}
+# ![Allez sur www.kahoot.it ou sur l'application Kahoot!](img/S00programme/Kahoot_Logo.svg){width=100%}
+knitr::include_graphics("img/S00programme/Kahoot_Logo.svg")
+```
+
 
 
 ## Au programme {.bigger}
@@ -77,17 +89,29 @@ Pour favoriser l'interactivité de ce cours, voici ce que je vous propose :
 
 ## Des données simples... pour moi
 
-![Composition de produits alimentaires (https://ciqual.anses.fr/)](img/S00programme/ciqual.jpg){width=100%}
+Composition de produits alimentaires (https://ciqual.anses.fr/)
+
+```{r ciqual, out.width="100%", echo = FALSE}
+# ![Composition de produits alimentaires (https://ciqual.anses.fr/)](img/S00programme/ciqual.jpg){width=100%}
+knitr::include_graphics("img/S00programme/ciqual.jpg")
+```
 
 
 ## Des données simples... pour moi
 
-![Nutriwi (https://www.nutriwi.com/)](img/S00programme/nutriwi.png){width=40%}
+Nutriwi (https://www.nutriwi.com/)
+
+```{r nutriwi, out.width="40%", echo = FALSE}
+# ![Nutriwi (https://www.nutriwi.com/)](img/S00programme/nutriwi.png){width=40%}
+knitr::include_graphics("img/S00programme/nutriwi.png")
+```
+
+
 
 ## Mais aussi...
 
- * La page du cours : https://moodle01.hosting.pasteur.fr/course/view.php?id=77
- * Les présentations au format PDF (et HTML)
+ * La page du cours : https://vguillemot.github.io/intro2r/
+ * Les présentations au format PDF (et parfois HTML)
  * Les exercices et leur solution
  * Des tutoriels interactifs
 
