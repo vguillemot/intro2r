@@ -1,7 +1,7 @@
 ---
 title: "R et Rstudio"
 author: "Vincent Guillemot"
-date: "Mercredi 30/03/2022"
+date: "Mercredi"
 output: 
   ioslides_presentation:
     css: styles.css
@@ -45,8 +45,12 @@ Rstudio permet de programmer en R dans un environnement fiable, riche et très c
 
 ## Comprehensive R Archive Network
 
+Le site : https://cran.r-project.org/
 
-![Le site : https://cran.r-project.org/](img/S01rstudio/Rlogo.svg){width=25%}
+```{r rlogo, out.width="25%", echo = FALSE}
+# ![Le site : https://cran.r-project.org/](img/S01rstudio/Rlogo.svg){width=25%}
+knitr::include_graphics("img/S01rstudio/Rlogo.svg")
+```
 
 
  * Installation : https://cran.r-project.org/bin/
@@ -57,22 +61,35 @@ Rstudio permet de programmer en R dans un environnement fiable, riche et très c
 
 ### Avec un Terminal
 
-![Taper R, puis "Entrée"](img/S01rstudio/Terminal.png){width=100%}
+Taper R, puis "Entrée"
+
+```{r terminal, out.width="100%", echo = FALSE}
+# ![Taper R, puis "Entrée"](img/S01rstudio/Terminal.png){width=100%}
+knitr::include_graphics("img/S01rstudio/Terminal.png")
+```
+
 
 <p class="forceBreak"></p>
 
 ### Avec le "GUI"$^\star$ {.smaller}
 
+Démarrer l'application "R"
 
-![Démarrer l'application "R"](img/S01rstudio/RGUI.png){width=90%}
+```{r rgui, out.width="90%", echo = FALSE}
+# ![Démarrer l'application "R"](img/S01rstudio/RGUI.png){width=90%}
+knitr::include_graphics("img/S01rstudio/RGUI.png")
+```
 
 > $^\star$GUI = *Graphical User Interface*
 
 
 ## Rstudio 
+Le site : https://www.rstudio.com/
 
-
-![Le site : https://www.rstudio.com/](img/S01rstudio/RStudio_Logo.png){width=25%}
+```{r rstudio, out.width="25%", echo = FALSE}
+# ![Le site : https://www.rstudio.com/](img/S01rstudio/RStudio_Logo.png){width=25%}
+knitr::include_graphics("img/S01rstudio/RStudio_Logo.png")
+```
 
  * Installation : https://www.rstudio.com/products/rstudio/download/#download
  * Tutoriels : https://www.rstudio.com/collections/rstudio-essentials/
@@ -80,11 +97,22 @@ Rstudio permet de programmer en R dans un environnement fiable, riche et très c
 
 ## Explorons Rstudio
 
-![Après avoir démarré l'application](img/S01rstudio/Rstudio.png){width=80%}
+Après avoir démarré l'application
+
+```{r rstudio3panels, out.width="80%", echo = FALSE}
+# ![Après avoir démarré l'application](img/S01rstudio/Rstudio.png){width=80%}
+knitr::include_graphics("img/S01rstudio/Rstudio.png")
+```
 
 ## Les 4 panneaux
 
-![Après avoir créé un nouveau script](img/S01rstudio/Rstudio4panneaux.png){width=80%}
+Après avoir créé un nouveau script
+
+```{r rstudio4panels, out.width="80%", echo = FALSE}
+# ![Après avoir créé un nouveau script](img/S01rstudio/Rstudio4panneaux.png){width=80%}
+knitr::include_graphics("img/S01rstudio/Rstudio4panneaux.png")
+```
+
 
 ## Les 4 panneaux -bis 
 
@@ -119,7 +147,13 @@ print(g)
 
 ## Créer un projet
 
-![Créez un projet au début de chaque cours !](img/S01rstudio/Projet.gif){width=80% loop=10}
+Créez un projet au début de chaque cours
+
+```{r project, out.width="80%", echo = FALSE}
+# ![Créez un projet au début de chaque cours !](img/S01rstudio/Projet.gif){width=80% loop=10}
+knitr::include_graphics("img/S01rstudio/Projet.gif")
+```
+
 
 ## Pourquoi créer un projet ?
 

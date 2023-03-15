@@ -1,7 +1,7 @@
 ---
 title: "Le programme du cours"
 author: "Vincent Guillemot"
-date: "Mercredi 30/03/2022"
+date: "Mercredi"
 output: 
     ioslides_presentation:
         css: styles.css
@@ -112,15 +112,25 @@ knitr::include_graphics("img/S00programme/nutriwi.png")
 
  * La page du cours : https://vguillemot.github.io/intro2r/
  * Les présentations au format PDF (et parfois HTML)
- * Les exercices et leur solution
+ * Les exercices et leur(s) solution(s)
  * Des tutoriels interactifs
 
 ## Ressources
 
+ * [Document partagé pour écrire du code ensemble](https://docs.google.com/document/d/14ueWhjqTbOTcPc4sZp4wSickCjvM_-q2OD4kl-8LwLE)
+  * Kahoot : [www.kahoot.it](www.kahoot.it)
+  * Posit (fka Rstudio) : [https://posit.co](https://posit.co)
+  * [Rstudio (desktop)](https://posit.co/download/rstudio-desktop/)
+  * Comprehensive R Archive Network : [https://cran.r-project.org/](https://cran.r-project.org/)
+  * Bioconductor : [https://www.bioconductor.org/](https://www.bioconductor.org/)
+  * L'[aide-mémoire créé par Julien Chiquet](inst/extdata/CommandesUsuelles.pdf)
+  * Les données [fruits](inst/extdata/fruits.xlsx) et les données de [recettes](inst/extdata/nutriwi.xlsx) (au format `xlsx`)
 
-  * Les [feuilles de triche de Rstudio](https://www.rstudio.com/resources/cheatsheets/) (EN) de
-    - [dplyr](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf) (EN)
-    - [ggplot2](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf) (EN)
+****
+
+  * Les [feuilles de triche de Rstudio](https://posit.co/resources/cheatsheets/) (EN) de
+    - [dplyr](https://posit.co/wp-content/uploads/2022/10/data-transformation-1.pdf) (EN)
+    - [ggplot2](https://posit.co/wp-content/uploads/2022/10/data-visualization-1.pdf) (EN)
   * La page STDHA sur [les couleurs](http://www.sthda.com/french/wiki/couleurs-dans-r) (FR)
   * [R pour les débutants d'Emmanuel Paradis](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_fr.pdf) (FR)
   * L'[aide-mémoire de Julien Chiquet](https://vguillemot.github.io/debuter/inst/extdata/CommandesUsuelles.pdf)

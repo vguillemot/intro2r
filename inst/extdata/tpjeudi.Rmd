@@ -1,0 +1,36 @@
+---
+title: 'Introduction à R: travaux pratiques du jeudi'
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Tous les exercices porteront sur les données "nutrimenu" (https://www.nutriwi.com/). Les données, à télécharger [sur le site du cours](https://vguillemot.github.io/intro2r/inst/extdata/nutrimenu.zip).
+
+# Préambule
+
+ - Créez un projet pour le TP, (appelez le par exemple `TPjeudi`)
+ - Importez les données `nutrimenu` dans votre environnement de travail.
+
+
+# Exercice 1 : tutoriels
+
+Entraînez-vous avec les tutoriels du package `intro2r`. Rappel : pour installer le package et avoir accès aux tutoriels, vous devez avant toute chose installer le package `intro2r` avec la commande suivante : 
+
+```
+remotes::install_github("vguillemot/intro2r")
+```
+
+# Exercice 2 : entraînement semi-libre sur les données "nutrimenu"
+
+ 1. Assurez-vous que les données soient bien dans votre environnement de travail.
+ 2. Explorez-les à l'aide d'une carte de chaleur.
+ 3. Réalisez des tests d'hypothèses et des modèles linéaires (généralisés ou non).
+ 
+# Exercice 3 : Vos données
+
+Choisissez un jeu de données pour demain !
+
+

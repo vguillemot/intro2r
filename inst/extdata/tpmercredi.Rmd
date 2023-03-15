@@ -1,0 +1,98 @@
+---
+title: 'Introduction à R: travaux pratiques du mercredi'
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, eval = FALSE)
+```
+
+Tous les exercices porteront sur les données "nutrimenu" (https://www.nutriwi.com/). Les données, à télécharger [sur le site du cours](https://vguillemot.github.io/intro2r/inst/extdata/nutrimenu.zip), sont au format `xlsx` et tabulé (`txt` et `csv`) et se trouvent dans un dossier compressé appelé `nutrimenu.zip`.
+
+\section{Chargement des données}
+
+\subsubsection{Préambule}
+
+ - Créez un projet pour le TP, (appelez le par exemple `TPmercredi`)
+ - Téléchargez les données, (c'est un dossier compressé au format `zip`),
+ - Placez les données (décompressées !) dans votre dossier de travail.
+
+\subsubsection{Chargement du jeu de données au format Excel}
+
+\begin{enumerate}
+\item Ouvrez le fichier `nutrimenu.xlsx` avec Excel (ou LibreOffice) et explorez le rapidement. Remarquez la description des variables sur la deuxième feuille !
+\item Installez le package `openxlsx` (si ce n'est pas déjà fait).
+\item Importez le fichier en R avec la fonction adéquate du package `openxlsx`.
+\item Explorez rapidement la structure du jeu de données avec quelques commandes R.
+\item Sauvegardez précieusement les quelques lignes de code que vous venez d'écrire dans un nouveau script `R`.
+\end{enumerate}
+
+```{r exo1}
+# install.packages("openxlsx")
+library(openxlsx)
+nutrimenu <- read.xlsx("~/Dropbox/Cours/Cours_de_R/2022/nutrimenu.xlsx")
+str(minifood)
+with(nutrimenu, table(Type, Nutriscore))
+```
+
+\subsubsection{Chargement du jeu de données au format tabulé}
+
+\begin{enumerate}
+\item Ouvrez les fichiers `nutrimenu.csv` et `nutrimenu.txt` avec un éditeur de texte (Rstudio est aussi un éditeur de texte). En quoi sont-ils différents ?
+\item Importez le fichier `nutrimenu.csv`.
+\item Importez le fichier `nutrimenu.txt`.
+\item Est-ce que les objets créés par R sont différents ?
+\end{enumerate}
+
+```{r exo2}
+nutrimenu2 <- read.csv2("nutrimenu.csv")
+nutrimenu3 <- read.delim("nutrimenu.txt")
+nutrimenu == nutrimenu2
+nutrimenu == nutrimenu3
+all(nutrimenu == nutrimenu2)
+all(nutrimenu == nutrimenu3)
+```
+
+
+
+
+\section{Graphes}
+
+Faites des représentations graphiques des données `nutrimenu`.
+
+Par exemple : 
+
+\begin{enumerate}
+\item Des diagrammes en bâtons des types de recettes.
+\item Des histogrammes des Glucides, des Lipides etc.
+\item Des nuages de points de quelques variables d'intérêt, coloriés par types de recettes.
+\item Combinez quelques-uns de ces graphes avec la fonction `ggpubr::ggarrange()`.
+\item Sauvegardez vos plus beaux graphes avec la fonction `ggsave`.
+\end{enumerate}
+
+
+```{r exo3}
+library(ggplot2)
+theme_set(theme_bw())
+ggplot(nutrimenu, aes(Type, fill = Type)) + geom_bar()
+
+glu <- ggplot(nutrimenu, aes(Glucides)) + 
+  geom_histogram(
+    breaks = seq(0, 50, 5),
+    fill = "darkorchid2",
+    color = "white") + 
+  labs(y = "Effectifs")
+
+
+glulip <- ggplot(nutrimenu, aes(x = Glucides, y = Lipides, color = Type, shape = Type)) + 
+  geom_point(size = 5)
+
+
+both <- ggpubr::ggarrange(glu, glulip)
+
+ggsave(filename = "glucides.png", glu)
+ggsave(filename = "glucides_lipides.png", both)
+
+```
+
+
