@@ -123,8 +123,8 @@ knitr::include_graphics("img/S00programme/nutriwi.png")
   * [Rstudio (desktop)](https://posit.co/download/rstudio-desktop/)
   * Comprehensive R Archive Network : [https://cran.r-project.org/](https://cran.r-project.org/)
   * Bioconductor : [https://www.bioconductor.org/](https://www.bioconductor.org/)
-  * L'[aide-mémoire créé par Julien Chiquet](inst/extdata/CommandesUsuelles.pdf)
-  * Les données [fruits](inst/extdata/fruits.xlsx) et les données de [recettes](inst/extdata/nutriwi.xlsx) (au format `xlsx`)
+  * L'[aide-mémoire créé par Julien Chiquet](../inst/extdata/CommandesUsuelles.pdf)
+  * Les données [fruits](../inst/extdata/fruits.xlsx) et les données de [recettes](../inst/extdata/nutriwi.xlsx) (au format `xlsx`)
 
 ****
 

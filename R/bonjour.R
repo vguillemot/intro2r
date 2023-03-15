@@ -12,11 +12,11 @@
 #'
 #' @examples
 #' bonjour()
-bonjour <- function(couleur = "pink", fond = "limegreen") {
+bonjour <- function(couleur = "pink", fond = "palegreen3") {
   base::plot(0:1, 0:1, type = "n", axes = F, xlab ="", ylab = "",)
   parusr <- graphics::par("usr")
   graphics::rect(parusr[1], parusr[3], parusr[2], parusr[4], col = fond, border = NA)
-  graphics::text(x = 0.5, y = 0.5, labels = "Bonjour !", col = couleur, cex = 8, font = 2)
+  graphics::text(x = 0.5, y = 0.5, labels = "Bonjour !", col = couleur, cex = 6, font = 3)
 }
 
 #' Le jeu de données fruits
