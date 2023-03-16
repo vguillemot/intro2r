@@ -1,7 +1,7 @@
 ---
 title: "Les tests d'hypothèses"
 author: "Vincent Guillemot"
-date: "Jeudi 31/03/2022"
+date: "Jeudi"
 output: 
     ioslides_presentation:
         css: styles.css
@@ -20,7 +20,8 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  echo = TRUE
+  echo = TRUE,
+  warning = FALSE
 )
 library(tidyr)
 library(ggplot2)
@@ -29,22 +30,24 @@ data("fruits", package = "intro2r")
 
 ## Rappels {.columns-2 .smaller}
 
- * Hypothèse nulle $\mathcal H_0$, c'est l'hypothèse du *statu quo*
- * Hypothèse alternative $\mathcal H_1$, c'est la situation intéressante ! (signal)
- * $\alpha$ : risque de première espèce, rejeter $\mathcal H_0$ lorsqu'elle est vraie ("erreur de détection")
- * $\beta$ : risque de deuxième espèce, ne pas rejeter $\mathcal H_0$ alors que $\mathcal H_1$ est vraie ("rater un signal")
+ * Hypothèse nulle $H_0$, c'est l'hypothèse du *statu quo*
+ * Hypothèse alternative $H_1$, c'est la situation intéressante ! (signal)
+ * $\alpha$ : risque de première espèce, rejeter $H_0$ lorsqu'elle est vraie ("erreur de détection")
+ * $\beta$ : risque de deuxième espèce, ne pas rejeter $H_0$ alors que $H_1$ est vraie ("rater un signal")
  * Puissance : $1 - \beta$
 
 <p class="forceBreak"></p>
 
-Décision / Verité | Non rejet de $\mathcal H_0$| Rejet $\mathcal H_0$
+Décision / Verité | Non rejet de $H_0$| Rejet $H_0$
 -----------------:|:--------------------------:|:--------------------:
-$\mathcal H_0$    | Confiance                  | Erreur de 1ère esp.
-$\mathcal H_1$    | Erreur de 2ème esp.        | Puissance
+$H_0$    | Confiance                  | Erreur de 1ère esp.
+$H_1$    | Erreur de 2ème esp.        | Puissance
 
 ## Expérience de Chastaing (1958) 
 
-![Keewee ou Koowoo ?](img/S06tests/keewee.png)
+Keewee ou Koowoo ?
+
+![](img/S06tests/keewee.png)
 
 ## Les résultats
 
@@ -93,7 +96,7 @@ En pratique :
 Le ratio de deux variables indépendantes du khi-deux à $d_1$ et $d_2$ degrés de liberté est une variable aléatoire de Fisher à $d_1$ et $d_2$ degrés de liberté :
 
 \[
-  \displaystyle \frac{X^2_1}{X^2_2} \sim \mathcal F(d_1, d_2)
+  \displaystyle \frac{X^2_1}{X^2_2} \sim F(d_1, d_2)
 \]
 
 En pratique : des ratios de variance !
@@ -142,15 +145,13 @@ Proportions conditionnellement aux colonnes :
 prop.table(tab, margin = 2)
 ```
 
-## Comparer des proportions {.columns-2 .smaller}
+## Comparer des proportions {.smaller}
 
 Avec la fonction `prop.test` : 
 
 ```{r prop.test}
 prop.test(table(energiequal, eauqual))
 ```
-
-<p class="forceBreak"></p>
 
 Attention, le test des proportions a besoin de données de comptage, pour lui :
 \[
