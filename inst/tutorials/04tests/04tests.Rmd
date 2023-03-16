@@ -10,6 +10,7 @@ description: >
 library(learnr)
 knitr::opts_chunk$set(echo = FALSE)
 data("fruits", package = "intro2r")
+library(ggplot2)
 ```
 
 Nous allons enore une fois utiliser les données `fruits` pour nous entraîner à réaliser des tests d'hypothèses classiques. Comme d'habitude, le jeu de données a été chargé pour vous dans l'environnement et est prêt à être utilisé.
