@@ -1,0 +1,43 @@
+---
+title: "Caractères spéciaux"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Les caractères spéciaux sont très important en programmation, quel que soit le langage. Ils sont indispensables à la création des commandes bases. En R, vous aurez besoin **au moins** des caractères suivants :
+
+Caractère | Utilisation
+----------|-------------
+ `(` et `)` | Éxécuter des fonctions
+ `[` et `]` | Manipuler des données
+ `$`  | Extraire une colonne d'un tableau
+ `"` et `"` ou `'` et `'`| Définir des chaînes de caractères
+ `&` et `|` | Créer des opérations logiques
+ `~` | Définir des modèles
+
+## Sous Mac
+
+Vous trouverez la liste des caractères spéciaux indispensables sur ce site : https://www.memoinfo.fr/tutoriels-mac-osx/raccourcis-claviers-caracteres-speciaux-mac-osx/.
+
+## Sous Windows
+ 
+Vous trouverez la liste des raccourcis vers les caractères spéciaux indispensables sur ce site :  https://les-raccourcis-clavier.fr/symboles/#ponctuation
+
+Vous aurez certainement besoin du [visualiseur de clavier](http://www.utilisersonmac.com/blog/visualiser-les-touches-du-clavier-mac) au début pour vous aider.
+
+## Entraînement
+
+Entraînez-vous avec ce quiz : https://vguillemot.shinyapps.io/quizztext[^1].
+Si vous avez des difficultés à vous connecter à ce quiz, entraînez vous simplement à reproduire les lignes suivantes en utilisant des raccourcis claviers : 
+
+ * `tableau[1,]`
+ * `x & y`
+ * `x | y`
+ * `{x <- 1 ; y <- "lundi"}`
+ * `y ~ x1 + x2`
+
+[^1]: Pour réinitialiser le quiz, cliquez sur "Start over" en haut à gauche

@@ -1,0 +1,21 @@
+---
+title: "Installer R et Rstudio"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+R peut être obtenu sur le site suivant: https://cran.rstudio.com/
+
+Essayez d'installer la version 4.0.4 ou supérieure (et de préférence au moins 4.0.0). Si vous souhaitez utiliser une version antérieure, vous risquez de rencontrer des problèmes lors de ce cours.
+
+  * Les utilisateurs de Windows doivent se référer à la page suivante : https://cran.rstudio.com/bin/windows/base/
+  * Les utilisateurs de Mac OSX doivent se référer à celle-ci :  https://cran.rstudio.com/bin/macosx/
+
+Vous pouvez obtenir RStudio à partir de cette page: https://www.rstudio.com/products/rstudio/download/
+
+  1. Choisissez la version gratuite («RStudio Desktop, Open Source License»).
+  2. Téléchargez et exécutez le «programme d'installation» adapté à votre système d'exploitation.
+

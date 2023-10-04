@@ -83,7 +83,8 @@ knitr::include_graphics("img/S01rstudio/RGUI.png")
 > $^\star$GUI = *Graphical User Interface*
 
 
-## Rstudio 
+## Rstudio
+
 Le site : https://www.rstudio.com/
 
 ```{r rstudio, out.width="25%", echo = FALSE}
