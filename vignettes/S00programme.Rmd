@@ -53,7 +53,7 @@ knitr::include_graphics("img/S00programme/Kahoot_Logo.svg")
 
 ## Au programme {.bigger}
 
- * Mercredi matin : révision, représentations graphiques (un peu)
+ * Mercredi matin : révisions, représentations graphiques (un peu)
  * Mercredi après-midi : représentations graphiques
  * Jeudi matin : tests statistiques (et représentations graphiques)
  * Jeudi après-midi : fin des tests

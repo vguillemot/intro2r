@@ -20,7 +20,7 @@
 
 Les essentiels : 
 
-  * [Document partagé pour écrire du code ensemble](https://docs.google.com/document/d/14ueWhjqTbOTcPc4sZp4wSickCjvM_-q2OD4kl-8LwLE)
+  * [Document partagé pour écrire du code ensemble](https://docs.google.com/document/d/18a6zjfGderzS73a4KzM2kkjw98Ql8m7we8lFehW5vUs/edit?usp=sharing)
   * Kahoot : [www.kahoot.it](www.kahoot.it)
   * Posit (fka Rstudio) : [https://posit.co](https://posit.co)
   * [Rstudio (desktop)](https://posit.co/download/rstudio-desktop/)

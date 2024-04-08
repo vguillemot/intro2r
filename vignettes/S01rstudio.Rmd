@@ -36,9 +36,9 @@ De plus la communauté des utilisateurs de R met à disposition 18261 (le 24/09/
 
 <p class="forceBreak"></p>
 
-Rstudio est à la fois le nom d'une entreprise à but non lucratif (*B Corps™*) qui met à disposition de la communauté, entre autres, des logiciels Open Source, libres et gratuits. Parmi ces logiciels : l'éditeur de programme éponyme Rstudio.
+Posit (anciennement Rstudio) est une entreprise à but non lucratif (*B Corps™*) qui met à disposition de la communauté, entre autres, des logiciels Open Source, libres et gratuits. Parmi ces logiciels : l'éditeur de programme Rstudio.
 
-Rstudio est disponible également sur tous les systèmes d'exploitation classiques (Mac, Windows et Linux).
+Rstudio est disponible sur tous les systèmes d'exploitation classiques (Mac, Windows et Linux).
 
 Rstudio permet de programmer en R dans un environnement fiable, riche et très complet. Son interface graphique a été pensée pour permettre aux utilisateurs débutants de bénéficier de fonctionnalités permettant de les aider à maîtriser le langage, et beaucoup de fonctionnalités avancées pour les utilisateurs aguerris!
 
@@ -85,16 +85,16 @@ knitr::include_graphics("img/S01rstudio/RGUI.png")
 
 ## Rstudio
 
-Le site : https://www.rstudio.com/
+Le site : https://www.posit.co/
 
 ```{r rstudio, out.width="25%", echo = FALSE}
 # ![Le site : https://www.rstudio.com/](img/S01rstudio/RStudio_Logo.png){width=25%}
 knitr::include_graphics("img/S01rstudio/RStudio_Logo.png")
 ```
 
- * Installation : https://www.rstudio.com/products/rstudio/download/#download
- * Tutoriels : https://www.rstudio.com/collections/rstudio-essentials/
- * Feuilles de triche : https://www.rstudio.com/resources/cheatsheets/
+ * Installation : https://posit.co/download/rstudio-desktop/
+ * Tutoriels : https://posit.co/resources/videos/
+ * Feuilles de triche : https://posit.co/resources/cheatsheets/
 
 ## Explorons Rstudio
 
@@ -177,7 +177,7 @@ knitr::include_graphics("img/S01rstudio/Projet.gif")
 
 ## Exercice 2
 
-### Allez dans le menu "Help" puis sélectionnez "About Rstudio". Quelle est votre version de Rstudio ? Renseignez-la dans [le document partagé](https://docs.google.com/document/d/14ueWhjqTbOTcPc4sZp4wSickCjvM_-q2OD4kl-8LwLE)
+### Allez dans le menu "Help" puis sélectionnez "About Rstudio". Quelle est votre version de Rstudio ? Renseignez-la dans [le document partagé](https://docs.google.com/document/d/18a6zjfGderzS73a4KzM2kkjw98Ql8m7we8lFehW5vUs/edit?usp=sharing)
 
 
 
