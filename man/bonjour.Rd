@@ -4,7 +4,7 @@
 \alias{bonjour}
 \title{La fonction qui dit bonjour}
 \usage{
-bonjour(couleur = "pink", fond = "limegreen")
+bonjour(couleur = "pink", fond = "palegreen3")
 }
 \arguments{
 \item{couleur}{la couleur du texte}

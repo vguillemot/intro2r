@@ -62,7 +62,7 @@ On peut combiner les opérations et les fonctions, et gérer les priorités avec
 Comment créer une suite d'entier ?
 
   * `c(1, 2, 3, 4)`
-  * `seq(1, 4, 1`
+  * `seq(1, 4, 1)`
   * `1:4`
 
 L'opérateur `:` est très utilisé en R. Sa syntaxe est la suivante
@@ -74,7 +74,7 @@ Attention à bien mettre des **parenthèses** dans le cas d'entiers négatifs!
 ## Exemples
 
  * `3:7` : les entiers de 3 à 7
- * `7:3` : les entiers de 7 à 7
+ * `7:3` : les entiers de 7 à 3
  * `-3:7` : les entiers de -3 à 7
  * `-3:-7` : les entiers de -3 à -7
  * `-(3:7)` : les entiers de -3 à -7

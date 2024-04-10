@@ -7,7 +7,7 @@ output:
         css: styles.css
 vignette: >
   %\VignetteIndexEntry{00programme}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{knitr::knitr}
   %\VignetteEncoding{UTF-8}
 ---
 

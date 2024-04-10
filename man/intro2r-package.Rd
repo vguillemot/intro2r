@@ -9,4 +9,8 @@ Contient les vignettes (les slides de cours), le jeu de données "fruits", le je
 \description{
 Ce package contient des tutoriels, les présentations sous forme de vignettes, ainsi qu'un exemple de données.
 }
+\author{
+\strong{Maintainer}: Vincent Guillemot \email{vincent.guillemot@pasteur.fr}
+
+}
 \keyword{internal}

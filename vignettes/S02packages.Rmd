@@ -8,8 +8,13 @@ output:
 vignette: >
   %\VignetteIndexEntry{02packages}
   %\VignetteEncoding{UTF-8}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{knitr::knitr}
 ---
+
+<style>
+.forceBreak { -webkit-column-break-after: always; break-after: column; }
+</style>
+
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
@@ -17,6 +22,10 @@ knitr::opts_chunk$set(
   comment = "#>",
   echo = TRUE
 )
+
+## Librairies
+library(dplyr)
+library(ggplot2)
 ```
 
 
@@ -101,3 +110,38 @@ remotes::install_github("vguillemot/intro2r")
 # Les tutoriels !
 
 Ils sont disponibles dans un onglet spécial de Rstudio **si vous travaillez avec Rstudio > 1.3**.
+
+## Bonus: la magie de `pak`
+
+ 1. Installer `pak`
+ 2. `pak` a accès au CRAN, à Bioconductor et à GitHub...
+ 3. Avec une syntaxe facile et des sorties faciles à interpréter !
+ 4. Mais il faut l'installer d'abord : `install.packages("pak")`
+ 3. Installation "classique" : `pak::pak("ggplot2")`
+ 4. Installation "GitHub" : `pak::pak("vguillemot/intro2r")`
+
+```{r pak, echo = FALSE, eval = FALSE}
+tibble(x = 1, y = 1, text = "pak") %>%
+  ggplot(aes(x, y, label = text)) + 
+  geom_text(size = 10) + 
+  theme_void()
+```
+
+## Résultat
+
+```
+> pak::pak("vguillemot/intro2r")
+                                                                
+→ Will install 1 package.
+→ The package (0 B) is cached.
++ intro2r   0.2.1 👷🔧 (GitHub: deff5d4)
+ℹ No downloads are needed, 1 pkg is cached
+✔ Got intro2r 0.2.1 (source) (42.37 MB)
+ℹ Packaging intro2r 0.2.1
+✔ Packaged intro2r 0.2.1 (10.9s)                               
+ℹ Building intro2r 0.2.1                                       
+✔ Built intro2r 0.2.1 (1.7s)                                   
+✔ Installed intro2r 0.2.1 (github::vguillemot/intro2r@deff5d4) (32ms)
+✔ 1 pkg: added 1, dld 1 (NA B) [19.2s]  
+```
+

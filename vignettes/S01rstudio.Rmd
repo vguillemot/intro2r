@@ -8,7 +8,7 @@ output:
 vignette: >
   %\VignetteIndexEntry{01rstudio}
   %\VignetteEncoding{UTF-8}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{knitr::knitr}
 ---
 
 <style>
@@ -150,11 +150,10 @@ print(g)
 
 Créez un projet au début de chaque cours
 
-```{r project, out.width="80%", echo = FALSE}
-# ![Créez un projet au début de chaque cours !](img/S01rstudio/Projet.gif){width=80% loop=10}
-knitr::include_graphics("img/S01rstudio/Projet.gif")
-```
 
+Créez un projet au début de chaque cours !
+
+![](img/S01rstudio/Projet.gif){width=80% loop=10}
 
 ## Pourquoi créer un projet ?
 

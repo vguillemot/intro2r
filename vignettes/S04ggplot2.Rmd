@@ -146,7 +146,7 @@ ggplot(***,
 <p class="forceBreak"></p>
 
 
-![Hadley Wickham](img/S04ggplot2/wickham.png){width=50%}
+![](img/S04ggplot2/wickham.png){width=50%}
  
 ## Quelques géométries
 
