@@ -11,11 +11,11 @@ library(learnr)
 knitr::opts_chunk$set(echo = FALSE)
 library(ggplot2)
 library(ggpubr)
-data("fruits", package = "intro2r")
+data("fruveg", package = "intro2r")
 couleurs <- c("steelblue", "limegreen", "darkolivegreen", "darkorchid")
 ```
 
-Le package ggplot2 permet de réaliser facilement des graphiques avec une syntaxe unifiée. Dans ce tutoriel, nous allons nous entraîner avec les données "fruits".
+Le package ggplot2 permet de réaliser facilement des graphiques avec une syntaxe unifiée. Dans ce tutoriel, nous allons nous entraîner avec les données "fruits et légumes".
 
 ## Commande de base
 
@@ -46,29 +46,27 @@ Fonction | Utilité
 
 Tout en faisant les exercices, familiarisez vous avec la documentation de ggplot2 : https://ggplot2.tidyverse.org/
 
-## Les données fruits
+## Les données fruits et légumes
 
-Les données contenues dans la table fruits contiennent les données nutritionnelle de `r nrow(fruits)` fruits ou aliments à base de fruits. La table est reportée ci-après.
+Les données contenues dans la table `fruveg` contiennent les données nutritionnelle de `r nrow(fruveg)` fruits et légumes. La table est reportée ci-après.
 
 
 ```{r showfruits}
-DT::datatable(fruits)
+DT::datatable(fruveg)
 ```
-
-La colonne "groupe" correspond au "sous-groupes" définies dans la table Ciqual.
 
 Pour plus d'informations, rendez vous sur le site du Ciqual (https://ciqual.anses.fr/) ou sur sur la [plateforme ouverte des données publiques françaises](https://www.data.gouv.fr/fr/datasets/table-de-composition-nutritionnelle-des-aliments-ciqual/).
 
 ## Representer une variable discrete
 
-Complétez la commande suivante pour obtenir un diagramme en bâtons des groupes de fruits.
+Complétez la commande suivante pour obtenir un diagramme en bâtons des groupes de fruits et légumes.
 
 ```{r baton, exercise = TRUE}
 ggplot( ) + geom_
 ```
 
 ```{r baton-solution}
-ggplot(fruits, aes(groupe)) + geom_bar()
+ggplot(fruveg, aes(group)) + geom_bar()
 ```
 
 Changez les couleurs et le thème du graphe en complétant la prochaine commande.
@@ -80,7 +78,7 @@ ggplot( , aes(fill = )) +
 ```
 
 ```{r baton2-solution}
-ggplot(fruits , aes(groupe, fill = groupe)) + 
+ggplot(fruveg , aes(group, fill = group)) + 
    geom_bar() + 
    theme_bw()
 ```
@@ -88,20 +86,20 @@ ggplot(fruits , aes(groupe, fill = groupe)) +
 Utilisez la fonction `cut` de la façon suivante pour transformer la variable Potassium (continue) en une variable qualitative.
 
 ```{r cutPotassium, exercise = TRUE}
-cut(fruits$Potassium, c(0, 200, 1400))
+cut(fruveg$potassium, c(0, 200, 1400))
 ```
 
 ```{r cutPotassium-solution}
 # Il n'y a rien de plus à faire : exécutez juste la commande et observez son résultat
-cut(fruits$Potassium, c(0, 200, 1400))
+cut(fruveg$potassium, c(0, 200, 1400))
 # Si vous le souhaitez, vous pouvez utiliser la fonction table sur ce résultat
-table(cut(fruits$Potassium, c(0, 200, 1400)))
+table(cut(fruveg$potassium, c(0, 200, 1400)))
 ```
 
 Remarquez comme on peut utiliser cette astuce dans un graphe !
 
 ```{r cutPotassiumplot, exercise = TRUE}
-ggplot(fruits, aes(cut(Potassium, c(0, 200, 1400)))) +
+ggplot(fruveg, aes(cut(potassium, c(0, 200, 1400)))) +
   geom_bar() + 
   theme_bw()
 ```
@@ -113,11 +111,11 @@ Ce n'est pas très joli comme commande et un peu difficile a lire. Parfois, plut
 Complétez la fonction suivante pour réaliser un boxplot de la variable `Energie.`
 
 ```{r energiebox, exercise = TRUE}
-ggplot(fruits) + geom
+ggplot(fruveg) + geom
 ```
 
 ```{r energiebox-solution}
-ggplot(fruits, aes(Energie)) + 
+ggplot(fruveg, aes(energy)) + 
   geom_boxplot() + 
   theme_bw()
 ```
@@ -125,11 +123,11 @@ ggplot(fruits, aes(Energie)) +
 Sur le même modèle, faites un diagramme en violon.
 
 ```{r energieviolon, exercise = TRUE}
-ggplot(fruits) + geom
+ggplot(fruveg) + geom
 ```
 
 ```{r energieviolon-solution}
-ggplot(fruits, aes(x = Energie, y = 0)) + 
+ggplot(fruveg, aes(x = energy, y = 0)) + 
   geom_violin() + 
   theme_bw()
 ```
@@ -137,17 +135,17 @@ ggplot(fruits, aes(x = Energie, y = 0)) +
 Superposez les deux et ajustez les paramètres de largeur et de couleur pour avoir un joli graphe.
 
 ```{r energieboxviolon, exercise = TRUE}
-ggplot(fruits) + 
+ggplot(fruveg) + 
   geom_violin() +
   geom_boxplot()
 ```
 
 ```{r energieboxviolon-solution}
-ggplot(fruits, aes(x = Energie, y = 0)) + 
+ggplot(fruveg, aes(x = energy, y = 0)) + 
   geom_violin(color = NA, fill = "limegreen") + 
   geom_boxplot(width = 0.1, color = "steelblue", fill = "lightgreen", size = 1) + 
   theme_bw() + 
-  labs(x = "", y = "Energie (kJ/100 g)") +    
+  labs(x = "", y = "Energie (kCal/100 g)") +    
   theme(axis.text.y = element_blank(),
         axis.ticks.y = element_blank())
 ```
@@ -155,12 +153,12 @@ ggplot(fruits, aes(x = Energie, y = 0)) +
 Faites maintenant un histogramme de la composition en Vitamine C.
 
 ```{r vitamineChisto, exercise = TRUE}
-ggplot(fruits) + 
+ggplot(fruveg) + 
   geom
 ```
 
 ```{r vitamineChisto-solution}
-ggplot(fruits, aes(VitamineC)) + 
+ggplot(fruveg, aes(vitaminC)) + 
   geom_histogram(breaks = seq(0, 90, 10), color = "white", fill = "gold") + 
   theme_bw() + 
   labs(x = "Vitamine C (mg/100 g)", y = "Nb. d'occurences")
@@ -171,28 +169,28 @@ ggplot(fruits, aes(VitamineC)) +
 Exécutez la commande suivante puis modifiez la pour faire en sorte que chaque boite soit d'une couleur différente.
 
 ```{r sucres, exercise = TRUE}
-ggplot(fruits, aes(groupe, Sucres)) + geom_boxplot()
+ggplot(fruveg, aes(group, sugar)) + geom_boxplot()
 ```
 
 ```{r sucres-solution}
-ggplot(fruits, aes(groupe, Sucres, color = groupe)) + 
+ggplot(fruveg, aes(group, sugar, color = group)) + 
   geom_boxplot() + 
   theme_bw() + 
   coord_flip() +
   labs(x = "", y = "Sucres (g/100 g)", color = "")
 ```
 
-J'ai sélectionné 4 couleurs pour vous, et utilisé la commande suivante pour les stocker dans un vecteur s'appelant `couleurs`.
+J'ai sélectionné 3 couleurs pour vous, et utilisé la commande suivante pour les stocker dans un vecteur s'appelant `couleurs`.
 
 ```{r, eval = FALSE, echo = TRUE}
-couleurs <- c("steelblue", "limegreen", "darkolivegreen", "darkorchid")
+couleurs <- c("steelblue", "darkolivegreen", "darkorchid")
 ```
 
 Ce vecteur est utilisé ci-dessous. Exécutez ce code et observez le résultat. Essayez ensuite d'autres couleurs de votre choix : utilisez des noms de couleur (voir le résultat de la fonction `colors()`) ou des codes hexadécimaux.
 
 ```{r fibres, exercise = TRUE}
-couleurs <- c("steelblue", "limegreen", "darkolivegreen", "darkorchid")
-ggplot(fruits, aes(Fibres, groupe, fill = groupe)) + 
+couleurs <- c("steelblue", "darkolivegreen", "darkorchid")
+ggplot(fruveg, aes(fibers, group, fill = group)) + 
   geom_violin() + 
   scale_fill_manual(values = couleurs)
 ```
@@ -206,10 +204,10 @@ ggplot() + geom
 ```
 
 ```{r energieVitC-solution}
-ggplot(fruits, aes(VitamineC, Energie)) +
+ggplot(fruveg, aes(vitaminC, energy)) +
   geom_point() + 
   theme_bw() + 
-  labs(x = "Energie (kJ / 100g)", y = "Vitamine C Vitamine C (mg/100 g)")
+  labs(x = "Energie (kCal/100 g)", y = "Vitamine C (mg/100 g)")
 ```
 
 Coloriez les points, d'abord avec la variable Sucres puis avec la variable Groupes. Que Remarquez vous ?
@@ -220,15 +218,15 @@ ggplot() + geom
 
 
 ```{r energieVitCcolor-solution}
-ggplot(fruits, aes(VitamineC, Energie, color = Sucres)) +
+ggplot(fruveg, aes(vitaminC, energy, color = sugar)) +
   geom_point() + 
   theme_bw() + 
-  labs(x = "Energie (kJ / 100g)", y = "Vitamine C Vitamine C (mg/100 g)")
+  labs(x = "Energie (kCal/100 g)", y = "Vitamine C (mg/100 g)")
 
-ggplot(fruits, aes(VitamineC, Energie, color = groupe)) +
+ggplot(fruveg, aes(vitaminC, energy, color = group)) +
   geom_point() + 
   theme_bw() + 
-  labs(x = "Energie (kJ / 100g)", y = "Vitamine C Vitamine C (mg/100 g)")
+  labs(x = "Energie (kCal/100 g)", y = "Vitamine C (mg/100 g)")
 ```
 
 Vous pouvez changer des couleurs définies sur une variable quantitative avec la fonction `scale_color_continuous`, ou `scale_color_gradient`, ou `scale_color_gradientn`, ou des couleurs définies sur une variable discrète avec la fonction `scale_color_manual` ou `scale_colour_brewer`. Testez ces fonctions sur l'exemple précédent.
@@ -249,13 +247,13 @@ library(ggpubr)
 theme_set(theme_bw())
 
 # boxplots
-bxp <- ggplot(fruits, aes(groupe, Sucres, color = groupe)) + geom_boxplot()
+bxp <- ggplot(fruveg, aes(group, sugar, color = group)) + geom_boxplot()
 # jitter plots
-jp <- ggplot(fruits, aes(x = groupe, y = Sucres, color = groupe)) + geom_jitter()
+jp <- ggplot(fruveg, aes(x = group, y = sugar, color = group)) + geom_jitter()
 # violin plots
-vp <- ggplot(fruits, aes(groupe, Sucres, color = groupe, fill = groupe)) + geom_violin() 
+vp <- ggplot(fruveg, aes(group, sugar, color = group, fill = group)) + geom_violin() 
 # violin plots
-dens <- ggplot(fruits, aes(Sucres, fill = groupe)) + geom_density() 
+dens <- ggplot(fruveg, aes(sugar, fill = group)) + geom_density() 
 
 # Arrange
 ggarrange(bxp, jp, vp, dens, ncol = 2, nrow = 2,  common.legend = TRUE, legend = "bottom") 

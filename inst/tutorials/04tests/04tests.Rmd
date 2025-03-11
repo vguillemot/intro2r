@@ -9,17 +9,17 @@ description: >
 ```{r setup, include=FALSE}
 library(learnr)
 knitr::opts_chunk$set(echo = FALSE)
-data("fruits", package = "intro2r")
+data("fruveg", package = "intro2r")
 library(ggplot2)
 ```
 
-Nous allons enore une fois utiliser les données `fruits` pour nous entraîner à réaliser des tests d'hypothèses classiques. Comme d'habitude, le jeu de données a été chargé pour vous dans l'environnement et est prêt à être utilisé.
+Nous allons encore une fois utiliser les données `fruveg` pour nous entraîner à réaliser des tests d'hypothèses classiques. Comme d'habitude, le jeu de données a été chargé pour vous dans l'environnement et est prêt à être utilisé.
 
 ## Tests 
 
 ### Test de Student
 
-Modifiez la commande suivante pour tester si la teneur en Phosphore est différente en moyenne pour les fruits crus ou pour les fruits en teneur à Vitamine C supérieure à 10 mg / 100g versus ceux qui ont une teneur en Vitamine C inférieure à 10 mg / 100g.
+Modifiez la commande suivante pour tester si la teneur en Phosphore est différente en moyenne pour les fruits et légumes en teneur à Vitamine C supérieure à 10 mg / 100g versus ceux qui ont une teneur en Vitamine C inférieure à 10 mg / 100g.
 
 ```{r ttest, exercise = TRUE}
 t.test()
@@ -27,8 +27,8 @@ t.test()
 
 ```{r ttest-solution}
 dat.test <- data.frame(
-  phosphore = fruits$Phosphore,
-  vitCbin = fruits$VitamineC >= 10
+  phosphore = fruveg$phosphorus,
+  vitCbin = fruveg$vitaminC >= 10
 )
 t.test(phosphore ~ vitCbin, data = dat.test)
 ```
@@ -42,10 +42,10 @@ chisq.test()
 ```
 
 ```{r chisqtest-solution}
-vitCbin <- fruits$VitamineC >= 10
-table(vitCbin, fruits$groupe)
-chisq.test(vitCbin , fruits$groupe)
-fisher.test(vitCbin , fruits$groupe)
+vitCbin <- fruveg$vitaminC >= 10
+table(vitCbin, fruveg$group)
+chisq.test(vitCbin , fruveg$group)
+fisher.test(vitCbin , fruveg$group)
 ```
 
 ## Modèles linéaires 
@@ -69,11 +69,11 @@ lm(~)
 ```
 
 ```{r lmsimple-solution}
-lm(Energie ~ Glucides, data = fruits)
+lm(energy ~ carbohydrates, data = fruveg)
 
 # Avec un graphe : 
 
-ggplot(fruits, aes(Glucides, Energie)) + 
+ggplot(fruveg, aes(carbohydrates, energy)) + 
   geom_point() + 
   stat_smooth(method = "lm") + 
   theme_minimal()
@@ -103,7 +103,7 @@ lm(~)
 ```
 
 ```{r summarySimple-solution}
-res.lm <- lm(Energie ~ Glucides, data = fruits)
+res.lm <- lm(energy ~ carbohydrates, data = fruveg)
 summary(res.lm)
 ```
 
@@ -127,7 +127,7 @@ lm(~)
 ```
 
 ```{r summaryMult-solution}
-res.lm <- lm(Energie ~ Proteines + Glucides + Lipides + Sucres, data = fruits)
+res.lm <- lm(energy ~ proteins + carbohydrates + lipids + sugar, data = fruveg)
 summary(res.lm)
 ```
 

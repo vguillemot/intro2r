@@ -9,30 +9,34 @@ description: >
 ```{r setup, include=FALSE}
 library(learnr)
 knitr::opts_chunk$set(echo = FALSE)
+library(dplyr)
 library(corrplot)
 library(pheatmap)
 library(RColorBrewer)
-data("fruits", package = "intro2r")
-vitafruits <- fruits[, grep("Vitamine", colnames(fruits))]
-cru <- ifelse(grepl("cru", fruits$groupe), "oui", "non")
-annotFruit <- data.frame(
-  cru = cru,
-  row.names = rownames(vitafruits))
+data("fruveg", package = "intro2r")
+mineraux <- data.frame(
+  fruveg %>% select(calcium:zinc),
+  row.names = make.unique(fruveg$name))
+annotFruveg <- data.frame(
+  groupe = fruveg$group,
+  row.names = make.unique(fruveg$name))
 ```
 
 Ce tutoriel vous permettra de vous entraîner à réaliser des cartes de chaleur.
 
-## Carte des Vitamines
+## Carte des Minéraux
 
-Tout d'abord, concentrons nous sur un petit sous-ensemble de variables : les vitamines contenues dans les fruits.
+Tout d'abord, concentrons nous sur un petit sous-ensemble de variables : les minéraux contenus dans les fruits et légumes.
 
-J'ai créé pour vous une table vitafruits à l'aide de la commande suivante. Prenez quelques instants pour décortiquer cette commande et comprendre comment elle fonctionne. Comprenez vous le rôle de la fonction grep ?
+J'ai créé pour vous une table `mineraux` à l'aide de la commande suivante. Prenez quelques instants pour décortiquer cette commande et comprendre comment elle fonctionne. Comprenez vous le rôle de la `select` ?
 
 ```
-vitafruits <- fruits[, grep("Vitamine", colnames(fruits))]
+mineraux <- data.frame(
+  fruveg %>% select(calcium:zinc),
+  row.names = make.unique(fruveg$name))
 ```
 
-Maintenant, utilisez la fonction `pheatmap` du package `pheatmap` pour faire une carte de chaleur de la table `vitafruits`.
+Maintenant, utilisez la fonction `pheatmap` du package `pheatmap` pour faire une carte de chaleur de la table `mineraux`.
 
 
 ```{r pheatmap, exercise = TRUE}
@@ -41,7 +45,7 @@ Maintenant, utilisez la fonction `pheatmap` du package `pheatmap` pour faire une
 
 ```{r pheatmap-solution}
 library(pheatmap)
-pheatmap(vitafruits)
+pheatmap(mineraux)
 ```
 
 ## Dendrogrammes
@@ -55,7 +59,7 @@ Enlevez les dendrogrammes avec les arguments `cluster_rows` et `cluster_rows`.
 ```
 
 ```{r pheatmapClust-solution}
-pheatmap(vitafruits, cluster_rows = FALSE, cluster_cols = FALSE)
+pheatmap(mineraux, cluster_rows = FALSE, cluster_cols = FALSE)
 ```
 
 ## Standardisation
@@ -66,7 +70,7 @@ Modifiez l'argument `scale` de la commande suivante et observez le résultat. N'
 
 
 ```{r pheatmapScale, exercise = TRUE}
-pheatmap(vitafruits, cluster_rows = FALSE,
+pheatmap(mineraux, cluster_rows = FALSE,
          cluster_cols = FALSE, show_rownames = FALSE,
          border_color = "black", cellwidth = 15,
          scale = "column")
@@ -107,11 +111,11 @@ Complétez le code suivant pour utiliser cette nouvelle palette sur les données
 mycolz <- brewer.pal(9, "YlOrRd")
 colzRamp <- colorRampPalette(mycolz)(50)
 
-pheatmap(vitafruits)
+pheatmap(mineraux)
 ```
 
 ```{r pheatmapPalette-solution}
-pheatmap(vitafruits, cluster_rows = FALSE,
+pheatmap(mineraux, cluster_rows = FALSE,
          cluster_cols = FALSE, show_rownames = FALSE,
          border_color = "black", cellwidth = 15,
          scale = "column", color = colzRamp)
@@ -121,32 +125,31 @@ pheatmap(vitafruits, cluster_rows = FALSE,
 
 La carte de chaleur permet de représenter des données quantitatives, mais très souvent, nous avons en plus de ces données des données qualitatives qui décrivent les lignes ou les colonnes de nos données !
 
-Nous allons nous entraîner sur un cas très simple : représenter si l'aliment à base de fruits qui est représenté dans la table est *cru* ou non.
+Nous allons nous entraîner sur un cas très simple : représenter le groupe.
 
-Pour cela, j'ai créé une table annexe qui a les mêmes noms de lignes que la table `vitafruits` et qui contient une colonne `crue` qui contient les valeurs `oui` ou `non`. Prenez quelques minutes pour lire et comprendre ce code.
+Pour cela, j'ai créé une table annexe qui a les mêmes noms de lignes que la table `mineraux` et qui contient une colonne `groupe`. Prenez quelques minutes pour lire et comprendre ce code.
 
 ```{r cruoupas, echo = TRUE}
-cru <- ifelse(grepl("cru", fruits$groupe), "oui", "non")
-annotFruit <- data.frame(
-  cru = cru,
-  row.names = rownames(vitafruits))
+annotFruveg <- data.frame(
+  groupe = fruveg$group,
+  row.names = make.unique(fruveg$name))
 ```
 
 La fonction `pheatmap` va ensuite prendre comme argument cette table et ajouter l'information sous forme d'une ou plusieurs lignes de couleurs, avec une légende supplémentaire. Modifiez la commande suivante pour faire un joli graphe !
 
 ```{r vitafruitsCrus, exercise = TRUE}
-pheatmap(vitafruits, annotation_row = annotFruit)
+pheatmap(mineraux, annotation_row = annotFruveg)
 ```
 
 ```{r vitafruitsCrus-solution}
 mycolz <- RColorBrewer::brewer.pal(9, "YlOrRd")
 colzRamp <- colorRampPalette(mycolz)(50)
 
-pheatmap(vitafruits, cluster_rows = TRUE, 
+pheatmap(mineraux, cluster_rows = TRUE, 
          cluster_cols = FALSE, show_rownames = FALSE,
          cellwidth = 10, border_color = "black",
          scale = "column", color = colzRamp,
-         annotation_row = annotFruit)
+         annotation_row = annotFruveg)
 ```
 
 ## Classification ascendante hiérarchique
@@ -157,7 +160,7 @@ Changez la méthode réalisant la classification ascendante hiérarchique (des l
   * `clustering_method` : à choisir parmi `"ward.D"`, `"ward.D2"`, `"single"`, `"complete"`, `"average"`, `"mcquitty"`, `"median"` ou `"centroid"`.
 
 ```{r vitafruitsClassif, exercise = TRUE}
-pheatmap(vitafruits, 
+pheatmap(mineraux, 
          cluster_rows = TRUE, 
          cluster_cols = FALSE, 
          show_rownames = FALSE,
@@ -167,12 +170,13 @@ pheatmap(vitafruits,
 ```
 
 ```{r vitafruitsClassif-solution}
-pheatmap(vitafruits, cluster_rows = TRUE, 
-         cluster_cols = FALSE, show_rownames = FALSE,
+pheatmap(mineraux, cluster_rows = TRUE, 
+         cluster_cols = FALSE, show_rownames = TRUE,
          cellwidth = 10, border_color = "black",
          scale = "column", 
          clustering_distance_rows = "correlation",
-         clustering_method = "ward.D2")
+         clustering_method = "ward.D2",
+         annotation_row = annotFruveg)
 ```
 
 
@@ -184,7 +188,7 @@ La librairie `pheatmap` n'est pas la seule à pouvoir produire de jolies cartes 
 Voici un exemple dans lequel j'ai changé quelques paramètres pour rendre le graphe joli. Modifiez ces paramètres, tout en prenant bien soin d'aller consulter l'aide de la fonction `?corrplot` pour comprendre leur signification.
 
 ```{r corrplot, exercise = TRUE}
-cormat <- cor(fruits[, -(1:2)], use = "pairwise.complete.obs")
+cormat <- cor(mineraux, use = "pairwise.complete.obs")
 corrplot(corr = cormat, method = "square", type = "upper", diag = FALSE, , order = "hclust", tl.col = "black")
 ```
 

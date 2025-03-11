@@ -12,40 +12,38 @@ knitr::opts_chunk$set(echo = FALSE)
 library(ggvenn)
 library(ggplot2)
 library(UpSetR)
-data("fruits", package = "intro2r")
-lesFruits <- rownames(fruits)
+data("fruveg", package = "intro2r")
+lesFruveg <- fruveg$name
 
-vitC <- lesFruits[fruits$VitamineC > 10]
-vitE <- lesFruits[fruits$VitamineE > 1]
+vitC <- lesFruveg[fruveg$vitaminC > 10]
+fruits <- lesFruveg[fruveg$group == "raw fruit"]
 
-vitList <- list(vitC = vitC, vitE = vitE)
+vitList <- list(vitC = vitC, fruits = fruits)
 theme_set(theme_bw())
 
 dat01 <- data.frame(
-  vitC = fruits$VitamineC > 10, 
-  vitE = fruits$VitamineE > 1) + 0
+  vitC = fruveg$vitaminC > 10, 
+  fruits = fruveg$group == "raw fruit") + 0
 ```
 
 ## Diagramme de Venn
 
 Les diagrammes de Venn permettent de représenter des liens entre ensembles d'objets : combien d'objets sont communs à plusieurs ensembles, et combien sont spécifiques d'un seul ensemble.
 
-Pour les besoins de ce tutoriel, j'ai créé trois ensembles : 
+Pour les besoins de ce tutoriel, j'ai créé deux ensembles : 
 
-* l'ensemble des fruits contenant de la Vitamine C (plus de 10 mg / 100G)
-* l'ensemble des fruits contenant de la Vitamine D (plus de 0.10 µg / 100G)
-* l'ensemble des fruits contenant de la Vitamine E
-(plus de 1 mg / 100G)
+* l'ensemble des fruits et légumes à haute teneur en Vitamine C (plus de 10 mg / 100G)
+* l'ensemble des fruits crus.
 
 Prenez-un moment pour lire ce code et le comprendre.
 
 ```{r ensfruits, echo = TRUE}
-lesFruits <- rownames(fruits)
+lesFruveg <- fruveg$name
 
-vitC <- lesFruits[fruits$VitamineC > 10]
-vitE <- lesFruits[fruits$VitamineE > 1]
+vitC <- lesFruveg[fruveg$vitaminC > 10]
+fruits <- lesFruveg[fruveg$group == "raw fruit"]
 
-vitList <- list(vitC = vitC, vitE = vitE)
+vitList <- list(vitC = vitC, fruits = fruits)
 ```
 
 La fonction `ggvenn` du package `ggvenn` vous permettra de générer un diagramme de Venn entre *au plus* 4 ensembles. Modifiez les commandes suivantes pour avoir des couleurs d'ensembles différentes !
@@ -77,8 +75,8 @@ J'ai créé pour vous cette *data-frame* de zéros et de uns avec la commande su
 
 ```{r mat01}
 dat01 <- data.frame(
-  vitC = ifelse(fruits$VitamineC > 10, 1, 0), 
-  vitE = ifelse(fruits$VitamineE > 1, 1, 0))
+  vitC = ifelse(fruveg$vitaminC > 10, 1, 0), 
+  fruits = ifelse(fruveg$group == "raw fruit", 1, 0))
 ```
 
 Pour générer un diagramme UpSet, utilisez ensuite la commande suivante. Puis modifiez la pour faire un joli graphe !
