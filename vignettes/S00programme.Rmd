@@ -21,6 +21,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   echo = TRUE
 )
+source("../inst/extdata/current_link_for_shared_script")
 ```
 
 ## Je me présente {.columns-2}
@@ -117,7 +118,7 @@ knitr::include_graphics("img/S00programme/nutriwi.png")
 
 ## Ressources
 
- * [Document partagé pour écrire du code ensemble](https://docs.google.com/document/d/14ueWhjqTbOTcPc4sZp4wSickCjvM_-q2OD4kl-8LwLE)
+ * [Document partagé pour écrire du code ensemble](`r currentlink`)
   * Kahoot : [www.kahoot.it](www.kahoot.it)
   * Posit (fka Rstudio) : [https://posit.co](https://posit.co)
   * [Rstudio (desktop)](https://posit.co/download/rstudio-desktop/)

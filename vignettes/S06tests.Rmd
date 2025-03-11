@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 )
 library(tidyr)
 library(ggplot2)
-data("fruits", package = "intro2r")
+data("fruveg", package = "intro2r")
 ```
 
 ## Rappels {.columns-2 .smaller}
@@ -105,15 +105,15 @@ En pratique : des ratios de variance !
 ## Intermède : Création d'un exemple {.columns-2 .smaller}
 
 ```{r histvitC, fig.width = 3, fig.height=3, message=FALSE}
-qplot(fruits$Energie)
-energiequal <- cut(fruits$Energie, 
-                c(0, 250, 2000))
+qplot(fruveg$energy)
+energiequal <- cut(fruveg$energy, 
+                c(0, 35, 80))
 ```
 
 ```{r histEau, fig.width = 3, fig.height=3, message=FALSE}
-qplot(fruits$Eau)
-eauqual <- cut(fruits$Eau, 
-               c(0, 85, 100))
+qplot(fruveg$water)
+eauqual <- cut(fruveg$water, 
+               c(0, 90, 100))
 ```
 
 ## Table de contingence
@@ -237,7 +237,7 @@ fisher.test(Convictions, alternative = "less")
 Avec la fonction `t.test` :
 
 ```{r t.test}
-t.test(fruits$VitamineC ~ eauqual)
+t.test(fruveg$vitaminC ~ eauqual)
 ```
 
 ## Les formules
@@ -279,7 +279,7 @@ t.test(extra ~ group, data = sleep)
 L'équivalent non-paramétrique du test de Student est le test de Wilcoxon-Mann-Whitney : 
 
 ```{r wilcox.test, warning = TRUE}
-wilcox.test(fruits$VitamineC ~ eauqual)
+wilcox.test(fruveg$vitaminC ~ eauqual)
 ```
 
 ## Remarque sur ces fonctions
@@ -289,7 +289,7 @@ L'objet retourné est une liste qui contient les deux éléments les plus intér
 Exemple de récupération de la P-value :
 
 ```{r pvalrecup}
-res.ttest <- t.test(fruits$VitamineC ~ eauqual)
+res.ttest <- t.test(fruveg$vitaminC ~ eauqual)
 pval <- res.ttest$p.value
 ```
 
@@ -298,22 +298,22 @@ pval <- res.ttest$p.value
 Faire une ANOVA en R n'est pas une mince affaire !
 
 ```{r aov}
-summary(aov(VitamineC ~ groupe, data = fruits))
+summary(aov(energy ~ group, data = fruveg))
 ```
 
 Et récupérer la P-value est ridiculement difficile :
 
 ```{r pvalaov}
-res <- summary(aov(VitamineC ~ groupe, data = fruits))
+res <- summary(aov(energy ~ group, data = fruveg))
 res[[1]]$`Pr(>F)`[1]
 ```
 
 ## ANOVA non paramétrique
 
-Et la syntaxe est différente pour l'équivalent non-paramétrique : le test de Kruskal-Wallis : 
+La syntaxe est un peu différente pour l'équivalent non-paramétrique : le test de Kruskal-Wallis : 
 
 ```{r kruskal}
-kruskal.test(fruits$VitamineC, fruits$groupe)
+kruskal.test(energy ~ group, data = fruveg)
 ```
 
 Récupérer la p-valeur s'effectue de la même façon que pour un test de Student.
@@ -324,7 +324,7 @@ Récupérer la p-valeur s'effectue de la même façon que pour un test de Studen
 Avec la fonction `cor.test`. Exemple : 
 
 ```{r cor.test}
-cor.test(fruits$Eau, fruits$Energie)
+cor.test(fruveg$iron, fruveg$calcium)
 ```
 
 ## La fonction `cor.test` {.smaller}
@@ -346,8 +346,8 @@ cor.test(x, y, method = "kendall", alternative = "greater")
 Avec la fonction `lm`. Exemple : 
 
 ```{r lm}
-res.lm <- lm(Energie ~ Proteines + Sucres + Fibres + Eau, 
-             data = fruits)
+res.lm <- lm(energy ~ proteins + sugar + fibers + water, 
+             data = fruveg)
 summary(res.lm)
 ```
 

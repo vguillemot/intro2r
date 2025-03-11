@@ -37,10 +37,10 @@ Nous aurons besoin du package `ggplot2` :
 library(ggplot2)
 ```
 
-Nous allons également avoir besoin des données fruits : 
+Nous allons également avoir besoin des données fruits et légumes : 
 
 ```{r data}
-data("fruits", package = "intro2r")
+data("fruveg", package = "intro2r")
 ```
 
 ## Bien choisir sa représentation graphique {.centered}
@@ -60,19 +60,19 @@ From Data to Viz : https://www.data-to-viz.com/
 La fonction de base pour les diagrammes en bâtons est `barplot` : 
 
 ```{r barplot}
-barplot(table(fruits$groupe))
+barplot(table(fruveg$group))
 ```
 
 Avec des couleurs :
 
 ```{r barplot_couleur}
-barplot(table(fruits$groupe), col = 1:4)
+barplot(table(fruveg$group), col = 1:3)
 ```
 
 ## La fonction geom_bar
 
 ```{r geom_bar_stop, fig.width = 5, fig.height = 4}
-ggplot(data = fruits, aes(x = groupe, fill = groupe)) +
+ggplot(data = fruveg, aes(x = group, fill = group)) +
   geom_bar()
 ```
 
@@ -86,20 +86,20 @@ ggplot(data = fruits, aes(x = groupe, fill = groupe)) +
 
 ## Le canevas {.center}
 
-![](img/S04ggplot2/ggplot-1.png){width=100%}
+![](img/S04ggplot2/ggplot.001.png){width=100%}
 
 
 ## Les données {.center}
 
-![](img/S04ggplot2/ggplot-2.png){width=100%}
+![](img/S04ggplot2/ggplot.002.png){width=100%}
 
 ## Les paramètres esthétiques {.center}
 
-![](img/S04ggplot2/ggplot-3.png){width=100%}
+![](img/S04ggplot2/ggplot.003.png){width=100%}
 
 ## Les géométries {.center}
 
-![](img/S04ggplot2/ggplot-4.png){width=100%}
+![](img/S04ggplot2/ggplot.004.png){width=100%}
 
 ## L'image à retenir {.center}
 
@@ -124,17 +124,18 @@ Esthétiques  `aes()`   Les paramètres esthétiques de ces formes. Par exemple 
 Comment corriger la commande suivante pour obtenir le graphe à droite ?
 
 ```{r acompleter, eval = FALSE}
-fruits$SucresSup10 <- 
-  fruits$Sucres > 10
+fruveg$SucresSup5 <- 
+  fruveg$sugar > 5
 
 ggplot(***, 
      aes(***, 
-     fill = SucresSup10)) +
+     fill = SucresSup5)) +
    geom_***()
 ```
 
 
 ![](img/S04ggplot2/barplotSucres.png){width=100%}
+
 
 ## Un peu d'histoire {.columns-2}
 
@@ -169,7 +170,7 @@ Nous allons voir ensemble quelques géométries particulières qui permettent de
 On a déjà vu comment faire : 
 
 ```{r geom_bar_ter, fig.height = 3}
-ggplot(fruits, aes(groupe)) + 
+ggplot(fruveg, aes(group)) + 
   geom_bar(fill = "steelblue")
 ```
 
@@ -188,7 +189,9 @@ ggplot(data = vitamine, aes(x = groupe, y = VitamineC)) +
 
 ## A vous !
 
-Comment modifier le code précédent pour faire un diagramme en bâtons montrant le nombre de fruits ayant une teneur en Eau supérieure à 80 g / 100 g par groupe ?
+Comment modifier le code précédent pour faire un diagramme en bâtons montrant 
+le nombre de fruits et légumes ayant une teneur en Eau supérieure à 80 g / 100 g 
+par groupe ?
 
 (PS : il y a plus d'une solution possible)
 
@@ -197,12 +200,12 @@ Comment modifier le code précédent pour faire un diagramme en bâtons montrant
 ## Histogramme ou diagramme en bâtons ? {.columns-2 .smaller}
 
 ```{r sucrebatons, out.width = "100%"}
-ggplot(fruits, aes(Sucres)) + 
+ggplot(fruveg, aes(sugar)) + 
   geom_bar()
 ```
 
 ```{r sucrehist, out.width = "100%", message = FALSE}
-ggplot(fruits, aes(Sucres)) + 
+ggplot(fruveg, aes(sugar)) + 
   geom_histogram()
 ```
 
@@ -242,7 +245,7 @@ Pour ce genre de graphe, il est important de choisir les intervalles sur lesquel
 <p class="forceBreak"></p>
 
 ```{r histodefo, fig.height = 3, fig.width = 3, message = FALSE}
-ggplot(fruits, aes(Sucres)) + 
+ggplot(fruveg, aes(sugar)) + 
   geom_histogram()
 ```
    
@@ -257,40 +260,40 @@ Pour faire un histogramme, on a besoin de répartir des valeurs numériques dans
 ## Modification des intervalles
 
 ```{r histo1, echo = FALSE, fig.height = 3}
-ggplot(fruits, aes(Sucres)) + 
-  geom_histogram(breaks = seq(0, 75, 5))
+ggplot(fruveg, aes(sugar)) + 
+  geom_histogram(breaks = seq(0, 20, 2.5))
 ```
 
 ```{r histo1 code, eval = FALSE}
-ggplot(fruits, aes(Sucres)) + 
-  geom_histogram(breaks = seq(0, 75, 5))
+ggplot(fruveg, aes(sugar)) + 
+  geom_histogram(breaks = seq(0, 20, 2.5))
 ```
 
 ## Modification de la couleur
 
 ```{r histo2, echo = FALSE, fig.height = 3}
-ggplot(fruits, aes(Sucres)) + 
-  geom_histogram(breaks = seq(0, 75, 5),
+ggplot(fruveg, aes(sugar)) + 
+  geom_histogram(breaks = seq(0, 20, 2.5),
                  fill = "steelblue")
 ```
 
 ```{r histo2 code, eval = FALSE}
-ggplot(fruits, aes(Sucres)) + 
-  geom_histogram(breaks = seq(0, 75, 5),
+ggplot(fruveg, aes(sugar)) + 
+  geom_histogram(breaks = seq(0, 20, 2.5),
                  fill = "steelblue")
 ```
 ## Modification de la couleur
 
 ```{r histo3, echo = FALSE, fig.height = 3}
-ggplot(fruits, aes(Sucres)) + 
-  geom_histogram(breaks = seq(0, 75, 5),
+ggplot(fruveg, aes(sugar)) + 
+  geom_histogram(breaks = seq(0, 20, 2.5),
                  fill = "steelblue",
                  color = "white")
 ```
 
 ```{r histo3 code, eval = FALSE}
-ggplot(fruits, aes(Sucres)) + 
-  geom_histogram(breaks = seq(0, 75, 5),
+ggplot(fruveg, aes(sugar)) + 
+  geom_histogram(breaks = seq(0, 20, 2.5),
                  fill = "steelblue",
                  color = "white")
 ```
@@ -303,30 +306,30 @@ ggplot(fruits, aes(Sucres)) +
 ## Boxplot d'une variable
 
 ```{r boxplot, fig.height = 4}
-ggplot(data=fruits, aes(x = Sucres)) + 
+ggplot(data = fruveg, aes(x = sugar)) + 
   geom_boxplot()
 ```
 
 ## Boxplot : lien entre une variable catégorielle et une variable continue
 
 ```{r boxplot2, fig.height = 4}
-ggplot(data=fruits, aes(x=groupe, y=Sucres)) + 
+ggplot(data=fruveg, aes(x=group, y=sugar)) + 
   geom_boxplot()
 ```
 
 ## Avec des violons {.columns-2 .smaller}
 
 ```{r violinplot, fig.height = 3, fig.width = 3}
-ggplot(data=fruits, 
-       aes(x = Sucres, y = 1)) + 
+ggplot(data = fruveg, 
+       aes(x = sugar, y = 1)) + 
   geom_violin()
 ```
 
 <p class="forceBreak"></p>
 
 ```{r violinplot2, fig.height = 3, fig.width = 3}
-ggplot(data=fruits, 
-       aes(x = groupe, y = Sucres)) + 
+ggplot(data = fruveg, 
+       aes(x = group, y = sugar)) + 
   geom_violin()
 ```
 
@@ -335,9 +338,9 @@ ggplot(data=fruits,
 Complétez le code suivant pour obtenir la figure de droite :
 
 ```{r codeacompleter, eval = FALSE}
-ggplot(fruits, 
-       aes(x = Fibres > 1.5, 
-           y = Proteines, 
+ggplot(fruveg, 
+       aes(x = fibers > 1.5, 
+           y = proteins, 
            fill = ***)) + 
   geom_***()
 ```
@@ -366,7 +369,7 @@ Exemple de fonctions thèmes (`theme_***()`) :
 ## Exemple sur un histogramme : `theme_bw()`
 
 ```{r histotheme1, message=FALSE, fig.height=3}
-ggplot(fruits, aes(Fibres)) + 
+ggplot(fruveg, aes(fibers)) + 
   geom_histogram() + 
   theme_bw()
 ```
@@ -374,7 +377,7 @@ ggplot(fruits, aes(Fibres)) +
 ## Exemple sur un histogramme : `theme_minimal()`
 
 ```{r histotheme2, message=FALSE, fig.height=3}
-ggplot(fruits, aes(Fibres)) + 
+ggplot(fruveg, aes(fibers)) + 
   geom_histogram() + 
   theme_minimal()
 ```
@@ -382,7 +385,7 @@ ggplot(fruits, aes(Fibres)) +
 ## Exemple sur un histogramme : `theme_void()`
 
 ```{r histotheme3, message = FALSE, fig.height=3}
-ggplot(fruits, aes(Fibres)) + 
+ggplot(fruveg, aes(fibers)) + 
   geom_histogram() + 
   theme_void()
 ```
@@ -393,7 +396,7 @@ ggplot(fruits, aes(Fibres)) +
  2. Choisissez la thème permettant de réaiser le graphe à droite en complétant la commande suivante.
  
 ```{r mysterytheme, eval = FALSE}
-ggplot(fruits, aes(y = Fibres)) + 
+ggplot(fruveg, aes(fibers)) + 
   geom_boxplot() + 
   theme_***()
 ```
@@ -449,7 +452,7 @@ Avec la fonction `theme()`, qui a une syntaxe bien particulière : chaque élém
 Cette géométrie nécessite des paramètres esthétiques de position (en $x$ et $y$), et accepte optionnellement des paramètres esthétiques de taille, couleur et forme.
 
 ```{r geompoint, fig.height = 3}
-ggplot(fruits, aes(x = Phosphore, y = Calcium, size = Magnesium)) + 
+ggplot(fruveg, aes(x = phosphorus, y = calcium, size = magnesium)) + 
   geom_point()
 ```
 
@@ -470,9 +473,9 @@ Lorsqu'ils sont appliqués en dehors de la fonction `aes()`, leur comportement e
 ## Exemple {.columns-2 .smaller}
 
 ```{r dans aes, fig.height = 3, fig.width = 3}
-ggplot(fruits, 
-       aes(x = Phosphore, y = Calcium, 
-           color = Magnesium)) + 
+ggplot(fruveg, 
+       aes(x = phosphorus, y = calcium, 
+           color = magnesium)) + 
   geom_point() + 
   theme(legend.position = "bottom")
 ```
@@ -480,8 +483,8 @@ ggplot(fruits,
 <p class="forceBreak"></p>
 
 ```{r pas dans aes, fig.height = 3, fig.width = 3}
-ggplot(fruits, 
-    aes(x = Phosphore, y = Calcium)) + 
+ggplot(fruveg, 
+    aes(x = phosphorus, y = calcium)) + 
   geom_point(color = "limegreen")
 ```
 
@@ -490,13 +493,13 @@ ggplot(fruits,
 Complétez la commande suivante pour obtenir le graphe ci-contre.
 
 ```{r last, eval = FALSE}
-ggplot(fruits,
-       aes(x = Sucres, 
-           y = Proteines, 
-           *** = Magnesium, 
+ggplot(fruveg,
+       aes(x = sugar, 
+           y = proteins, 
+           *** = magnesium, 
            *** = ***)) + 
   geom_***() + 
-  ***(title = "Fruits",
+  ***(title = "Fruits et légumes",
      x = "Sucres (g/100 g)", 
      y = "Protéines, N x 6.25 (g/100 g)",
      size = "Magnésium\n(mg/100 g)",
@@ -513,10 +516,10 @@ ggplot(fruits,
 Pas de panique, on peut utiliser la transparence (aka `alpha`) : 
 
 ```{r alpha, eval = FALSE, fig.height = 3}
-ggplot(fruits, 
-       aes(x = Phosphore, 
-           y = Calcium, 
-           color = groupe)) + 
+ggplot(fruveg, 
+       aes(x = phosphorus, 
+           y = calcium, 
+           color = group)) + 
   geom_point(alpha = 0.5, 
              size = 2) + 
   theme_bw() + 
@@ -527,10 +530,10 @@ ggplot(fruits,
 <p class="forceBreak"></p>
 
 ```{r alpha2, echo = FALSE, fig.height = 4, fig.width = 4}
-ggplot(fruits, 
-       aes(x = Phosphore, 
-           y = Calcium, 
-           color = groupe)) + 
+ggplot(fruveg, 
+       aes(x = phosphorus, 
+           y = calcium, 
+           color = group)) + 
   geom_point(alpha = 0.5, 
              size = 2) + 
   theme_bw() + 
@@ -558,9 +561,9 @@ Ces fonctions vont vous permettre de personnaliser l'échelle, en $x$, en $y$, m
 Complétez la commande suivante pour obtenir le graphe ci-contre.
 
 ```{r exoscale, eval = FALSE}
-ggplot(fruits, 
-       aes(Phosphore, 
-           Calcium)) + 
+ggplot(fruveg, 
+       aes(phosphorus, 
+           calcium)) + 
   geom_point(*** = "white") + 
   scale_***() + 
   scale_***() + 
@@ -587,7 +590,7 @@ Pour modifier le système de coordonnées **après** avoir appliquer toutes les 
 Transformez les coordonnées du graphe suivant en coordonnées polaires (`coord_polar(theta = "y")`). Quel est le résultat ?
 
 ```{r almostfromage, eval = FALSE}
-ggplot(fruits, aes(x = 1, fill = groupe)) + 
+ggplot(fruveg, aes(x = 1, fill = group)) + 
   geom_bar(width = 1) + 
   theme_void()
 ```
@@ -626,12 +629,12 @@ g + facet_wrap(~ fac)
 
 
 ```{r facet1, eval = FALSE}
-ggplot(fruits, 
-       aes(x = Phosphore, 
-           y = Calcium, 
-           color = groupe)) + 
+ggplot(fruveg, 
+       aes(x = phosphorus, 
+           y = calcium, 
+           color = group)) + 
   geom_point() + 
-  facet_wrap(vars(Sucres > 10)) + 
+  facet_wrap(vars(sugar > 5)) + 
   theme_bw() + 
   theme(legend.position = 
           "bottom")
@@ -640,13 +643,13 @@ ggplot(fruits,
 <p class="forceBreak"></p>
 
 ```{r facet2, echo = FALSE, fig.height = 4, fig.width = 4}
-ggplot(fruits, 
-       aes(x = Phosphore, 
-           y = Calcium, 
-           color = groupe)) + 
+ggplot(fruveg, 
+       aes(x = phosphorus, 
+           y = calcium, 
+           color = group)) + 
   geom_point() + 
-  facet_wrap(vars(Sucres > 10)) + 
-  theme_linedraw() + 
+  facet_wrap(vars(sugar > 5)) + 
+  theme_bw() + 
   theme(legend.position = 
           "bottom")
 ```
@@ -676,7 +679,7 @@ CONSEIL : pour l'utilisation de facettes, faites attention à bien nommer les mo
 Fonctionnement et exemple : 
 
 ```
-g <- ggplot(fruits, aes(groupe)) + geom_bar()
+g <- ggplot(fruveg, aes(group)) + geom_bar()
 ggsave(filename = "mongraphe.png", plot = g)
 ```
 

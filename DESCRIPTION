@@ -1,12 +1,12 @@
 Package: intro2r
 Type: Package
-Title: Package compagnon du cours "Introduction au Logiciel R"
-Version: 0.2.2
+Title: Package compagnon du cours "Initiation au Language R"
+Version: 1.0.2025
 Authors@R: person("Vincent", "Guillemot", email = "vincent.guillemot@pasteur.fr",
   role = c("aut", "cre"))
 Description: Ce package contient des tutoriels, les présentations sous forme de vignettes, ainsi qu'un exemple de données.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.3.1
-Depends: R (>= 3.5.0)
+RoxygenNote: 7.3.2
+Depends: R (>= 3.5.0), ggplot2, dplyr

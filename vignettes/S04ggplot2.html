@@ -40,7 +40,7 @@
     };
   </script>
 
-  <script src="S04ggplot2_files/header-attrs-2.26/header-attrs.js"></script>
+  <script src="S04ggplot2_files/header-attrs-2.29/header-attrs.js"></script>
   <link href="S04ggplot2_files/ioslides-13.5.1/fonts/fonts.css" rel="stylesheet" />
   <link href="S04ggplot2_files/ioslides-13.5.1/theme/css/default.css" rel="stylesheet" />
   <link href="S04ggplot2_files/ioslides-13.5.1/theme/css/phone.css" rel="stylesheet" />
@@ -96,6 +96,7 @@ slide:not(.current) .plotly.html-widget{
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+            html { -webkit-text-size-adjust: 100%; }
             pre > code.sourceCode { white-space: pre; position: relative; }
             pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
             pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -195,9 +196,9 @@ slide:not(.current) .plotly.html-widget{
 
 <pre class = 'prettyprint lang-r'>library(ggplot2)</pre>
 
-<p>Nous allons également avoir besoin des données fruits :</p>
+<p>Nous allons également avoir besoin des données fruits et légumes :</p>
 
-<pre class = 'prettyprint lang-r'>data(&quot;fruits&quot;, package = &quot;intro2r&quot;)</pre>
+<pre class = 'prettyprint lang-r'>data(&quot;fruveg&quot;, package = &quot;intro2r&quot;)</pre>
 
 </article></slide><slide class=""><hgroup><h2>Bien choisir sa représentation graphique</h2></hgroup><article  id="bien-choisir-sa-représentation-graphique" class="centered">
 
@@ -215,19 +216,19 @@ slide:not(.current) .plotly.html-widget{
 
 <p>La fonction de base pour les diagrammes en bâtons est <code>barplot</code> :</p>
 
-<pre class = 'prettyprint lang-r'>barplot(table(fruits$groupe))</pre>
+<pre class = 'prettyprint lang-r'>barplot(table(fruveg$group))</pre>
 
 <p><img src="S04ggplot2_files/figure-html/barplot-1.png" width="720" /></p>
 
 <p>Avec des couleurs :</p>
 
-<pre class = 'prettyprint lang-r'>barplot(table(fruits$groupe), col = 1:4)</pre>
+<pre class = 'prettyprint lang-r'>barplot(table(fruveg$group), col = 1:3)</pre>
 
 <p><img src="S04ggplot2_files/figure-html/barplot_couleur-1.png" width="720" /></p>
 
 </article></slide><slide class=""><hgroup><h2>La fonction geom_bar</h2></hgroup><article  id="la-fonction-geom_bar">
 
-<pre class = 'prettyprint lang-r'>ggplot(data = fruits, aes(x = groupe, fill = groupe)) +
+<pre class = 'prettyprint lang-r'>ggplot(data = fruveg, aes(x = group, fill = group)) +
   geom_bar()</pre>
 
 <p><img src="S04ggplot2_files/figure-html/geom_bar_stop-1.png" width="480" /></p>
@@ -245,19 +246,19 @@ STOP !</span></p>
 
 </article></slide><slide class=""><hgroup><h2>Le canevas</h2></hgroup><article  id="le-canevas" class="center">
 
-<img width="100%" src='img/S04ggplot2/ggplot-1.png' title=''/>
+<img width="100%" src='img/S04ggplot2/ggplot.001.png' title=''/>
 
 </article></slide><slide class=""><hgroup><h2>Les données</h2></hgroup><article  id="les-données" class="center">
 
-<img width="100%" src='img/S04ggplot2/ggplot-2.png' title=''/>
+<img width="100%" src='img/S04ggplot2/ggplot.002.png' title=''/>
 
 </article></slide><slide class=""><hgroup><h2>Les paramètres esthétiques</h2></hgroup><article  id="les-paramètres-esthétiques" class="center">
 
-<img width="100%" src='img/S04ggplot2/ggplot-3.png' title=''/>
+<img width="100%" src='img/S04ggplot2/ggplot.003.png' title=''/>
 
 </article></slide><slide class=""><hgroup><h2>Les géométries</h2></hgroup><article  id="les-géométries" class="center">
 
-<img width="100%" src='img/S04ggplot2/ggplot-4.png' title=''/>
+<img width="100%" src='img/S04ggplot2/ggplot.004.png' title=''/>
 
 </article></slide><slide class=""><hgroup><h2>L’image à retenir</h2></hgroup><article  id="limage-à-retenir" class="center">
 
@@ -296,12 +297,12 @@ STOP !</span></p>
 
 <p>À quoi servent les deux premières lignes ? Comment corriger la commande suivante pour obtenir le graphe à droite ?</p>
 
-<pre class = 'prettyprint lang-r'>fruits$SucresSup10 &lt;- 
-  fruits$Sucres &gt; 10
+<pre class = 'prettyprint lang-r'>fruveg$SucresSup5 &lt;- 
+  fruveg$sugar &gt; 5
 
 ggplot(***, 
      aes(***, 
-     fill = SucresSup10)) +
+     fill = SucresSup5)) +
    geom_***()</pre>
 
 <img width="100%" src='img/S04ggplot2/barplotSucres.png' title=''/>
@@ -362,7 +363,7 @@ ggplot(***,
 
 <p>On a déjà vu comment faire :</p>
 
-<pre class = 'prettyprint lang-r'>ggplot(fruits, aes(groupe)) + 
+<pre class = 'prettyprint lang-r'>ggplot(fruveg, aes(group)) + 
   geom_bar(fill = &quot;steelblue&quot;)</pre>
 
 <p><img src="S04ggplot2_files/figure-html/geom_bar_ter-1.png" width="720" /></p>
@@ -382,7 +383,7 @@ ggplot(data = vitamine, aes(x = groupe, y = VitamineC)) +
 
 </article></slide><slide class=""><hgroup><h2>A vous !</h2></hgroup><article  id="a-vous-1">
 
-<p>Comment modifier le code précédent pour faire un diagramme en bâtons montrant le nombre de fruits ayant une teneur en Eau supérieure à 80 g / 100 g par groupe ?</p>
+<p>Comment modifier le code précédent pour faire un diagramme en bâtons montrant le nombre de fruits et légumes ayant une teneur en Eau supérieure à 80 g / 100 g par groupe ?</p>
 
 <p>(PS : il y a plus d’une solution possible)</p>
 
@@ -390,12 +391,12 @@ ggplot(data = vitamine, aes(x = groupe, y = VitamineC)) +
 
 </article></slide><slide class=""><hgroup><h2>Histogramme ou diagramme en bâtons ?</h2></hgroup><article  id="histogramme-ou-diagramme-en-bâtons" class="columns-2 smaller">
 
-<pre class = 'prettyprint lang-r'>ggplot(fruits, aes(Sucres)) + 
+<pre class = 'prettyprint lang-r'>ggplot(fruveg, aes(sugar)) + 
   geom_bar()</pre>
 
 <p><img src="S04ggplot2_files/figure-html/sucrebatons-1.png" width="100%" /></p>
 
-<pre class = 'prettyprint lang-r'>ggplot(fruits, aes(Sucres)) + 
+<pre class = 'prettyprint lang-r'>ggplot(fruveg, aes(sugar)) + 
   geom_histogram()</pre>
 
 <p><img src="S04ggplot2_files/figure-html/sucrehist-1.png" width="100%" /></p>
@@ -448,7 +449,7 @@ ggplot(data = vitamine, aes(x = groupe, y = VitamineC)) +
 
 </p>
 
-<pre class = 'prettyprint lang-r'>ggplot(fruits, aes(Sucres)) + 
+<pre class = 'prettyprint lang-r'>ggplot(fruveg, aes(sugar)) + 
   geom_histogram()</pre>
 
 <p><img src="S04ggplot2_files/figure-html/histodefo-1.png" width="288" /></p>
@@ -466,23 +467,23 @@ ggplot(data = vitamine, aes(x = groupe, y = VitamineC)) +
 
 <p><img src="S04ggplot2_files/figure-html/histo1-1.png" width="720" /></p>
 
-<pre class = 'prettyprint lang-r'>ggplot(fruits, aes(Sucres)) + 
-  geom_histogram(breaks = seq(0, 75, 5))</pre>
+<pre class = 'prettyprint lang-r'>ggplot(fruveg, aes(sugar)) + 
+  geom_histogram(breaks = seq(0, 20, 2.5))</pre>
 
 </article></slide><slide class=""><hgroup><h2>Modification de la couleur</h2></hgroup><article  id="modification-de-la-couleur">
 
 <p><img src="S04ggplot2_files/figure-html/histo2-1.png" width="720" /></p>
 
-<pre class = 'prettyprint lang-r'>ggplot(fruits, aes(Sucres)) + 
-  geom_histogram(breaks = seq(0, 75, 5),
+<pre class = 'prettyprint lang-r'>ggplot(fruveg, aes(sugar)) + 
+  geom_histogram(breaks = seq(0, 20, 2.5),
                  fill = &quot;steelblue&quot;)</pre>
 
 </article></slide><slide class=""><hgroup><h2>Modification de la couleur</h2></hgroup><article  id="modification-de-la-couleur-1">
 
 <p><img src="S04ggplot2_files/figure-html/histo3-1.png" width="720" /></p>
 
-<pre class = 'prettyprint lang-r'>ggplot(fruits, aes(Sucres)) + 
-  geom_histogram(breaks = seq(0, 75, 5),
+<pre class = 'prettyprint lang-r'>ggplot(fruveg, aes(sugar)) + 
+  geom_histogram(breaks = seq(0, 20, 2.5),
                  fill = &quot;steelblue&quot;,
                  color = &quot;white&quot;)</pre>
 
@@ -492,22 +493,22 @@ ggplot(data = vitamine, aes(x = groupe, y = VitamineC)) +
 
 </article></slide><slide class=""><hgroup><h2>Boxplot d’une variable</h2></hgroup><article  id="boxplot-dune-variable">
 
-<pre class = 'prettyprint lang-r'>ggplot(data=fruits, aes(x = Sucres)) + 
+<pre class = 'prettyprint lang-r'>ggplot(data = fruveg, aes(x = sugar)) + 
   geom_boxplot()</pre>
 
 <p><img src="S04ggplot2_files/figure-html/boxplot-1.png" width="720" /></p>
 
 </article></slide><slide class=""><hgroup><h2>Boxplot : lien entre une variable catégorielle et une variable continue</h2></hgroup><article  id="boxplot-lien-entre-une-variable-catégorielle-et-une-variable-continue">
 
-<pre class = 'prettyprint lang-r'>ggplot(data=fruits, aes(x=groupe, y=Sucres)) + 
+<pre class = 'prettyprint lang-r'>ggplot(data=fruveg, aes(x=group, y=sugar)) + 
   geom_boxplot()</pre>
 
 <p><img src="S04ggplot2_files/figure-html/boxplot2-1.png" width="720" /></p>
 
 </article></slide><slide class=""><hgroup><h2>Avec des violons</h2></hgroup><article  id="avec-des-violons" class="columns-2 smaller">
 
-<pre class = 'prettyprint lang-r'>ggplot(data=fruits, 
-       aes(x = Sucres, y = 1)) + 
+<pre class = 'prettyprint lang-r'>ggplot(data = fruveg, 
+       aes(x = sugar, y = 1)) + 
   geom_violin()</pre>
 
 <p><img src="S04ggplot2_files/figure-html/violinplot-1.png" width="288" /></p>
@@ -516,8 +517,8 @@ ggplot(data = vitamine, aes(x = groupe, y = VitamineC)) +
 
 </p>
 
-<pre class = 'prettyprint lang-r'>ggplot(data=fruits, 
-       aes(x = groupe, y = Sucres)) + 
+<pre class = 'prettyprint lang-r'>ggplot(data = fruveg, 
+       aes(x = group, y = sugar)) + 
   geom_violin()</pre>
 
 <p><img src="S04ggplot2_files/figure-html/violinplot2-1.png" width="288" /></p>
@@ -526,9 +527,9 @@ ggplot(data = vitamine, aes(x = groupe, y = VitamineC)) +
 
 <p>Complétez le code suivant pour obtenir la figure de droite :</p>
 
-<pre class = 'prettyprint lang-r'>ggplot(fruits, 
-       aes(x = Fibres &gt; 1.5, 
-           y = Proteines, 
+<pre class = 'prettyprint lang-r'>ggplot(fruveg, 
+       aes(x = fibers &gt; 1.5, 
+           y = proteins, 
            fill = ***)) + 
   geom_***()</pre>
 
@@ -561,7 +562,7 @@ ggplot(data = vitamine, aes(x = groupe, y = VitamineC)) +
 
 </article></slide><slide class=""><hgroup><h2>Exemple sur un histogramme : <code>theme_bw()</code></h2></hgroup><article  id="exemple-sur-un-histogramme-theme_bw">
 
-<pre class = 'prettyprint lang-r'>ggplot(fruits, aes(Fibres)) + 
+<pre class = 'prettyprint lang-r'>ggplot(fruveg, aes(fibers)) + 
   geom_histogram() + 
   theme_bw()</pre>
 
@@ -569,7 +570,7 @@ ggplot(data = vitamine, aes(x = groupe, y = VitamineC)) +
 
 </article></slide><slide class=""><hgroup><h2>Exemple sur un histogramme : <code>theme_minimal()</code></h2></hgroup><article  id="exemple-sur-un-histogramme-theme_minimal">
 
-<pre class = 'prettyprint lang-r'>ggplot(fruits, aes(Fibres)) + 
+<pre class = 'prettyprint lang-r'>ggplot(fruveg, aes(fibers)) + 
   geom_histogram() + 
   theme_minimal()</pre>
 
@@ -577,7 +578,7 @@ ggplot(data = vitamine, aes(x = groupe, y = VitamineC)) +
 
 </article></slide><slide class=""><hgroup><h2>Exemple sur un histogramme : <code>theme_void()</code></h2></hgroup><article  id="exemple-sur-un-histogramme-theme_void">
 
-<pre class = 'prettyprint lang-r'>ggplot(fruits, aes(Fibres)) + 
+<pre class = 'prettyprint lang-r'>ggplot(fruveg, aes(fibers)) + 
   geom_histogram() + 
   theme_void()</pre>
 
@@ -590,7 +591,7 @@ ggplot(data = vitamine, aes(x = groupe, y = VitamineC)) +
 <li>Choisissez la thème permettant de réaiser le graphe à droite en complétant la commande suivante.</li>
 </ol>
 
-<pre class = 'prettyprint lang-r'>ggplot(fruits, aes(y = Fibres)) + 
+<pre class = 'prettyprint lang-r'>ggplot(fruveg, aes(fibers)) + 
   geom_boxplot() + 
   theme_***()</pre>
 
@@ -649,7 +650,7 @@ ggplot(data = vitamine, aes(x = groupe, y = VitamineC)) +
 
 <p>Cette géométrie nécessite des paramètres esthétiques de position (en \(x\) et \(y\)), et accepte optionnellement des paramètres esthétiques de taille, couleur et forme.</p>
 
-<pre class = 'prettyprint lang-r'>ggplot(fruits, aes(x = Phosphore, y = Calcium, size = Magnesium)) + 
+<pre class = 'prettyprint lang-r'>ggplot(fruveg, aes(x = phosphorus, y = calcium, size = magnesium)) + 
   geom_point()</pre>
 
 <p><img src="S04ggplot2_files/figure-html/geompoint-1.png" width="720" /></p>
@@ -672,9 +673,9 @@ ggplot(data = vitamine, aes(x = groupe, y = VitamineC)) +
 
 </article></slide><slide class=""><hgroup><h2>Exemple</h2></hgroup><article  id="exemple" class="columns-2 smaller">
 
-<pre class = 'prettyprint lang-r'>ggplot(fruits, 
-       aes(x = Phosphore, y = Calcium, 
-           color = Magnesium)) + 
+<pre class = 'prettyprint lang-r'>ggplot(fruveg, 
+       aes(x = phosphorus, y = calcium, 
+           color = magnesium)) + 
   geom_point() + 
   theme(legend.position = &quot;bottom&quot;)</pre>
 
@@ -684,8 +685,8 @@ ggplot(data = vitamine, aes(x = groupe, y = VitamineC)) +
 
 </p>
 
-<pre class = 'prettyprint lang-r'>ggplot(fruits, 
-    aes(x = Phosphore, y = Calcium)) + 
+<pre class = 'prettyprint lang-r'>ggplot(fruveg, 
+    aes(x = phosphorus, y = calcium)) + 
   geom_point(color = &quot;limegreen&quot;)</pre>
 
 <p><img src="S04ggplot2_files/figure-html/pas%20dans%20aes-1.png" width="288" /></p>
@@ -694,13 +695,13 @@ ggplot(data = vitamine, aes(x = groupe, y = VitamineC)) +
 
 <p>Complétez la commande suivante pour obtenir le graphe ci-contre.</p>
 
-<pre class = 'prettyprint lang-r'>ggplot(fruits,
-       aes(x = Sucres, 
-           y = Proteines, 
-           *** = Magnesium, 
+<pre class = 'prettyprint lang-r'>ggplot(fruveg,
+       aes(x = sugar, 
+           y = proteins, 
+           *** = magnesium, 
            *** = ***)) + 
   geom_***() + 
-  ***(title = &quot;Fruits&quot;,
+  ***(title = &quot;Fruits et légumes&quot;,
      x = &quot;Sucres (g/100 g)&quot;, 
      y = &quot;Protéines, N x 6.25 (g/100 g)&quot;,
      size = &quot;Magnésium\n(mg/100 g)&quot;,
@@ -717,10 +718,10 @@ ggplot(data = vitamine, aes(x = groupe, y = VitamineC)) +
 
 <p>Pas de panique, on peut utiliser la transparence (aka <code>alpha</code>) :</p>
 
-<pre class = 'prettyprint lang-r'>ggplot(fruits, 
-       aes(x = Phosphore, 
-           y = Calcium, 
-           color = groupe)) + 
+<pre class = 'prettyprint lang-r'>ggplot(fruveg, 
+       aes(x = phosphorus, 
+           y = calcium, 
+           color = group)) + 
   geom_point(alpha = 0.5, 
              size = 2) + 
   theme_bw() + 
@@ -754,9 +755,9 @@ ggplot(data = vitamine, aes(x = groupe, y = VitamineC)) +
 
 <p>Complétez la commande suivante pour obtenir le graphe ci-contre.</p>
 
-<pre class = 'prettyprint lang-r'>ggplot(fruits, 
-       aes(Phosphore, 
-           Calcium)) + 
+<pre class = 'prettyprint lang-r'>ggplot(fruveg, 
+       aes(phosphorus, 
+           calcium)) + 
   geom_point(*** = &quot;white&quot;) + 
   scale_***() + 
   scale_***() + 
@@ -785,7 +786,7 @@ ggplot(data = vitamine, aes(x = groupe, y = VitamineC)) +
 
 <p>Transformez les coordonnées du graphe suivant en coordonnées polaires (<code>coord_polar(theta = &quot;y&quot;)</code>). Quel est le résultat ?</p>
 
-<pre class = 'prettyprint lang-r'>ggplot(fruits, aes(x = 1, fill = groupe)) + 
+<pre class = 'prettyprint lang-r'>ggplot(fruveg, aes(x = 1, fill = group)) + 
   geom_bar(width = 1) + 
   theme_void()</pre>
 
@@ -818,12 +819,12 @@ ggplot(data = vitamine, aes(x = groupe, y = VitamineC)) +
 
 </article></slide><slide class=""><hgroup><h2>Exemple</h2></hgroup><article  id="exemple-1" class="columns-2">
 
-<pre class = 'prettyprint lang-r'>ggplot(fruits, 
-       aes(x = Phosphore, 
-           y = Calcium, 
-           color = groupe)) + 
+<pre class = 'prettyprint lang-r'>ggplot(fruveg, 
+       aes(x = phosphorus, 
+           y = calcium, 
+           color = group)) + 
   geom_point() + 
-  facet_wrap(vars(Sucres &gt; 10)) + 
+  facet_wrap(vars(sugar &gt; 5)) + 
   theme_bw() + 
   theme(legend.position = 
           &quot;bottom&quot;)</pre>
@@ -854,7 +855,7 @@ ggplot(data = vitamine, aes(x = groupe, y = VitamineC)) +
 
 <p>Fonctionnement et exemple :</p>
 
-<pre >g &lt;- ggplot(fruits, aes(groupe)) + geom_bar()
+<pre >g &lt;- ggplot(fruveg, aes(group)) + geom_bar()
 ggsave(filename = &quot;mongraphe.png&quot;, plot = g)</pre>
 
 <p>L’extension donnée dans <code>filename</code> sera magiquement détectée pour sauvegarder le fichier au bon format !</p>

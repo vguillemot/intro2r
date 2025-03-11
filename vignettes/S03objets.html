@@ -40,7 +40,7 @@
     };
   </script>
 
-  <script src="S03objets_files/header-attrs-2.26/header-attrs.js"></script>
+  <script src="S03objets_files/header-attrs-2.29/header-attrs.js"></script>
   <link href="S03objets_files/ioslides-13.5.1/fonts/fonts.css" rel="stylesheet" />
   <link href="S03objets_files/ioslides-13.5.1/theme/css/default.css" rel="stylesheet" />
   <link href="S03objets_files/ioslides-13.5.1/theme/css/phone.css" rel="stylesheet" />
@@ -96,6 +96,7 @@ slide:not(.current) .plotly.html-widget{
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+            html { -webkit-text-size-adjust: 100%; }
             pre > code.sourceCode { white-space: pre; position: relative; }
             pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
             pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -427,164 +428,23 @@ a * 2
 
 </article></slide><slide class=""><hgroup><h2>Les tableaux</h2></hgroup><article  id="les-tableaux" class="smaller">
 
-<pre class = 'prettyprint lang-r'>data(&quot;fruits&quot;, package = &quot;intro2r&quot;)
-fruits
-#&gt;                                   nom   groupe Energie  Eau Proteines Glucides Lipides
-#&gt; Abricot                       Abricot     crus     194 87.1      0.81     9.01    0.25
-#&gt; Abricot.1                     Abricot     secs    1010 24.7      2.88    59.10    0.50
-#&gt; Ananas                         Ananas exotique     304 81.3      0.94    15.10    0.25
-#&gt; Banane                         Banane exotique     383 75.8      1.06    19.70    0.25
-#&gt; Canneberge                 Canneberge     secs    1410 14.6      0.25    76.40    1.00
-#&gt; Cerise                         Cerise     crus     235 85.7      0.81    13.00    0.25
-#&gt; Citron                         Citron     crus     118 91.3      0.25     1.56    0.25
-#&gt; Clementine                 Clementine     crus     200 87.0      0.81     9.17    0.25
-#&gt; CompoteMultiFruits CompoteMultiFruits  compote     279 82.9      0.25    15.30    0.08
-#&gt; CompotePomme             CompotePomme  compote     432 72.9      0.23    24.40    0.21
-#&gt; Figue                           Figue     crus     293 80.2      1.19    13.50    0.25
-#&gt; Fraise                         Fraise     crus     162 90.3      0.63     6.03    0.25
-#&gt; Framboise                   Framboise     crus     206 86.8      1.19     5.83    0.80
-#&gt; FruitCru                     FruitCru     crus     251 84.5      0.70    11.60    0.26
-#&gt; Grenade                       Grenade     crus     340 79.4      1.44    14.30    1.20
-#&gt; Groseille                   Groseille     crus     289 82.1      1.56     7.06    0.70
-#&gt; Kaki                             Kaki exotique     290 81.8      0.88    14.30    0.25
-#&gt; Kiwi                             Kiwi exotique     255 83.5      0.88    11.00    0.60
-#&gt; Lime                             Lime exotique     170 86.3      1.13     3.14    0.25
-#&gt; Litchi                         Litchi exotique     344 80.5      1.13    16.10    0.25
-#&gt; Mangue                         Mangue exotique     376 77.1      0.75    19.30    0.50
-#&gt; Maracuja                     Maracuja exotique     425 73.6      2.13    10.90    3.00
-#&gt; Melange                       Melange     secs    1640 11.7      2.19    69.50   10.50
-#&gt; Melon                           Melon     crus     265 84.2      1.13    14.80    0.25
-#&gt; Mirabelle                   Mirabelle     crus     325 78.1      0.63    18.00    0.25
-#&gt; Mure                             Mure     crus     198 86.1      1.13     6.53    0.70
-#&gt; Myrtille                     Myrtille     crus     244 84.2      0.87    10.60    0.33
-#&gt; NectarineBlanche     NectarineBlanche     crus     220 86.5      0.81    11.40    0.25
-#&gt; NectarineJaune         NectarineJaune     crus     218 86.6      0.69    11.30    0.25
-#&gt; Orange                         Orange     crus     192 87.3      0.75     8.03    0.25
-#&gt; Pamplemousse             Pamplemousse     crus     169 89.3      0.25     8.02    0.25
-#&gt; Papaye                         Papaye exotique     178 88.8      0.75     8.53    0.25
-#&gt; Papaye.1                       Papaye exotique     169 88.6      0.56     7.88    0.25
-#&gt; Pasteque                     Pasteque     crus     165 91.0      0.69     8.33    0.25
-#&gt; PecheBlanche             PecheBlanche     crus     199 87.6      0.69     9.48    0.25
-#&gt; PecheBlanche.1           PecheBlanche     crus     195 87.6      0.63     9.63    0.25
-#&gt; PecheJaune                 PecheJaune     crus     196 87.8      0.69     9.80    0.25
-#&gt; PoireConference       PoireConference     crus     223 85.3      0.25    11.40    0.25
-#&gt; PoireWilliams           PoireWilliams     crus     228 84.7      0.25    11.50    0.25
-#&gt; PommeGolden               PommeGolden     crus     242 85.1      0.25    12.80    0.25
-#&gt; PommeChantecler       PommeChantecler     crus     219 86.4      0.25    11.20    0.25
-#&gt; PommeGala                   PommeGala     crus     230 85.5      0.25    11.90    0.25
-#&gt; PommeGrannySmith     PommeGrannySmith     crus     217 85.8      0.25    10.70    0.25
-#&gt; PommePinklady           PommePinklady     crus     254 83.6      0.25    12.80    0.25
-#&gt; Prune                           Prune     crus     301 80.1      0.94    16.40    0.25
-#&gt; Pruneau                       Pruneau     secs     969 34.9      1.63    55.40    0.40
-#&gt; PureeDeFruits           PureeDeFruits  compote     249 84.2      0.25    13.40    0.25
-#&gt; Raisin                         Raisin     secs    1360 16.0      3.00    73.20    0.90
-#&gt; RaisinBlanc               RaisinBlanc     crus     311 80.9      0.75    16.60    0.25
-#&gt; RaisinChasselas       RaisinChasselas     crus     335 79.4      0.75    16.90    0.50
-#&gt; RaisinNoirMuscat     RaisinNoirMuscat     crus     381 76.7      0.69    20.00    0.25
-#&gt;                    Sucres Fructose Fibres Calcium Magnesium Phosphore Potassium  Zinc
-#&gt; Abricot              6.70     1.30   1.70   15.00      8.40      22.0       260 0.090
-#&gt; Abricot.1           34.30    10.60   8.30   71.00     41.00      79.0      1400 0.350
-#&gt; Ananas              14.90     2.80   2.40    6.30     15.00       9.6       130 0.110
-#&gt; Banane              15.60     3.80   2.70    5.10     28.00      29.0       320 0.140
-#&gt; Canneberge          72.80    28.40   5.70    8.00      3.90       7.5        58 0.050
-#&gt; Cerise              10.00     4.60   1.60    9.90      8.80      19.0       190 0.060
-#&gt; Citron               0.80     0.40   0.25   11.00      7.90      12.0       140 0.330
-#&gt; Clementine           8.60     1.50   1.70   23.00      9.30      18.0       140 0.100
-#&gt; CompoteMultiFruits  14.60     6.92   1.60    6.20      5.50      11.0       140 0.050
-#&gt; CompotePomme        20.70     7.90   1.53    4.44      5.09       6.0       104 0.025
-#&gt; Figue               12.20     6.20   4.10   57.00     22.00      21.0       230 0.160
-#&gt; Fraise               5.60     3.30   3.80   18.00     12.00      23.0       140 0.110
-#&gt; Framboise            5.40     2.80   4.30   16.00     20.00      29.0       170 0.240
-#&gt; FruitCru             9.89     3.62   1.97   14.50     12.10      20.1       197 0.110
-#&gt; Grenade             13.30     7.10   2.30    9.50     12.00      27.0       230 0.220
-#&gt; Groseille            6.63     3.86   4.60   38.00     12.00      38.0       230 0.150
-#&gt; Kaki                13.90     6.40   3.40    6.90      7.20      13.0       160 0.050
-#&gt; Kiwi                 8.90     4.30   2.40   29.00     12.00      26.0       290 0.120
-#&gt; Lime                 2.10     0.80   4.30   57.00     14.00      24.0       190 0.150
-#&gt; Litchi              15.70     8.10   2.00    3.60     18.00      27.0       200 0.230
-#&gt; Mangue              18.40     8.65   1.80   14.00     14.00      13.0       150 0.080
-#&gt; Maracuja             8.50     2.50   6.80    8.10     26.00      46.0       240 0.760
-#&gt; Melange             59.40    19.50   3.40   43.00     39.00      67.0       530 0.320
-#&gt; Melon               10.60     2.49   1.30   11.00     16.00      17.0       380 0.180
-#&gt; Mirabelle           13.30     2.20   2.20   11.00      8.20      21.0       240 0.110
-#&gt; Mure                 6.10     3.08   5.20   31.00     20.00      25.0       200 0.180
-#&gt; Myrtille             9.96     4.97   2.40    6.00      6.00      12.0        77 0.160
-#&gt; NectarineBlanche     8.90     1.30   0.25    5.00      8.10      18.0       210 0.100
-#&gt; NectarineJaune       8.80     1.20   0.60    4.80      8.00      19.0       220 0.110
-#&gt; Orange               7.60     2.10   2.70   66.00     15.00      38.0       180 0.250
-#&gt; Pamplemousse         6.60     1.90   0.80   14.00      7.20      17.0       140 0.070
-#&gt; Papaye               8.10     4.10   1.80   22.00     18.00       8.7       200 0.050
-#&gt; Papaye.1             7.70     3.60   2.20   18.00     12.00      11.0       240 0.090
-#&gt; Pasteque             7.90     3.60   0.50    6.00     11.00       9.7       100 0.090
-#&gt; PecheBlanche         8.70     0.90   2.10    4.10      7.10      18.0       180 0.110
-#&gt; PecheBlanche.1       7.80     0.80   1.10    3.90      6.80      18.0       170 0.100
-#&gt; PecheJaune           7.60     1.10   1.00    4.20      6.70      17.0       190 0.090
-#&gt; PoireConference      9.40     6.60   3.10    3.90      5.30       9.3        99 0.070
-#&gt; PoireWilliams        9.40     7.20   3.10    6.10      5.30       9.8       120 0.090
-#&gt; PommeGolden         11.50     6.90   1.40    4.00      3.80      10.0       130 0.070
-#&gt; PommeChantecler     10.80     5.40   1.90    4.00      3.60      10.0       120 0.050
-#&gt; PommeGala           11.10     6.30   1.90    3.60      3.00       7.8        91 0.050
-#&gt; PommeGrannySmith    10.10     5.80   2.80    3.20      2.80       7.6       110 0.050
-#&gt; PommePinklady       12.30     6.60   2.90    2.80      3.00       7.5       110 0.050
-#&gt; Prune               10.40     1.80   1.70   13.00      9.50      20.0       250 0.120
-#&gt; Pruneau             38.10    12.50   5.10   50.00     30.00      66.0       610 0.280
-#&gt; PureeDeFruits       11.30     7.20   1.70    6.20      6.00      11.0       140 0.050
-#&gt; Raisin              70.30    36.00   4.20   54.00     35.00      82.0       960 0.240
-#&gt; RaisinBlanc         15.50     8.50   1.00   12.00      7.60      16.0       200 0.050
-#&gt; RaisinChasselas     16.50     8.40   2.00   16.00      7.50      21.0       150 0.070
-#&gt; RaisinNoirMuscat    19.60     9.80   2.70   13.00      7.30      20.0       210 0.060
-#&gt;                    BetaCarotene VitamineE VitamineC
-#&gt; Abricot                 2350.00      0.70      2.55
-#&gt; Abricot.1               2160.00      5.52      0.25
-#&gt; Ananas                    21.20      0.04     18.30
-#&gt; Banane                    28.50      0.04      7.16
-#&gt; Canneberge                15.50      1.92      0.25
-#&gt; Cerise                   242.00      0.04      4.09
-#&gt; Citron                     2.50      0.04     45.00
-#&gt; Clementine               147.00      0.21     49.20
-#&gt; CompoteMultiFruits        99.30      0.53     11.50
-#&gt; CompotePomme               3.00      0.18     14.50
-#&gt; Figue                     73.60      0.04      0.25
-#&gt; Fraise                     2.50      0.30     54.00
-#&gt; Framboise                100.00      0.88     18.70
-#&gt; FruitCru                 314.00      0.29     20.90
-#&gt; Grenade                   12.10      0.04      9.02
-#&gt; Groseille                 25.60      1.19     29.80
-#&gt; Kaki                     180.00      0.12      3.41
-#&gt; Kiwi                      38.00      0.96     81.90
-#&gt; Lime                      12.40      0.45     29.30
-#&gt; Litchi                     2.50      0.04     19.20
-#&gt; Mangue                  2010.00      1.96      2.90
-#&gt; Maracuja                1010.00      0.50     25.60
-#&gt; Melange                   13.60      0.69      0.69
-#&gt; Melon                   2500.00      0.04      8.14
-#&gt; Mirabelle                346.00      1.52      5.29
-#&gt; Mure                     156.00      1.28     10.10
-#&gt; Myrtille                  32.00      0.57      9.70
-#&gt; NectarineBlanche           2.50      1.04      3.01
-#&gt; NectarineJaune           144.00      0.04      3.38
-#&gt; Orange                     2.50      0.19     47.50
-#&gt; Pamplemousse             539.00      0.04     42.40
-#&gt; Papaye                   351.00      0.04     65.30
-#&gt; Papaye.1                1230.00      0.22     68.00
-#&gt; Pasteque                1220.00      0.04      4.26
-#&gt; PecheBlanche               2.50      0.19      3.85
-#&gt; PecheBlanche.1             2.50      0.28      4.09
-#&gt; PecheJaune               130.00      0.50      3.43
-#&gt; PoireConference           19.30      0.04      1.39
-#&gt; PoireWilliams              2.50      0.04      2.57
-#&gt; PommeGolden               56.00      0.04      0.25
-#&gt; PommeChantecler           54.60      0.04      2.85
-#&gt; PommeGala                 11.60      0.04      1.33
-#&gt; PommeGrannySmith          11.60      0.04      2.31
-#&gt; PommePinklady             32.30      0.04      2.13
-#&gt; Prune                    430.00      1.20      4.16
-#&gt; Pruneau                   14.90      0.41      0.25
-#&gt; PureeDeFruits             31.00      0.40     16.70
-#&gt; Raisin                     2.50      1.67      0.25
-#&gt; RaisinBlanc                7.54      0.31      1.07
-#&gt; RaisinChasselas           27.40      0.35      4.14
-#&gt; RaisinNoirMuscat          67.70      0.99      3.11</pre>
+<pre class = 'prettyprint lang-r'>data(&quot;fruveg&quot;, package = &quot;intro2r&quot;)
+fruveg
+#&gt; # A tibble: 33 × 19
+#&gt;    name          group energy water proteins carbohydrates lipids sugar fibers alcohol calcium copper  iron magnesium
+#&gt;    &lt;chr&gt;         &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
+#&gt;  1 Mushroom      raw …   25.8  92.6     2.37          1.88   0.23  1.43   1.72       0    7.78  0.32   0.69      10.9
+#&gt;  2 Zucchini      raw …   20.1  94.7     1.23          1.8    0.26  1.79   1.05       0   18.7   0.052  0.36      17.5
+#&gt;  3 Leek          raw …   33.4  87.6     1.49          4.9    0.25  3.15   2.27       0   50.7   0.087  1.5       19  
+#&gt;  4 Tomato        raw …   21    94.1     0.86          2.49   0.26  2.48   1.2        0    8.14  0.029  0.12      10.1
+#&gt;  5 Broccoli      raw …   35.2  88.9     3.95          1.7    0.48  1.7    2.9        0   45.9   0.059  0.76      21.9
+#&gt;  6 Green bean    raw …   31.8  90.4     1.85          4.14   0.21  3.26   2.85       0   48.5   0.063  1.02      21  
+#&gt;  7 Red beet      raw …   50.9  86.7     1.74          9.1    0.24  6.76   2.55       0   22.1   0.098  0.7       19  
+#&gt;  8 White cabbage raw …   35.1  90       1.38          4.63   0.6   4.2    3.5        0   59     0.02   0.3       11  
+#&gt;  9 Squash        raw …   17.9  92.3     1.1           1.6    0.17  1.6    1.3        0   28.5   0.061  0.6       16.5
+#&gt; 10 Pumpkin       raw …   33.8  91.6     1             6      0.1   2.76   0.5        0   21     0.13   0.8       12  
+#&gt; # ℹ 23 more rows
+#&gt; # ℹ 5 more variables: manganese &lt;dbl&gt;, phosphorus &lt;dbl&gt;, potassium &lt;dbl&gt;, zinc &lt;dbl&gt;, vitaminC &lt;dbl&gt;</pre>
 
 </article></slide><slide class=""><hgroup><h2>Importer des données en R</h2></hgroup><article  id="importer-des-données-en-r">
 
@@ -619,7 +479,7 @@ fruits
 <li>Le &ldquo;backtick&rdquo; ou &ldquo;backquote&rdquo; : &ldquo;`&rdquo;</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Explorer les données <code>fruits</code></h2></hgroup><article  id="explorer-les-données-fruits">
+</article></slide><slide class=""><hgroup><h2>Explorer les données <code>fruveg</code></h2></hgroup><article  id="explorer-les-données-fruveg">
 
 <p><img src="S03objets_files/figure-html/brackets-1.png" width="576" style="display: block; margin: auto;" /></p>
 
@@ -666,19 +526,19 @@ fruits
 </article></slide><slide class=""><hgroup><h2>L’opérateur de sélection classique : <code>[ , ]</code></h2></hgroup><article  id="lopérateur-de-sélection-classique">
 
 <ul>
-<li>Pour sélectionner la première ligne : <code>fruits[1, ]</code></li>
-<li>Pour sélectionner la deuxième colonne : <code>fruits[, 2]</code></li>
-<li>Pour enlever la troisième ligne : <code>fruits[-3, ]</code></li>
-<li>Pour enlever la quatrième colonne : <code>fruits[, -4]</code></li>
+<li>Pour sélectionner la première ligne : <code>fruveg[1, ]</code></li>
+<li>Pour sélectionner la deuxième colonne : <code>fruveg[, 2]</code></li>
+<li>Pour enlever la troisième ligne : <code>fruveg[-3, ]</code></li>
+<li>Pour enlever la quatrième colonne : <code>fruveg[, -4]</code></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Sélectionner plusieurs lignes / colonnes</h2></hgroup><article  id="sélectionner-plusieurs-lignes-colonnes">
 
 <ul>
-<li>Pour sélectionner les lignes 1 et 3 : <code>fruits[c(1, 3), ]</code></li>
-<li>Pour sélectionner les colonnes 2 et 4 : <code>fruits[, c(2, 4)]</code></li>
-<li>Pour enlever les lignes 5 et 7 : <code>fruits[-c(5, 7), ]</code></li>
-<li>Pour enlever les colonnes 6 et 8 : <code>fruits[, -c(6, 8)]</code></li>
+<li>Pour sélectionner les lignes 1 et 3 : <code>fruveg[c(1, 3), ]</code></li>
+<li>Pour sélectionner les colonnes 2 et 4 : <code>fruveg[, c(2, 4)]</code></li>
+<li>Pour enlever les lignes 5 et 7 : <code>fruveg[-c(5, 7), ]</code></li>
+<li>Pour enlever les colonnes 6 et 8 : <code>fruveg[, -c(6, 8)]</code></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>De l’utilité des deux points</h2></hgroup><article  id="de-lutilité-des-deux-points">
@@ -686,15 +546,15 @@ fruits
 <p>Pour sélectionner une plage entière de lignes ou de colonnes adjacentes :</p>
 
 <ul>
-<li>Pour sélectionner les lignes 11 à 17 : <code>fruits[11:17, ]</code></li>
-<li>Pour sélectionner les colonnes 3 à 5 : <code>fruits[, 3:5]</code></li>
-<li>Pour enlever les trois premiers fruits : <code>fruits[-(1:3), ]</code></li>
-<li>Pour enlever les cinq premières variables : <code>fruits[, -(1:5)]</code></li>
+<li>Pour sélectionner les lignes 11 à 17 : <code>fruveg[11:17, ]</code></li>
+<li>Pour sélectionner les colonnes 3 à 5 : <code>fruveg[, 3:5]</code></li>
+<li>Pour enlever les trois premières lignes : <code>fruveg[-(1:3), ]</code></li>
+<li>Pour enlever les cinq premières variables : <code>fruveg[, -(1:5)]</code></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Exercice</h2></hgroup><article  id="exercice-1">
 
-<p>Que se passe-t-il quand on oublie les parenthèses dans la commande <code>fruits[-(1:3), ]</code> ? Commentez !</p>
+<p>Que se passe-t-il quand on oublie les parenthèses dans la commande <code>fruveg[-(1:3), ]</code> ? Commentez !</p>
 
 <p>Faites de même avec le jeu de données <code>mtcars</code>.</p>
 
@@ -703,13 +563,13 @@ fruits
 <p>La syntaxe <code>donnees$cible</code> permet de sélectionner la colonne <code>cible</code> du tableau <code>donnees</code>.</p>
 
 <ul>
-<li>Par exemple : <code>fruits$Eau</code></li>
-<li>Autre exemple : <code>fruits$groupe</code></li>
+<li>Par exemple : <code>fruveg$water</code></li>
+<li>Autre exemple : <code>fruveg$group</code></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Exercice</h2></hgroup><article  id="exercice-2">
 
-<p>Extrayez la colonne de la teneur en sucres de la table des fruits… de deux façons différentes !</p>
+<p>Extrayez la colonne de la teneur en sucres de la table des fruits et légumes… de deux façons différentes !</p>
 
 <p>Créez un objet contenant la teneur en sucres : quelle est la classe de cet objet ?</p>
 
@@ -725,23 +585,23 @@ fruits
 
 <ul>
 <li><code>i &lt;- 1:10</code></li>
-<li><code>eau &lt;- fruits$Eau</code></li>
+<li><code>eau &lt;- fruveg$water</code></li>
 <li><code>eau[i]</code></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Exercice</h2></hgroup><article  id="exercice-3">
 
-<p>Créez un vecteur <code>groupe</code> contenant les groupes de fruits. Donnez deux façons différentes d’extraire les dix premières valeurs de ce vecteur.</p>
+<p>Créez un vecteur <code>groupe</code> contenant les groupes de fruits et légumes. Donnez deux façons différentes d’extraire les dix premières valeurs de ce vecteur.</p>
 
 </article></slide><slide class=""><hgroup><h2>Extraction avec des Booléens</h2></hgroup><article  id="extraction-avec-des-booléens">
 
-<p>Comment extraire les fruits … * dont la teneur en eau est supérieure à 60 ? * exotiques ? * secs contenant moins de 40g/100g de sucres ?</p>
+<p>Comment extraire les… * fruits et légumes dont la teneur en eau est supérieure à 90% ? * fruits crus ? * légumes cuits contenant moins de 1g/100g de sucres ?</p>
 
 <p>Réponse : en utilisant des vecteurs booléens</p>
 
 <ol>
-<li>Créer le vecteur de booléens <code>fruits$Eau &gt;= 60</code></li>
-<li>Utiliser le résultat dans les crochets carrés <code>fruits[fruits$Eau &gt;= 60, ]</code></li>
+<li>Créer le vecteur de booléens <code>fruveg$water &gt;= 90</code></li>
+<li>Utiliser le résultat dans les crochets carrés <code>fruveg[fruveg$water &gt;= 90,]</code></li>
 </ol>
 
 <p>Ne pas oublier la virgule !</p>
@@ -770,14 +630,14 @@ fruits
 <p>Par exemple, en deux étapes :</p>
 
 <ol>
-<li><code>bool &lt;- fruits$groupe == &quot;secs&quot; &amp; fruits$Sucres &lt; 40</code></li>
-<li><code>fruits[bool, ]</code></li>
+<li><code>bool &lt;- fruveg$group == &quot;cooked vegetable&quot; &amp; fruveg$sugar &lt;= 1</code></li>
+<li><code>fruveg[bool, ]</code></li>
 </ol>
 
 <p>Devient, en une étape :</p>
 
 <ul>
-<li><code>fruits[fruits$groupe == &quot;secs&quot; &amp; fruits$Sucres &lt; 40, ]</code></li>
+<li><code>fruveg[fruveg$group == &quot;cooked vegetable&quot; &amp; fruveg$sugar &lt;= 1, ]</code></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Attention bis</h2></hgroup><article  id="attention-bis">
@@ -788,7 +648,7 @@ fruits
 
 </article></slide><slide class=""><hgroup><h2>Exercice</h2></hgroup><article  id="exercice-4">
 
-<p>Construisez la sous-table contenant la teneur en protéines, en glucides et en lipides des fruits secs.</p>
+<p>Construisez la sous-table contenant la teneur en protéines, en glucides et en lipides des fruits crus.</p>
 
 </article></slide><slide class=""><hgroup><h2>Les objets nommés</h2></hgroup><article  id="les-objets-nommés">
 
@@ -830,21 +690,21 @@ fruits
 
 <p>La syntaxe <code>obj[i] &lt;- newvalue</code> (et ses variations) peut être utilisée pour tous les types d’objets indiçables. Mais il faut l’utiliser avec prudence !</p>
 
-<p>Exemple : <code>fruits$Energie[1:10] &lt;- 0</code></p>
+<p>Exemple : <code>fruveg$energy[1:10] &lt;- 0</code></p>
 
 <p>Que s’est-il passé ? <strong>Au secours !!!!</strong></p>
 
-<p>Pour revenir en arrière : <code>data(&quot;fruits&quot;, package = &quot;intro2r&quot;)</code></p>
+<p>Pour revenir en arrière : <code>data(&quot;fruveg&quot;, package = &quot;intro2r&quot;)</code></p>
 
 </article></slide><slide class=""><hgroup><h2>Extraction avec des noms</h2></hgroup><article  id="extraction-avec-des-noms">
 
 <p>Exemple :</p>
 
 <ul>
-<li>Pour extraire l’énergie : <code>fruits[, &quot;Energie&quot;]</code>,</li>
-<li>Pour extraire le groupe : <code>fruits[, &quot;groupe&quot;]</code>,</li>
-<li>Pour extraire l’énergie et le groupe : <code>fruits[, c(&quot;Energie&quot;, &quot;groupe&quot;)]</code>,</li>
-<li>Pour enlever le groupe : <code>fruits[, -&quot;groupe&quot;]</code> ?</li>
+<li>Pour extraire l’énergie : <code>fruveg[, &quot;energy&quot;]</code>,</li>
+<li>Pour extraire le groupe : <code>fruveg[, &quot;group&quot;]</code>,</li>
+<li>Pour extraire l’énergie et le groupe : <code>fruveg[, c(&quot;energy&quot;, &quot;group&quot;)]</code>,</li>
+<li>Pour enlever le groupe : <code>fruveg[, -&quot;group&quot;]</code> ?</li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Bilan</h2></hgroup><article  id="bilan">
@@ -856,21 +716,21 @@ fruits
 </tr>
 <tr class="odd">
 <td align="left">Indices</td>
-<td align="left"><code>fruits[, 2]</code></td>
+<td align="left"><code>fruveg[, 2]</code></td>
 </tr>
 <tr class="even">
 <td align="left">Booléens</td>
-<td align="left"><code>fruits[fruits$nom == &quot;Abricot&quot;, ]</code></td>
+<td align="left"><code>fruveg[fruveg$name == &quot;Apple&quot;, ]</code></td>
 </tr>
 <tr class="odd">
 <td align="left">Noms</td>
-<td align="left"><code>fruits$nom</code> ou <code>fruits[,&quot;nom&quot;]</code></td>
+<td align="left"><code>fruveg$name</code> ou <code>fruveg[,&quot;name&quot;]</code></td>
 </tr>
 </table>
 
 </article></slide><slide class=""><hgroup><h2>Exercice</h2></hgroup><article  id="exercice-5">
 
-<p>Lister le maximum de façons possibles d’extraire du tableau <code>fruits</code> les fruits crus sucrés riches en Vitamine C !</p>
+<p>Lister le maximum de façons possibles d’extraire du tableau <code>fruveg</code> les fruits crus sucrés riches en Vitamine C !</p>
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Construire ses propres objets</h2></hgroup><article  id="construire-ses-propres-objets">
 
@@ -886,7 +746,7 @@ fruits
 
 <ul>
 <li>On les crée avec la fonction <code>factor</code> ou <code>as.factor</code></li>
-<li>Par exemple : <code>factor(fruits$groupe)</code></li>
+<li>Par exemple : <code>factor(fruveg$group)</code></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Matrices et tableaux</h2></hgroup><article  id="matrices-et-tableaux">
@@ -910,9 +770,14 @@ fruits
 
 </article></slide><slide class=""><hgroup><h2>Exercice</h2></hgroup><article  id="exercice-6">
 
-<p>Créez un facteur à partir des groupes de fruits, puis testez la commande suivante :</p>
+<p>Créez un facteur à partir des groupes de fruits et légumes, puis testez la commande suivante :</p>
 
-<pre >factor(fruits$groupe, levels = c(&quot;secs&quot;, &quot;compote&quot;, &quot;crus&quot;, &quot;exotique&quot;))</pre>
+<pre >factor(
+  fruveg$group,
+  levels = c(
+    &quot;raw vegetable&quot;, 
+    &quot;cooked vegetable&quot;,
+    &quot;raw fruit&quot;))</pre>
 
 <p>Que se passe-t-il ? Sauvez le résultat dans un objet et faites un diagramme en bâton avec ! Commentez !</p>
 
@@ -1020,7 +885,7 @@ fruits
 <li>l’écart-type de la teneur en eau</li>
 </ul>
 
-<p>Appliquez la fonction <code>summary</code> aux données <code>fruits</code>.</p>
+<p>Appliquez la fonction <code>summary</code> aux données <code>fruveg</code>.</p>
 
 <ul>
 <li>Calculez la corrélation de Pearson entre la teneur en eau et la teneur en sucres,</li>
@@ -1057,7 +922,7 @@ fruits
 
 <p>Permet de réaliser des diagrammes en bâtons :</p>
 
-<pre class = 'prettyprint lang-r'>barplot(table(fruits$groupe))</pre>
+<pre class = 'prettyprint lang-r'>barplot(table(fruveg$group))</pre>
 
 <p><img src="S03objets_files/figure-html/barplot-1.png" width="720" /></p>
 
@@ -1065,7 +930,7 @@ fruits
 
 <p>Permet de réaliser des histogrammes :</p>
 
-<pre class = 'prettyprint lang-r'>hist(fruits$Eau)</pre>
+<pre class = 'prettyprint lang-r'>hist(fruveg$water)</pre>
 
 <p><img src="S03objets_files/figure-html/hist-1.png" width="720" /></p>
 
@@ -1073,7 +938,7 @@ fruits
 
 <p>Permet de tracer des nuages de points :</p>
 
-<pre class = 'prettyprint lang-r'>plot(fruits$Eau, fruits$Sucres)</pre>
+<pre class = 'prettyprint lang-r'>plot(fruveg$water, fruveg$sugar)</pre>
 
 <p><img src="S03objets_files/figure-html/plot-1.png" width="720" /></p>
 

@@ -39,7 +39,7 @@ library(RColorBrewer)
 Nous allons également avoir besoin des données fruits : 
 
 ```{r data}
-data("fruits", package = "intro2r")
+data("fruveg", package = "intro2r")
 ```
 
 ## Au programme
@@ -297,8 +297,8 @@ library(ggpubr)
 Avec la commande `scale_fill_brewer`
 
 ```{r scale_fill_brewer, eval = FALSE}
-ggplot(fruits, aes(x = groupe,
-                   fill = groupe)) + 
+ggplot(fruveg, aes(x = group,
+                   fill = group)) + 
   geom_bar() + 
   scale_fill_brewer(palette = "Set1") + 
   theme_bw()
@@ -307,8 +307,8 @@ ggplot(fruits, aes(x = groupe,
 <p class="forceBreak"></p>
 
 ```{r scale_fill_brewer2, echo = FALSE, fig.width = 5, out.width="100%"}
-ggplot(fruits, aes(x = groupe,
-                   fill = groupe)) + 
+ggplot(fruveg, aes(x = group,
+                   fill = group)) + 
   geom_bar() + 
   scale_fill_brewer(palette = "Set1") + 
   theme_bw()
@@ -319,9 +319,9 @@ ggplot(fruits, aes(x = groupe,
 Avec la commande `scale_color_distiller`
 
 ```{r scale_color_distiller, eval = FALSE}
-ggplot(fruits, aes(x = Phosphore,
-                   y = Calcium,
-                   color = Magnesium)) + 
+ggplot(fruveg, aes(x = phosphorus,
+                   y = calcium,
+                   color = magnesium)) + 
   geom_point() + 
   scale_color_distiller(palette = "PuOr") + 
   theme_bw()
@@ -330,9 +330,9 @@ ggplot(fruits, aes(x = Phosphore,
 <p class="forceBreak"></p>
 
 ```{r scale_color_distiller2, echo = FALSE, fig.width = 5, out.width="100%"}
-ggplot(fruits, aes(x = Phosphore,
-                   y = Calcium,
-                   color = Magnesium)) + 
+ggplot(fruveg, aes(x = phosphorus,
+                   y = calcium,
+                   color = magnesium)) + 
   geom_point() + 
   scale_color_distiller(palette = "PuOr") + 
   theme_bw()
@@ -343,25 +343,26 @@ ggplot(fruits, aes(x = Phosphore,
 Avec la commande `scale_fill_manual`
 
 ```{r scale_fill_manual, eval = FALSE}
-ggplot(fruits, aes(x = groupe,
-                   fill = groupe)) + 
+ggplot(fruveg, aes(x = group,
+                   fill = group)) + 
   geom_bar() + 
   scale_fill_manual(
-    values = c(crus = "violet",
-               secs = "brown3", 
-               exotique = "limegreen",
-               compote = "skyblue")) + 
+    values = c("cooked vegetable" = "violet",
+               "raw vegetable" = "brown3", 
+               "raw fruit" = "limegreen")) + 
   theme_bw()
 ```
 
 <p class="forceBreak"></p>
 
 ```{r scale_fill_manual2, echo = FALSE, fig.width = 5, out.width="100%"}
-ggplot(fruits, aes(groupe, fill = groupe)) + 
+ggplot(fruveg, aes(x = group,
+                   fill = group)) + 
   geom_bar() + 
   scale_fill_manual(
-    values = c(crus = "violet", secs = "brown3", 
-               exotique = "limegreen", compote = "skyblue")) + 
+    values = c("cooked vegetable" = "violet",
+               "raw vegetable" = "brown3", 
+               "raw fruit" = "limegreen")) + 
   theme_bw()
 ```
 
@@ -371,9 +372,9 @@ ggplot(fruits, aes(groupe, fill = groupe)) +
 Avec la commande `scale_color_gradient`
 
 ```{r scale_color_gradient, eval = FALSE}
-ggplot(fruits, aes(x = Phosphore,
-                   y = Calcium,
-                   color = Magnesium)) + 
+ggplot(fruveg, aes(x = phosphorus,
+                   y = calcium,
+                   color = magnesium)) + 
   geom_point() + 
   scale_color_gradient(
     low = "limegreen",
@@ -384,9 +385,9 @@ ggplot(fruits, aes(x = Phosphore,
 <p class="forceBreak"></p>
 
 ```{r scale_color_gradient2, echo = FALSE, fig.width = 5, out.width="100%"}
-ggplot(fruits, aes(x = Phosphore,
-                   y = Calcium,
-                   color = Magnesium)) + 
+ggplot(fruveg, aes(x = phosphorus,
+                   y = calcium,
+                   color = magnesium)) + 
   geom_point() + 
   scale_color_gradient(
     low = "limegreen",
@@ -399,17 +400,24 @@ ggplot(fruits, aes(x = Phosphore,
 ## Ajouter des p-valeurs {.smaller}
 
 ```{r signif, warning=FALSE, fig.height=4}
-ggplot(fruits, aes(groupe, VitamineC)) + 
-  geom_boxplot(aes(color = groupe)) + 
-  geom_signif(comparisons = list(c("crus", "exotique"))) + 
-  theme_bw()
+ggplot(
+  data = fruveg, 
+  mapping = aes(x = group, y = sugar)) + 
+    geom_boxplot(aes(color = group)) + 
+    stat_compare_means(
+      comparisons = list(
+        c("cooked vegetable", "raw vegetable"),
+        c("cooked vegetable", "raw fruit"),
+        c("raw vegetable", "raw fruit")),
+      method = "t.test") + 
+    theme_bw()
 ```
 
 ## Mosaïque de graphes {.smaller}
 
 ```{r ggarrange, warning=FALSE, message=FALSE, fig.height=4}
-g1 <- ggplot(fruits, aes(Eau)) + geom_histogram()
-g2 <- ggplot(fruits, aes(Energie)) + geom_histogram()
+g1 <- ggplot(fruveg, aes(water)) + geom_histogram()
+g2 <- ggplot(fruveg, aes(energy)) + geom_histogram()
 ggarrange(g1, g2, labels = "AUTO")
 ```
 
@@ -433,12 +441,12 @@ library(ggvenn)
 Créons une liste d'objets :
 
 ```{r flist}
-flist <- with(fruits,
+flist <- with(fruveg,
   list(
-    Sucres = nom[Sucres > 20],
-    Fibres = nom[Fibres > 2],
-    Energie = nom[Energie > 50],
-    Potassium = nom[Potassium > 100]
+    Sucres = name[sugar > 3],
+    Fibres = name[fibers > 2],
+    Energie = name[energy > 25],
+    Potassium = name[potassium > 200]
 ))
 ```
 
@@ -486,7 +494,7 @@ library(pheatmap)
 ## Premier essai
 
 ```{r essai1, eval = FALSE}
-pheatmap(fruits)
+pheatmap(fruveg)
 ```
 
 ```
@@ -505,13 +513,13 @@ De plus : Warning messages:
 ## Deuxième essai : C'est déjà mieux ? {.columns-2}
 
 ```{r essai2, eval = FALSE}
-pheatmap(fruits[, -(1:2)])
+pheatmap(fruveg[, -(1:2)])
 ```
 
 <p class="forceBreak"></p>
 
 ```{r essai2eval, echo = FALSE, fig.width = 4, fig.height = 5}
-pheatmap(fruits[, -(1:2)])
+pheatmap(fruveg[, -(1:2)])
 ```
 
 ## Les arguments
@@ -527,7 +535,7 @@ Pour avoir une liste complète des arguments : `?pheatmap`
 
 ```{r essai3, eval = FALSE}
 pheatmap(
-  fruits[, -(1:2)],
+  fruveg[, -c(1:2, 10)],
   cluster_rows = FALSE,
   scale = "column",
   show_rownames = FALSE,
@@ -539,7 +547,7 @@ pheatmap(
 
 ```{r essai3eval, echo = FALSE, fig.width = 4, fig.height = 5}
 pheatmap(
-  fruits[, -(1:2)],
+  fruveg[, -c(1:2, 10)],
   cluster_rows = FALSE,
   scale = "column",
   show_rownames = FALSE,
@@ -557,7 +565,7 @@ colfun <- colorRampPalette(
     "limegreen"))
   
 pheatmap(
-  fruits[, -(1:2)],
+  fruveg[, -c(1:2, 10)],
   cluster_rows = FALSE,
   scale = "column",
   show_rownames = FALSE,
@@ -575,7 +583,7 @@ colfun <- colorRampPalette(
     "limegreen"))
 
 pheatmap(
-  fruits[, -(1:2)],
+  fruveg[, -c(1:2, 10)],
   cluster_rows = FALSE,
   scale = "column",
   show_rownames = FALSE,
@@ -592,14 +600,14 @@ colfun <- colorRampPalette(
   c("darkorchid", 
     "white", 
     "limegreen"))
-fruitsDF <- data.frame(
-  fruits[,-1], 
-  row.names = make.unique(fruits$nom))
-annotLignes <- fruitsDF[, "groupe", 
+fruvegDF <- data.frame(
+  fruveg[,-c(1, 10)], 
+  row.names = make.unique(fruveg$name))
+annotLignes <- fruvegDF[, "group", 
                         drop = FALSE]
 
 pheatmap(
-  fruitsDF[, -1],
+  fruvegDF[, -1],
   cluster_rows = FALSE,
   scale = "column",
   show_rownames = FALSE,
@@ -612,12 +620,18 @@ pheatmap(
 <p class="forceBreak"></p>
 
 ```{r essai5eval, echo = FALSE, fig.width = 4, fig.height = 5}
-colfun <- colorRampPalette(c("darkorchid", "white", "limegreen"))
-fruitsDF <- data.frame(fruits[,-1], row.names = make.unique(fruits$nom))
-annotLignes <- fruitsDF[, "groupe", drop = FALSE]
+colfun <- colorRampPalette(
+  c("darkorchid", 
+    "white", 
+    "limegreen"))
+fruvegDF <- data.frame(
+  fruveg[,-c(1, 10)], 
+  row.names = make.unique(fruveg$name))
+annotLignes <- fruvegDF[, "group", 
+                        drop = FALSE]
 
 pheatmap(
-  fruitsDF[, -1],
+  fruvegDF[, -1],
   cluster_rows = FALSE,
   scale = "column",
   show_rownames = FALSE,
@@ -633,7 +647,7 @@ Changez la commande suivante pour obtenir un joli graphe.
 
 ```{r avous, eval = FALSE}
 pheatmap(
-  t(fruits),
+  t(fruveg),
   scale = "row",
   color = c("black", "black"),
   legend_breaks = c(-6, 0,+6),
