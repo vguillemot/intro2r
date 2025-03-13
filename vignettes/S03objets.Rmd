@@ -310,7 +310,8 @@ Créez un vecteur `groupe` contenant les groupes de fruits et légumes. Donnez d
 ## Extraction avec des Booléens
 
 Comment extraire les... 
- * fruits et légumes dont la teneur en eau est supérieure à 90% ?
+
+ * fruits et légumes dont la teneur en eau est $\geq 90\%$ ?
  * fruits crus ?
  * légumes cuits contenant moins de 1g/100g de sucres ?
 

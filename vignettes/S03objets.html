@@ -431,20 +431,22 @@ a * 2
 <pre class = 'prettyprint lang-r'>data(&quot;fruveg&quot;, package = &quot;intro2r&quot;)
 fruveg
 #&gt; # A tibble: 33 × 19
-#&gt;    name          group energy water proteins carbohydrates lipids sugar fibers alcohol calcium copper  iron magnesium
-#&gt;    &lt;chr&gt;         &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
-#&gt;  1 Mushroom      raw …   25.8  92.6     2.37          1.88   0.23  1.43   1.72       0    7.78  0.32   0.69      10.9
-#&gt;  2 Zucchini      raw …   20.1  94.7     1.23          1.8    0.26  1.79   1.05       0   18.7   0.052  0.36      17.5
-#&gt;  3 Leek          raw …   33.4  87.6     1.49          4.9    0.25  3.15   2.27       0   50.7   0.087  1.5       19  
-#&gt;  4 Tomato        raw …   21    94.1     0.86          2.49   0.26  2.48   1.2        0    8.14  0.029  0.12      10.1
-#&gt;  5 Broccoli      raw …   35.2  88.9     3.95          1.7    0.48  1.7    2.9        0   45.9   0.059  0.76      21.9
-#&gt;  6 Green bean    raw …   31.8  90.4     1.85          4.14   0.21  3.26   2.85       0   48.5   0.063  1.02      21  
-#&gt;  7 Red beet      raw …   50.9  86.7     1.74          9.1    0.24  6.76   2.55       0   22.1   0.098  0.7       19  
-#&gt;  8 White cabbage raw …   35.1  90       1.38          4.63   0.6   4.2    3.5        0   59     0.02   0.3       11  
-#&gt;  9 Squash        raw …   17.9  92.3     1.1           1.6    0.17  1.6    1.3        0   28.5   0.061  0.6       16.5
-#&gt; 10 Pumpkin       raw …   33.8  91.6     1             6      0.1   2.76   0.5        0   21     0.13   0.8       12  
+#&gt;    name     group energy water proteins carbohydrates lipids sugar fibers alcohol
+#&gt;    &lt;chr&gt;    &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+#&gt;  1 Mushroom raw …   25.8  92.6     2.37          1.88   0.23  1.43   1.72       0
+#&gt;  2 Zucchini raw …   20.1  94.7     1.23          1.8    0.26  1.79   1.05       0
+#&gt;  3 Leek     raw …   33.4  87.6     1.49          4.9    0.25  3.15   2.27       0
+#&gt;  4 Tomato   raw …   21    94.1     0.86          2.49   0.26  2.48   1.2        0
+#&gt;  5 Broccoli raw …   35.2  88.9     3.95          1.7    0.48  1.7    2.9        0
+#&gt;  6 Green b… raw …   31.8  90.4     1.85          4.14   0.21  3.26   2.85       0
+#&gt;  7 Red beet raw …   50.9  86.7     1.74          9.1    0.24  6.76   2.55       0
+#&gt;  8 White c… raw …   35.1  90       1.38          4.63   0.6   4.2    3.5        0
+#&gt;  9 Squash   raw …   17.9  92.3     1.1           1.6    0.17  1.6    1.3        0
+#&gt; 10 Pumpkin  raw …   33.8  91.6     1             6      0.1   2.76   0.5        0
 #&gt; # ℹ 23 more rows
-#&gt; # ℹ 5 more variables: manganese &lt;dbl&gt;, phosphorus &lt;dbl&gt;, potassium &lt;dbl&gt;, zinc &lt;dbl&gt;, vitaminC &lt;dbl&gt;</pre>
+#&gt; # ℹ 9 more variables: calcium &lt;dbl&gt;, copper &lt;dbl&gt;, iron &lt;dbl&gt;, magnesium &lt;dbl&gt;,
+#&gt; #   manganese &lt;dbl&gt;, phosphorus &lt;dbl&gt;, potassium &lt;dbl&gt;, zinc &lt;dbl&gt;,
+#&gt; #   vitaminC &lt;dbl&gt;</pre>
 
 </article></slide><slide class=""><hgroup><h2>Importer des données en R</h2></hgroup><article  id="importer-des-données-en-r">
 
@@ -595,7 +597,13 @@ fruveg
 
 </article></slide><slide class=""><hgroup><h2>Extraction avec des Booléens</h2></hgroup><article  id="extraction-avec-des-booléens">
 
-<p>Comment extraire les… * fruits et légumes dont la teneur en eau est supérieure à 90% ? * fruits crus ? * légumes cuits contenant moins de 1g/100g de sucres ?</p>
+<p>Comment extraire les…</p>
+
+<ul>
+<li>fruits et légumes dont la teneur en eau est \(\geq 90\%\) ?</li>
+<li>fruits crus ?</li>
+<li>légumes cuits contenant moins de 1g/100g de sucres ?</li>
+</ul>
 
 <p>Réponse : en utilisant des vecteurs booléens</p>
 

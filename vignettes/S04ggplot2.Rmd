@@ -118,7 +118,7 @@ Esthétiques  `aes()`   Les paramètres esthétiques de ces formes. Par exemple 
  Échelles    `scale_`  Des fonctions permettant de paramétrer la transformation de données en formes ou en objets graphiques. Par exemple la fonction `scale_color_manual` permet de choisir soi-même les couleurs à utiliser dans un graphique. 
 -----------  -------- --------------------
 
-## A vous ! {.columns-2}
+## A vous ! {.columns-2 .smaller}
 
 À quoi servent les deux premières lignes ?
 Comment corriger la commande suivante pour obtenir le graphe à droite ?
@@ -133,6 +133,7 @@ ggplot(***,
    geom_***()
 ```
 
+<p class="forceBreak"></p>
 
 ![](img/S04ggplot2/barplotSucres.png){width=100%}
 
@@ -393,7 +394,7 @@ ggplot(fruveg, aes(fibers)) +
 ## A vous ! {.columns-2}
 
  1. Consultez la page d'aide de la fonction `theme_bw` avec la commande `?theme_bw`
- 2. Choisissez la thème permettant de réaiser le graphe à droite en complétant la commande suivante.
+ 2. Choisissez le thème permettant de réaiser le graphe à droite en complétant la commande suivante.
  
 ```{r mysterytheme, eval = FALSE}
 ggplot(fruveg, aes(fibers)) + 

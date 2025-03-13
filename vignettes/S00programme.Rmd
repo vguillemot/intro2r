@@ -125,7 +125,7 @@ knitr::include_graphics("img/S00programme/nutriwi.png")
   * Comprehensive R Archive Network : [https://cran.r-project.org/](https://cran.r-project.org/)
   * Bioconductor : [https://www.bioconductor.org/](https://www.bioconductor.org/)
   * L'[aide-mémoire créé par Julien Chiquet](../inst/extdata/CommandesUsuelles.pdf)
-  * Les données [fruits](../inst/extdata/fruits.xlsx) et les données de [recettes](../inst/extdata/nutriwi.xlsx) (au format `xlsx`)
+  * Les données [fruits et légumes](../inst/extdata/fruits_and_veggies.xlsx) et les données de [recettes](../inst/extdata/nutriwi.xlsx) (au format `xlsx`)
 
 ****
 
