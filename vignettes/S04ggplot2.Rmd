@@ -394,7 +394,7 @@ ggplot(fruveg, aes(fibers)) +
 ## A vous ! {.columns-2}
 
  1. Consultez la page d'aide de la fonction `theme_bw` avec la commande `?theme_bw`
- 2. Choisissez le thème permettant de réaiser le graphe à droite en complétant la commande suivante.
+ 2. Choisissez le thème permettant de réaliser le graphe à droite en complétant la commande suivante.
  
 ```{r mysterytheme, eval = FALSE}
 ggplot(fruveg, aes(fibers)) + 
