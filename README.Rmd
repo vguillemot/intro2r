@@ -40,7 +40,7 @@ source("inst/extdata/current_link_for_shared_script")
 
 Les essentiels pour le cours : 
 
-  * [Document partagé pour écrire du code ensemble](`r currentlink`)
+  * [Document partagé pour écrire du code ensemble](`r currentlink`) (voir ci-dessous pour les aciennes versions)
   * Kahoot : [www.kahoot.it](www.kahoot.it)
   * Les données [fruits et légumes](inst/extdata/fruits_and_veggies.xlsx) et les données de [recettes](inst/extdata/nutrimenu.xlsx) (au format `xlsx`)
 
@@ -66,3 +66,11 @@ Les [feuilles de triches de Rstudio](https://rstudio.github.io/cheatsheets/) :
 ****
 
 Lien vers les tutoriels au format R Markdown : [Lien vers dossier compressé](inst/extdata/tutorials.zip). Pour générer une version locale du tutoriel, ouvrez le sur Rstudio, installez les packages manquants et cliquez sur "Knit".
+
+****
+
+Anciennes versions du document partagé : 
+
+  * [version de 2022](inst/extdata/Document Partagé ILR 2022.pdf)
+  * [version de 2024](inst/extdata/Document Partagé ILR 2024.pdf)
+  * [version de 2025 -- v1](inst/extdata/Document partagé ILR 2025 -- session 1.pdf)

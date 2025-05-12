@@ -27,7 +27,8 @@
 Les essentiels pour le cours :
 
 - [Document partagé pour écrire du code
-  ensemble](https://docs.google.com/document/d/1Uvxs24FAS0f7TMCRGAZipkZykSPBN-3wCuinUoThMno/edit?usp=sharing)
+  ensemble](https://docs.google.com/document/d/18M_sYgpB-6VWCYjIu-OmMlyurCb7dLhg4hLOk1mmq9Q/edit?usp=sharing)
+  (voir ci-dessous pour les aciennes versions)
 - Kahoot : [www.kahoot.it](www.kahoot.it)
 - Les données [fruits et légumes](inst/extdata/fruits_and_veggies.xlsx)
   et les données de [recettes](inst/extdata/nutrimenu.xlsx) (au format
@@ -69,3 +70,12 @@ Lien vers les tutoriels au format R Markdown : [Lien vers dossier
 compressé](inst/extdata/tutorials.zip). Pour générer une version locale
 du tutoriel, ouvrez le sur Rstudio, installez les packages manquants et
 cliquez sur “Knit”.
+
+------------------------------------------------------------------------
+
+Anciennes versions du document partagé :
+
+- [version de 2022](inst/extdata/Document%20Partagé%20ILR%202022.pdf)
+- [version de 2024](inst/extdata/Document%20Partagé%20ILR%202024.pdf)
+- [version de 2025 –
+  v1](inst/extdata/Document%20partagé%20ILR%202025%20--%20session%201.pdf)
