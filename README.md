@@ -75,7 +75,9 @@ cliquez sur “Knit”.
 
 Anciennes versions du document partagé :
 
-- [version de 2022](inst/extdata/Document%20Partagé%20ILR%202022.pdf)
-- [version de 2024](inst/extdata/Document%20Partagé%20ILR%202024.pdf)
+- [version de 2022](inst/extdata/Document%20ILR%202022.pdf)
+- [version de 2024](inst/extdata/Document%20ILR%202024.pdf)
 - [version de 2025 –
-  v1](inst/extdata/Document%20partagé%20ILR%202025%20--%20session%201.pdf)
+  v1](inst/extdata/Document%20ILR%202025%20--%20session%201.pdf)
+- [version de 2025 –
+  v2](inst/extdata/Document%20ILR%202025%20--%20session%202.pdf)

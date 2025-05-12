@@ -71,6 +71,7 @@ Lien vers les tutoriels au format R Markdown : [Lien vers dossier compressé](in
 
 Anciennes versions du document partagé : 
 
-  * [version de 2022](inst/extdata/Document Partagé ILR 2022.pdf)
-  * [version de 2024](inst/extdata/Document Partagé ILR 2024.pdf)
-  * [version de 2025 -- v1](inst/extdata/Document partagé ILR 2025 -- session 1.pdf)
+  * [version de 2022](inst/extdata/Document ILR 2022.pdf)
+  * [version de 2024](inst/extdata/Document ILR 2024.pdf)
+  * [version de 2025 -- v1](inst/extdata/Document ILR 2025 -- session 1.pdf)
+  * [version de 2025 -- v2](inst/extdata/Document ILR 2025 -- session 2.pdf)
