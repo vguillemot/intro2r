@@ -4,6 +4,8 @@ author: "Vincent Guillemot"
 date: "Mercredi"
 output: 
   ioslides_presentation:
+    self_contained: yes
+    mode: selfcontained
     css: styles.css
 vignette: >
   %\VignetteIndexEntry{01rstudio}
